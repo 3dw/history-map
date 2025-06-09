@@ -37,5 +37,18 @@ export const culturalFigures: HistoricalFigure[] = [
     category: '文化',
     tags: ['道家', '思想家', '哲學家', '《道德經》'],
     description: '中國古代思想家，道家學派創始人，《道德經》作者。'
+  },
+  // 釋迦牟尼
+  {
+    id: 'buddha',
+    chineseName: '釋迦牟尼',
+    englishName: 'Buddha',
+    startYear: -563,
+    endYear: -483,
+    coordinates: [23.7231, 85.3049],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/釋迦牟尼',
+    category: '文化',
+    tags: ['佛教', '佛陀', '釋迦牟尼', '佛教創始人'],
+    description: '佛教創始人，被尊為佛陀，是佛教的創始人和主要教義的闡述者。'
   }
 ]
