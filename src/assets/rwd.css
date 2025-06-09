@@ -1,0 +1,237 @@
+/* 歷史地圖響應式設計樣式 */
+
+/* 手機版佈局 */
+@media (max-width: 1023px) {
+  .history-map-container {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .map-controls {
+    width: 100%;
+    min-width: 100%;
+    max-height: 40vh;
+    overflow-y: auto;
+    border-right: none;
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  .map-wrapper {
+    height: calc(60vh - 60px);
+    min-height: 300px;
+    overflow: hidden;
+  }
+
+  .search-panel-top {
+    height: 60px;
+    overflow: hidden;
+  }
+
+  .category-tags,
+  .tag-tags {
+    max-height: 150px;
+  }
+}
+
+/* 寬螢幕佈局 */
+@media (min-width: 1024px) {
+  .history-map-container {
+    flex-direction: row;
+  }
+
+  .search-panel-top {
+    display: none;
+  }
+
+  .search-panel-side {
+    display: block;
+    width: 320px;
+    min-width: 320px;
+    order: 3;
+    border-left: 1px solid #dee2e6;
+    border-right: none;
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+
+  .map-controls {
+    order: 1;
+    max-height: 100vh;
+  }
+
+  .map-wrapper {
+    order: 2;
+    height: 100vh;
+  }
+}
+
+/* 平板尺寸調整 */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .map-controls {
+    max-height: 35vh;
+  }
+
+  .map-wrapper {
+    height: calc(65vh - 60px);
+  }
+}
+
+/* 小螢幕手機調整 */
+@media (max-width: 767px) {
+  .map-controls {
+    padding: 15px;
+    max-height: 45vh;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .filter-group label {
+    font-size: 14px;
+  }
+
+  .time-filter,
+  .category-filter,
+  .tag-filter {
+    padding: 12px;
+  }
+
+  .time-filter h3,
+  .category-filter h3,
+  .tag-filter h3 {
+    font-size: 16px;
+  }
+
+  .category-tag,
+  .tag-tag {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .search-input {
+    font-size: 14px;
+    padding: 10px 35px 10px 12px;
+  }
+
+  .search-clear {
+    font-size: 16px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* 超小螢幕調整 */
+@media (max-width: 480px) {
+  .map-controls {
+    max-height: 50vh;
+    padding: 10px;
+  }
+
+  .map-wrapper {
+    height: calc(50vh - 60px);
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .filter-controls {
+    margin-bottom: 20px;
+  }
+
+  .filter-group {
+    margin-bottom: 10px;
+  }
+
+  .time-inputs {
+    gap: 10px;
+  }
+
+  .time-inputs input {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .category-tags,
+  .tag-tags {
+    max-height: 120px;
+    gap: 6px;
+  }
+
+  .category-tag,
+  .tag-tag {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
+}
+
+/* 橫向手機模式 */
+@media (max-height: 500px) and (orientation: landscape) {
+  .history-map-container {
+    flex-direction: row;
+  }
+
+  .search-panel-top {
+    display: none;
+  }
+
+  .search-panel-side {
+    display: block;
+    width: 280px;
+    min-width: 280px;
+    order: 3;
+    border-left: 1px solid #dee2e6;
+    border-right: none;
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+
+  .map-controls {
+    width: 280px;
+    min-width: 280px;
+    order: 1;
+    max-height: 100vh;
+    border-right: 1px solid #dee2e6;
+    border-bottom: none;
+  }
+
+  .map-wrapper {
+    order: 2;
+    height: 100vh;
+  }
+}
+
+/* 高解析度螢幕優化 */
+@media (min-resolution: 2dppx) {
+  .custom-marker {
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+
+  .marker-label {
+    box-shadow: 0 0.5px 1.5px rgba(0,0,0,0.2);
+  }
+
+  .marker-cluster {
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+}
+
+/* 列印樣式 */
+@media print {
+  .history-map-container {
+    height: auto;
+    overflow: visible;
+  }
+
+  .search-panel,
+  .map-controls {
+    display: none;
+  }
+
+  .map-wrapper {
+    height: 600px;
+    order: 1;
+  }
+}

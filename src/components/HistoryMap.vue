@@ -52,7 +52,11 @@
               type="checkbox"
               @change="updateMarkers"
             />
-            顯示歷史人物 ({{ filteredFigures.length }})
+            <!-- 用emoji顯示數量 -->
+            <span class="filter-count">
+              {{ getResultIcon('figure') }}
+              {{ filteredFigures.length }}
+            </span>
           </label>
         </div>
         <div class="filter-group">
@@ -62,7 +66,10 @@
               type="checkbox"
               @change="updateMarkers"
             />
-            顯示重大事件 ({{ filteredEvents.length }})
+            <span class="filter-count">
+              {{ getResultIcon('event') }}
+              {{ filteredEvents.length }}
+            </span>
           </label>
         </div>
         <div class="filter-group">
@@ -72,7 +79,10 @@
               type="checkbox"
               @change="updateMarkers"
             />
-            顯示傳世之作 ({{ filteredMasterWorks.length }})
+            <span class="filter-count">
+              {{ getResultIcon('masterwork') }}
+              {{ filteredMasterWorks.length }}
+            </span>
           </label>
         </div>
       </div>
@@ -229,6 +239,10 @@ import { historicalEvents } from '@/data/historicalEvents'
 import { masterWorks } from '@/data/masterWorks'
 import type { HistoricalFigure, HistoricalEvent, MasterWork, MarkerType, Category } from '@/types'
 
+// 導入樣式
+import '@/assets/main.css'
+import '@/assets/rwd.css'
+
 // 擴展 MarkerOptions 類型
 declare module 'leaflet' {
   interface MarkerOptions {
@@ -341,7 +355,7 @@ const availableTags = computed(() => {
 
 // 過濾標籤列表
 const filteredTags = computed(() => {
-  if (!searchTag.value) return availableTags.value
+  if (!searchTag.value) return []
   return availableTags.value.filter(tag =>
     tag.toLowerCase().includes(searchTag.value.toLowerCase())
   )
@@ -666,6 +680,15 @@ const updateMarkers = () => {
               ${formatYear(event.startYear)}${event.endYear && event.endYear !== event.startYear ? ' - ' + formatYear(event.endYear) : ''}
             </span>
           </div>
+          <div class="category">
+            ${event.category}
+          </div>
+          <div class="tags">
+            ${event.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+          </div>
+          <div class="description">
+            ${event.description}
+          </div>
           <a href="${event.wikipediaUrl}" target="_blank" class="wiki-link">
             📖 維基百科
           </a>
@@ -697,6 +720,15 @@ const updateMarkers = () => {
               </span>
             </div>
           ` : ''}
+          <div class="category">
+            ${work.category}
+          </div>
+          <div class="tags">
+            ${work.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+          </div>
+          <div class="description">
+            ${work.description}
+          </div>
           <a href="${work.wikipediaUrl}" target="_blank" class="wiki-link">
             📖 維基百科
           </a>
@@ -717,7 +749,7 @@ onMounted(() => {
   L.Icon.Default.mergeOptions({
     iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
     iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
   })
 
   // 監聽視窗大小變化
@@ -735,580 +767,3 @@ onMounted(() => {
   }
 })
 </script>
-
-<style scoped>
-.history-map-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 100vw;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  overflow: hidden; /* 防止整體出現滾動條 */
-}
-
-/* 搜尋面板 */
-.search-panel {
-  background: #ffffff;
-  border: 1px solid #dee2e6;
-  padding: 15px;
-  z-index: 1000;
-}
-
-.search-panel-top {
-  display: block;
-  order: 1;
-  flex-shrink: 0; /* 防止搜尋面板被壓縮 */
-}
-
-.search-panel-side {
-  display: none;
-}
-
-.search-box {
-  position: relative;
-  margin-bottom: 15px;
-}
-
-.search-input {
-  width: 100%;
-  padding: 12px 40px 12px 15px;
-  border: 2px solid #e9ecef;
-  border-radius: 25px;
-  font-size: 16px;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.search-input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
-}
-
-.search-clear {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: #6c757d;
-  cursor: pointer;
-  font-size: 18px;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: background-color 0.2s;
-}
-
-.search-clear:hover {
-  background-color: #f8f9fa;
-}
-
-.search-results {
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-.search-results-header {
-  padding: 8px 0;
-  font-weight: 600;
-  color: #495057;
-  border-bottom: 1px solid #e9ecef;
-  margin-bottom: 10px;
-}
-
-.no-results {
-  padding: 20px;
-  text-align: center;
-  color: #6c757d;
-  font-style: italic;
-}
-
-.search-result-items {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.search-result-item {
-  display: flex;
-  align-items: center;
-  padding: 12px;
-  background: #f8f9fa;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.search-result-item:hover {
-  background: #e9ecef;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.result-icon {
-  font-size: 20px;
-  margin-right: 12px;
-  width: 32px;
-  text-align: center;
-}
-
-.result-content {
-  flex: 1;
-}
-
-.result-title {
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 4px;
-}
-
-.result-subtitle {
-  font-size: 14px;
-  color: #666;
-}
-
-/* 地圖控制面板和地圖容器 */
-.map-controls {
-  width: 320px;
-  min-width: 320px;
-  background: #f8f9fa;
-  border-right: 1px solid #dee2e6;
-  padding: 20px;
-  overflow-y: auto;
-  flex-shrink: 0;
-  order: 2;
-}
-
-.map-wrapper {
-  flex: 1;
-  position: relative;
-  min-height: 0; /* 重要：允許容器在 flex 佈局中收縮 */
-  order: 3;
-}
-
-/* 手機版佈局 */
-@media (max-width: 1023px) {
-  .history-map-container {
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  .map-controls {
-    width: 100%;
-    min-width: 100%;
-    max-height: 40vh; /* 控制面板最大高度 */
-    overflow-y: auto;
-    border-right: none;
-    border-bottom: 1px solid #dee2e6;
-  }
-
-  .map-wrapper {
-    height: calc(60vh - 60px); /* 減去搜尋面板的高度 */
-    min-height: 300px; /* 確保地圖有最小高度 */
-    overflow: hidden;
-  }
-
-  .search-panel-top {
-    height: 60px; /* 固定搜尋面板高度 */
-    overflow: hidden;
-  }
-}
-
-/* 寬螢幕佈局 */
-@media (min-width: 1024px) {
-  .history-map-container {
-    flex-direction: row;
-  }
-
-  .search-panel-top {
-    display: none;
-  }
-
-  .search-panel-side {
-    display: block;
-    width: 320px;
-    min-width: 320px;
-    order: 3;
-    border-left: 1px solid #dee2e6;
-    border-right: none;
-    overflow-y: auto;
-    max-height: 100vh;
-  }
-
-  .map-controls {
-    order: 1;
-    max-height: 100vh;
-  }
-
-  .map-wrapper {
-    order: 2;
-    height: 100vh;
-  }
-}
-
-.title {
-  margin: 0 0 20px 0;
-  color: #333;
-  font-size: 24px;
-}
-
-.filter-controls {
-  margin-bottom: 30px;
-}
-
-.filter-group {
-  margin-bottom: 15px;
-}
-
-.filter-group label {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.filter-group input[type="checkbox"] {
-  margin-right: 10px;
-  transform: scale(1.2);
-}
-
-.time-filter {
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.time-filter h3 {
-  margin: 0 0 15px 0;
-  color: #495057;
-  font-size: 18px;
-}
-
-.time-inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.time-inputs > div {
-  display: flex;
-  flex-direction: column;
-}
-
-.time-inputs label {
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #495057;
-}
-
-.time-inputs input {
-  padding: 8px;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.time-inputs input:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
-}
-
-.time-inputs small {
-  margin-top: 10px;
-  color: #6c757d;
-  font-size: 12px;
-}
-
-/* 自定義標記樣式 */
-:global(.custom-marker) {
-  background: white;
-  border: 2px solid #333;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-}
-
-:global(.figure-marker) {
-  border-color: #007bff;
-  background: #e3f2fd;
-}
-
-:global(.event-marker) {
-  border-color: #dc3545;
-  background: #ffebee;
-}
-
-:global(.masterwork-marker) {
-  border-color: #28a745;
-  background: #e8f5e8;
-}
-
-/* 帶標籤的標記樣式 */
-:global(.labeled-marker) {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-:global(.marker-label) {
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
-  max-width: 100px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: center;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-}
-
-:global(.custom-div-icon-labeled) {
-  background: none;
-  border: none;
-}
-
-/* 彈出視窗樣式 */
-.marker-popup {
-  min-width: 200px;
-  font-family: inherit;
-}
-
-.marker-popup h4 {
-  margin: 0 0 8px 0;
-  color: #333;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.english-name {
-  margin: 0 0 12px 0;
-  color: #666;
-  font-style: italic;
-  font-size: 14px;
-}
-
-.author-info {
-  margin-bottom: 12px;
-}
-
-.author {
-  display: block;
-  font-weight: 600;
-  color: #495057;
-  margin-bottom: 4px;
-}
-
-.author-english {
-  display: block;
-  color: #666;
-  font-style: italic;
-  font-size: 14px;
-}
-
-.dates {
-  margin-bottom: 15px;
-}
-
-.date-range {
-  background: #f8f9fa;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #495057;
-}
-
-.figure-popup .date-range {
-  background: #e3f2fd;
-  color: #1565c0;
-}
-
-.event-popup .date-range {
-  background: #ffebee;
-  color: #c62828;
-}
-
-.masterwork-popup .date-range {
-  background: #e8f5e8;
-  color: #1b5e20;
-}
-
-.wiki-link {
-  display: inline-block;
-  background: #007bff;
-  color: white !important;
-  padding: 6px 12px;
-  text-decoration: none;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
-  transition: background-color 0.2s;
-}
-
-.wiki-link:hover {
-  background: #0056b3;
-}
-
-/* 群集樣式 */
-:global(.marker-cluster) {
-  background: white;
-  border: 2px solid #333;
-  border-radius: 50%;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  position: relative;
-}
-
-:global(.cluster-count) {
-  font-size: 22px !important;
-  font-weight: bolder !important;
-  color: #333;
-  position: absolute;
-  top: 0;
-  text-shadow: 0 0 2px white;
-}
-
-:global(.cluster-details) {
-  font-size: 12px;
-  display: flex;
-  gap: 4px;
-  margin-top: 20px;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 2px 2px;
-  border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-:global(.figure-count) {
-  color: #007bff;
-}
-
-:global(.event-count) {
-  color: #dc3545;
-}
-
-:global(.work-count) {
-  color: #28a745;
-}
-
-:global(.custom-cluster) {
-  background: none;
-  border: none;
-}
-
-:global(.custom-cluster div) {
-  margin-left: 3px;
-  margin-top: 3px;
-}
-
-/* 展開線條樣式 */
-:global(.marker-cluster-spider) {
-  opacity: 0.5;
-}
-
-:global(.marker-cluster-spider-leg) {
-  stroke: #222;
-  stroke-width: 1.5;
-}
-
-/* 類別和標籤篩選樣式 */
-.category-filter,
-.tag-filter {
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  margin-bottom: 20px;
-}
-
-.category-filter h3,
-.tag-filter h3 {
-  margin: 0 0 15px 0;
-  color: #495057;
-  font-size: 18px;
-}
-
-.category-tags,
-.tag-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  max-height: 200px;
-  overflow-y: auto;
-  padding: 5px;
-}
-
-.category-tag,
-.tag-tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 12px;
-  background: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-size: 14px;
-}
-
-.category-tag:hover,
-.tag-tag:hover {
-  background: #e9ecef;
-}
-
-.category-tag.active,
-.tag-tag.active {
-  background: #007bff;
-  color: white;
-  border-color: #0056b3;
-}
-
-.category-tag input,
-.tag-tag input {
-  display: none;
-}
-
-.tag-search {
-  margin-bottom: 10px;
-}
-
-.tag-search-input {
-  width: 100%;
-  padding: 8px 12px;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.tag-search-input:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
-}
-
-/* 手機版樣式調整 */
-@media (max-width: 1023px) {
-  .category-tags,
-  .tag-tags {
-    max-height: 150px;
-  }
-}
-</style>
