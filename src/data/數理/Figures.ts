@@ -181,5 +181,29 @@ export const scientificFigures: HistoricalFigure[] = [
     category: '數理',
     tags: ['數學家', '法國', '伽羅瓦理論', '群論'],
     description: '法國數學家，創立了伽羅瓦理論，為代數方程的可解性提供了判別方法。'
+  },
+  {
+    id: 'al-khwarizmi',
+    chineseName: '花拉子米',
+    englishName: 'Muhammad ibn Musa al-Khwarizmi',
+    startYear: 780,
+    endYear: 850,
+    coordinates: [33.3, 44.4],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/花拉子米',
+    category: '數理',
+    tags: ['數學家', '天文學家', '代數之父', '伊斯蘭'],
+    description: '寫成《代數學》，系統闡述方程解法，引入"al‑jabr"，開創代數學科。'
+  },
+  {
+    id: 'albert-einstein',
+    chineseName: '阿爾伯特·愛因斯坦',
+    englishName: 'Albert Einstein',
+    startYear: 1879,
+    endYear: 1955,
+    coordinates: [48.1351, 11.5820],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/阿爾伯特·愛因斯坦',
+    category: '數理',
+    tags: ['物理學家', '相對論', '猶太裔', '德國'],
+    description: '提出相對論，改變人類對時空與宇宙的認知，20世紀最重要的物理學家之一。'
   }
 ]
