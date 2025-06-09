@@ -1,5 +1,44 @@
 <template>
   <div class="history-map-container">
+    <!-- 搜尋區域 - 窄螢幕時在上方 -->
+    <div class="search-panel search-panel-top">
+      <div class="search-box">
+        <input
+          v-model="searchKeyword"
+          type="text"
+          placeholder="搜尋歷史人物、事件或傳世之作..."
+          class="search-input"
+          @input="updateSearchResults"
+        />
+        <button class="search-clear" @click="clearSearch" v-if="searchKeyword">
+          ✕
+        </button>
+      </div>
+
+      <!-- 搜尋結果 -->
+      <div class="search-results" v-if="searchKeyword && searchResults.length > 0">
+        <div class="search-results-header">
+          找到 {{ searchResults.length }} 個結果
+        </div>
+        <div class="search-result-items">
+          <div
+            v-for="result in searchResults"
+            :key="`${result.type}-${result.data.id}`"
+            class="search-result-item"
+            @click="focusOnMarker(result)"
+          >
+            <div class="result-icon">
+              {{ getResultIcon(result.type) }}
+            </div>
+            <div class="result-content">
+              <div class="result-title">{{ result.data.chineseName }}</div>
+              <div class="result-subtitle">{{ getResultSubtitle(result) }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- 地圖控制面板 -->
     <div class="map-controls">
       <h2 class="title">歷史地圖</h2>
@@ -11,7 +50,7 @@
               type="checkbox"
               @change="updateMarkers"
             />
-            顯示歷史人物 ({{ historicalFigures.length }})
+            顯示歷史人物 ({{ filteredFigures.length }})
           </label>
         </div>
         <div class="filter-group">
@@ -21,7 +60,7 @@
               type="checkbox"
               @change="updateMarkers"
             />
-            顯示重大事件 ({{ historicalEvents.length }})
+            顯示重大事件 ({{ filteredEvents.length }})
           </label>
         </div>
         <div class="filter-group">
@@ -31,7 +70,7 @@
               type="checkbox"
               @change="updateMarkers"
             />
-            顯示傳世之作 ({{ masterWorks.length }})
+            顯示傳世之作 ({{ filteredMasterWorks.length }})
           </label>
         </div>
       </div>
@@ -67,8 +106,8 @@
     <div class="map-wrapper">
       <LMap
         ref="map"
-        :zoom="3"
-        :center="[35, 105]"
+        :zoom="mapZoom"
+        :center="mapCenter"
         :options="mapOptions"
         style="height: 100%; width: 100%"
         @ready="onMapReady"
@@ -77,93 +116,80 @@
           :url="tileLayerUrl"
           :attribution="attribution"
         />
-
-        <!-- 歷史人物標記 -->
-        <LMarker
-          v-for="figure in filteredFigures"
-          :key="`figure-${figure.id}`"
-          :lat-lng="figure.coordinates"
-          :options="{ icon: figureIcon }"
-        >
-          <LPopup>
-            <div class="marker-popup figure-popup">
-              <h4>{{ figure.chineseName }}</h4>
-              <p class="english-name">{{ figure.englishName }}</p>
-              <div class="dates">
-                <span class="date-range">
-                  {{ formatYear(figure.startYear) }} - {{ figure.endYear ? formatYear(figure.endYear) : '？' }}
-                </span>
-              </div>
-              <a :href="figure.wikipediaUrl" target="_blank" class="wiki-link">
-                📖 維基百科
-              </a>
-            </div>
-          </LPopup>
-        </LMarker>
-
-        <!-- 重大事件標記 -->
-        <LMarker
-          v-for="event in filteredEvents"
-          :key="`event-${event.id}`"
-          :lat-lng="event.coordinates"
-          :options="{ icon: eventIcon }"
-        >
-          <LPopup>
-            <div class="marker-popup event-popup">
-              <h4>{{ event.chineseName }}</h4>
-              <p class="english-name">{{ event.englishName }}</p>
-              <div class="dates">
-                <span class="date-range">
-                  {{ formatYear(event.startYear) }}{{ event.endYear && event.endYear !== event.startYear ? ' - ' + formatYear(event.endYear) : '' }}
-                </span>
-              </div>
-              <a :href="event.wikipediaUrl" target="_blank" class="wiki-link">
-                📖 維基百科
-              </a>
-            </div>
-          </LPopup>
-        </LMarker>
-
-        <!-- 傳世之作標記 -->
-        <LMarker
-          v-for="work in filteredMasterWorks"
-          :key="`work-${work.id}`"
-          :lat-lng="work.coordinates"
-          :options="{ icon: masterWorkIcon }"
-        >
-          <LPopup>
-            <div class="marker-popup masterwork-popup">
-              <h4>{{ work.chineseName }}</h4>
-              <p class="english-name">{{ work.englishName }}</p>
-              <div class="author-info">
-                <span class="author">作者：{{ work.author }}</span>
-                <span class="author-english">{{ work.authorEnglish }}</span>
-              </div>
-              <div class="dates" v-if="work.year">
-                <span class="date-range">
-                  {{ formatYear(work.year) }}
-                </span>
-              </div>
-              <a :href="work.wikipediaUrl" target="_blank" class="wiki-link">
-                📖 維基百科
-              </a>
-            </div>
-          </LPopup>
-        </LMarker>
       </LMap>
+    </div>
+
+    <!-- 搜尋區域 - 寬螢幕時在右側 -->
+    <div class="search-panel search-panel-side">
+      <div class="search-box">
+        <input
+          v-model="searchKeyword"
+          type="text"
+          placeholder="搜尋歷史人物、事件或傳世之作..."
+          class="search-input"
+          @input="updateSearchResults"
+        />
+        <button class="search-clear" @click="clearSearch" v-if="searchKeyword">
+          ✕
+        </button>
+      </div>
+
+      <!-- 搜尋結果 -->
+      <div class="search-results" v-if="searchKeyword">
+        <div class="search-results-header" v-if="searchResults.length > 0">
+          找到 {{ searchResults.length }} 個結果
+        </div>
+        <div class="no-results" v-else>
+          沒有找到相關結果
+        </div>
+        <div class="search-result-items" v-if="searchResults.length > 0">
+          <div
+            v-for="result in searchResults"
+            :key="`${result.type}-${result.data.id}`"
+            class="search-result-item"
+            @click="focusOnMarker(result)"
+          >
+            <div class="result-icon">
+              {{ getResultIcon(result.type) }}
+            </div>
+            <div class="result-content">
+              <div class="result-title">{{ result.data.chineseName }}</div>
+              <div class="result-subtitle">{{ getResultSubtitle(result) }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, nextTick } from 'vue'
-import { LMap, LTileLayer, LMarker, LPopup } from '@vue-leaflet/vue-leaflet'
+import { ref, computed, onMounted, nextTick, watch } from 'vue'
+import { LMap, LTileLayer } from '@vue-leaflet/vue-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+import 'leaflet.markercluster'
+import 'leaflet.markercluster/dist/MarkerCluster.css'
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
 
 import { historicalFigures } from '@/data/historicalFigures'
 import { historicalEvents } from '@/data/historicalEvents'
 import { masterWorks } from '@/data/masterWorks'
+import type { HistoricalFigure, HistoricalEvent, MasterWork, MarkerType } from '@/types'
+
+// 擴展 MarkerOptions 類型
+declare module 'leaflet' {
+  interface MarkerOptions {
+    type?: 'figure' | 'event' | 'masterwork'
+  }
+}
+
+// 自定義標記類型
+interface CustomMarker extends L.Marker {
+  options: L.MarkerOptions & {
+    type?: 'figure' | 'event' | 'masterwork'
+  }
+}
 
 // 地圖參考
 const map = ref<InstanceType<typeof LMap> | null>(null)
@@ -173,6 +199,9 @@ const mapOptions = {
   zoomSnap: 0.5,
   zoomDelta: 0.5
 }
+
+const mapZoom = ref(3)
+const mapCenter = ref<[number, number]>([35, 105])
 
 const tileLayerUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 const attribution = '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
@@ -185,6 +214,10 @@ const timeFilter = ref({
   start: -3000, // 西元前3000年
   end: 2024     // 西元2024年
 })
+
+// 搜尋功能
+const searchKeyword = ref('')
+const searchResults = ref<Array<{ type: MarkerType; data: HistoricalFigure | HistoricalEvent | MasterWork }>>([])
 
 // 自定義圖標
 const figureIcon = L.divIcon({
@@ -241,6 +274,129 @@ const filteredMasterWorks = computed(() => {
   })
 })
 
+// 顯示的標記（考慮搜尋結果）
+const displayedFigures = computed(() => {
+  if (!searchKeyword.value) return filteredFigures.value
+
+  const searchResultIds = searchResults.value
+    .filter(r => r.type === 'figure')
+    .map(r => r.data.id)
+
+  return filteredFigures.value.filter(figure => searchResultIds.includes(figure.id))
+})
+
+const displayedEvents = computed(() => {
+  if (!searchKeyword.value) return filteredEvents.value
+
+  const searchResultIds = searchResults.value
+    .filter(r => r.type === 'event')
+    .map(r => r.data.id)
+
+  return filteredEvents.value.filter(event => searchResultIds.includes(event.id))
+})
+
+const displayedMasterWorks = computed(() => {
+  if (!searchKeyword.value) return filteredMasterWorks.value
+
+  const searchResultIds = searchResults.value
+    .filter(r => r.type === 'masterwork')
+    .map(r => r.data.id)
+
+  return filteredMasterWorks.value.filter(work => searchResultIds.includes(work.id))
+})
+
+// 群集相關
+const markerClusterGroup = ref<L.MarkerClusterGroup | null>(null)
+
+// 搜尋功能
+const updateSearchResults = () => {
+  if (!searchKeyword.value.trim()) {
+    searchResults.value = []
+    return
+  }
+
+  const keyword = searchKeyword.value.toLowerCase()
+  const results: Array<{ type: MarkerType; data: HistoricalFigure | HistoricalEvent | MasterWork }> = []
+
+  // 搜尋歷史人物
+  if (showFigures.value) {
+    filteredFigures.value.forEach(figure => {
+      if (
+        figure.chineseName.toLowerCase().includes(keyword) ||
+        figure.englishName.toLowerCase().includes(keyword)
+      ) {
+        results.push({ type: 'figure', data: figure })
+      }
+    })
+  }
+
+  // 搜尋重大事件
+  if (showEvents.value) {
+    filteredEvents.value.forEach(event => {
+      if (
+        event.chineseName.toLowerCase().includes(keyword) ||
+        event.englishName.toLowerCase().includes(keyword)
+      ) {
+        results.push({ type: 'event', data: event })
+      }
+    })
+  }
+
+  // 搜尋傳世之作
+  if (showMasterWorks.value) {
+    filteredMasterWorks.value.forEach(work => {
+      if (
+        work.chineseName.toLowerCase().includes(keyword) ||
+        work.englishName.toLowerCase().includes(keyword) ||
+        work.author.toLowerCase().includes(keyword) ||
+        work.authorEnglish.toLowerCase().includes(keyword)
+      ) {
+        results.push({ type: 'masterwork', data: work })
+      }
+    })
+  }
+
+  searchResults.value = results
+}
+
+const clearSearch = () => {
+  searchKeyword.value = ''
+  searchResults.value = []
+}
+
+const getResultIcon = (type: MarkerType): string => {
+  switch (type) {
+    case 'figure': return '👤'
+    case 'event': return '⚡'
+    case 'masterwork': return '📚'
+    default: return '📍'
+  }
+}
+
+const getResultSubtitle = (result: { type: MarkerType; data: HistoricalFigure | HistoricalEvent | MasterWork }): string => {
+  switch (result.type) {
+    case 'figure':
+      const figure = result.data as HistoricalFigure
+      return `${formatYear(figure.startYear)} - ${figure.endYear ? formatYear(figure.endYear) : '？'}`
+    case 'event':
+      const event = result.data as HistoricalEvent
+      return `${formatYear(event.startYear)}${event.endYear && event.endYear !== event.startYear ? ' - ' + formatYear(event.endYear) : ''}`
+    case 'masterwork':
+      const work = result.data as MasterWork
+      return `${work.author} ${work.year ? formatYear(work.year) : ''}`
+    default:
+      return ''
+  }
+}
+
+const focusOnMarker = (result: { type: MarkerType; data: HistoricalFigure | HistoricalEvent | MasterWork }) => {
+  const leafletMap = map.value?.leafletObject
+  if (leafletMap) {
+    const coordinates = result.data.coordinates
+    leafletMap.setView(coordinates, 8)
+  }
+}
+
 // 格式化年份顯示
 const formatYear = (year: number): string => {
   if (year < 0) {
@@ -249,28 +405,154 @@ const formatYear = (year: number): string => {
   return `西元${year}年`
 }
 
-// 更新標記（用於觸發重新渲染）
-const updateMarkers = () => {
-  // 這個函數主要是為了確保響應式更新
-  console.log('更新標記:', {
-    figures: filteredFigures.value.length,
-    events: filteredEvents.value.length,
-    masterWorks: filteredMasterWorks.value.length
-  })
-}
+// 監聽過濾條件的變化
+watch([showFigures, showEvents, showMasterWorks, timeFilter], () => {
+  updateMarkers()
+}, { deep: true })
+
+// 監聽搜尋結果的變化
+watch(searchResults, () => {
+  updateMarkers()
+})
 
 const onMapReady = () => {
-  // 處理地圖 ready 事件
   console.log('地圖已準備就緒')
 
-  // 確保地圖尺寸正確
+  // 確保地圖尺寸正確並初始化標記
   nextTick(() => {
-    if (map.value?.leafletObject) {
+    const mapInstance = map.value?.leafletObject
+    if (mapInstance) {
       setTimeout(() => {
-        map.value!.leafletObject.invalidateSize()
+        mapInstance.invalidateSize()
+        // 初始化標記
+        updateMarkers()
       }, 100)
     }
   })
+}
+
+// 更新標記（用於觸發重新渲染）
+const updateMarkers = () => {
+  const leafletMap = map.value?.leafletObject
+  if (!leafletMap) return
+
+  // 清除現有的群集
+  if (markerClusterGroup.value) {
+    leafletMap.removeLayer(markerClusterGroup.value as unknown as L.Layer)
+  }
+
+  // 創建新的群集組
+  markerClusterGroup.value = L.markerClusterGroup({
+    maxClusterRadius: 50,
+    spiderfyOnMaxZoom: true,
+    showCoverageOnHover: false,
+    zoomToBoundsOnClick: true,
+    disableClusteringAtZoom: 8, // 在較大縮放級別時禁用群集
+    chunkedLoading: true, // 使用分塊加載以提高性能
+    iconCreateFunction: (cluster) => {
+      const markers = cluster.getAllChildMarkers() as CustomMarker[]
+      const figureCount = markers.filter(m => m.options.type === 'figure').length
+      const eventCount = markers.filter(m => m.options.type === 'event').length
+      const workCount = markers.filter(m => m.options.type === 'masterwork').length
+
+      return L.divIcon({
+        html: `
+          <div class="marker-cluster">
+            <div class="cluster-count">${markers.length}</div>
+            <div class="cluster-details">
+              ${figureCount ? `<span class="figure-count">👤${figureCount}</span>` : ''}
+              ${eventCount ? `<span class="event-count">⚡${eventCount}</span>` : ''}
+              ${workCount ? `<span class="work-count">📚${workCount}</span>` : ''}
+            </div>
+          </div>
+        `,
+        className: 'custom-cluster',
+        iconSize: L.point(40, 40)
+      })
+    }
+  })
+
+  // 添加標記到群集
+  if (showFigures.value) {
+    displayedFigures.value.forEach(figure => {
+      const marker = L.marker(figure.coordinates, {
+        icon: figureIcon,
+        type: 'figure' as const
+      })
+      marker.bindPopup(`
+        <div class="marker-popup figure-popup">
+          <h4>${figure.chineseName}</h4>
+          <p class="english-name">${figure.englishName}</p>
+          <div class="dates">
+            <span class="date-range">
+              ${formatYear(figure.startYear)} - ${figure.endYear ? formatYear(figure.endYear) : '？'}
+            </span>
+          </div>
+          <a href="${figure.wikipediaUrl}" target="_blank" class="wiki-link">
+            📖 維基百科
+          </a>
+        </div>
+      `)
+      markerClusterGroup.value?.addLayer(marker)
+    })
+  }
+
+  if (showEvents.value) {
+    displayedEvents.value.forEach(event => {
+      const marker = L.marker(event.coordinates, {
+        icon: eventIcon,
+        type: 'event' as const
+      })
+      marker.bindPopup(`
+        <div class="marker-popup event-popup">
+          <h4>${event.chineseName}</h4>
+          <p class="english-name">${event.englishName}</p>
+          <div class="dates">
+            <span class="date-range">
+              ${formatYear(event.startYear)}${event.endYear && event.endYear !== event.startYear ? ' - ' + formatYear(event.endYear) : ''}
+            </span>
+          </div>
+          <a href="${event.wikipediaUrl}" target="_blank" class="wiki-link">
+            📖 維基百科
+          </a>
+        </div>
+      `)
+      markerClusterGroup.value?.addLayer(marker)
+    })
+  }
+
+  if (showMasterWorks.value) {
+    displayedMasterWorks.value.forEach(work => {
+      const marker = L.marker(work.coordinates, {
+        icon: masterWorkIcon,
+        type: 'masterwork' as const
+      })
+      marker.bindPopup(`
+        <div class="marker-popup masterwork-popup">
+          <h4>${work.chineseName}</h4>
+          <p class="english-name">${work.englishName}</p>
+          <div class="author-info">
+            <span class="author">作者：${work.author}</span>
+            <span class="author-english">${work.authorEnglish}</span>
+          </div>
+          ${work.year ? `
+            <div class="dates">
+              <span class="date-range">
+                ${formatYear(work.year)}
+              </span>
+            </div>
+          ` : ''}
+          <a href="${work.wikipediaUrl}" target="_blank" class="wiki-link">
+            📖 維基百科
+          </a>
+        </div>
+      `)
+      markerClusterGroup.value?.addLayer(marker)
+    })
+  }
+
+  // 將群集添加到地圖
+  leafletMap.addLayer(markerClusterGroup.value as unknown as L.Layer)
 }
 
 onMounted(() => {
@@ -302,11 +584,137 @@ onMounted(() => {
 <style scoped>
 .history-map-container {
   display: flex;
+  flex-direction: column;
   height: 100vh;
   width: 100vw;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
+/* 搜尋面板 */
+.search-panel {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  padding: 15px;
+  z-index: 1000;
+}
+
+.search-panel-top {
+  display: block;
+  order: 1;
+}
+
+.search-panel-side {
+  display: none;
+}
+
+.search-box {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 40px 12px 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+}
+
+.search-clear {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #6c757d;
+  cursor: pointer;
+  font-size: 18px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.search-clear:hover {
+  background-color: #f8f9fa;
+}
+
+.search-results {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-results-header {
+  padding: 8px 0;
+  font-weight: 600;
+  color: #495057;
+  border-bottom: 1px solid #e9ecef;
+  margin-bottom: 10px;
+}
+
+.no-results {
+  padding: 20px;
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+}
+
+.search-result-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.search-result-item:hover {
+  background: #e9ecef;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.result-icon {
+  font-size: 20px;
+  margin-right: 12px;
+  width: 32px;
+  text-align: center;
+}
+
+.result-content {
+  flex: 1;
+}
+
+.result-title {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.result-subtitle {
+  font-size: 14px;
+  color: #666;
+}
+
+/* 地圖控制面板和地圖容器 */
 .map-controls {
   width: 320px;
   min-width: 320px;
@@ -315,6 +723,43 @@ onMounted(() => {
   padding: 20px;
   overflow-y: auto;
   flex-shrink: 0;
+  order: 2;
+}
+
+.map-wrapper {
+  flex: 1;
+  position: relative;
+  height: 100vh;
+  min-height: 100vh;
+  order: 3;
+}
+
+/* 寬螢幕佈局 */
+@media (min-width: 1024px) {
+  .history-map-container {
+    flex-direction: row;
+  }
+
+  .search-panel-top {
+    display: none;
+  }
+
+  .search-panel-side {
+    display: block;
+    width: 320px;
+    min-width: 320px;
+    order: 3;
+    border-left: 1px solid #dee2e6;
+    border-right: none;
+  }
+
+  .map-controls {
+    order: 1;
+  }
+
+  .map-wrapper {
+    order: 2;
+  }
 }
 
 .title {
@@ -390,13 +835,6 @@ onMounted(() => {
   margin-top: 10px;
   color: #6c757d;
   font-size: 12px;
-}
-
-.map-wrapper {
-  flex: 1;
-  position: relative;
-  height: 100vh;
-  min-height: 100vh;
 }
 
 /* 自定義標記樣式 */
@@ -506,5 +944,56 @@ onMounted(() => {
 
 .wiki-link:hover {
   background: #0056b3;
+}
+
+/* 群集樣式 */
+:global(.marker-cluster) {
+  background: white;
+  border: 2px solid #333;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+:global(.cluster-count) {
+  font-size: 22px !important;
+  font-weight: bolder !important;
+  color: #333;
+  position: absolute;
+  top: 0;
+}
+
+:global(.cluster-details) {
+  font-size: 12px;
+  display: flex;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+:global(.figure-count) {
+  color: #007bff;
+}
+
+:global(.event-count) {
+  color: #dc3545;
+}
+
+:global(.work-count) {
+  color: #28a745;
+}
+
+:global(.custom-cluster) {
+  background: none;
+  border: none;
+}
+
+:global(.custom-cluster div) {
+  margin-left: 3px;
+  margin-top: 3px;
 }
 </style>
