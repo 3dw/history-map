@@ -118,5 +118,18 @@ export const scientificMasterWorks: MasterWork[] = [
     category: '數理',
     tags: ['天文學', '數學', '古希臘', '亞歷山大'],
     description: '托勒密的天文學著作，建立了地心說體系。'
+  },
+  {
+    id: 'al-kitab-al-mukhtasar-fi-hisab-al-jabr-wal-muqabala',
+    chineseName: '代數學',
+    englishName: 'The Compendious Book on Calculation by Completion and Balancing',
+    author: '花拉子米',
+    authorEnglish: 'Muhammad ibn Musa al-Khwarizmi',
+    year: 820,
+    coordinates: [33.3128, 44.3615], // 巴格達
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/花拉子米',
+    category: '數理',
+    tags: ['數學', '代數', '伊斯蘭', '花拉子米'],
+    description: '伊斯蘭黃金時代數學家花拉子米所著，系統闡述方程解法，開創代數學科，對後世影響深遠。'
   }
 ]
