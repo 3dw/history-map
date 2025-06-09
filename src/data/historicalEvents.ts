@@ -106,6 +106,62 @@ export const historicalEvents: HistoricalEvent[] = [
     coordinates: [43.7696, 11.2558], // 義大利佛羅倫斯
     wikipediaUrl: 'https://zh.wikipedia.org/wiki/文藝復興'
   },
+
+  // 科學革命時代事件
+  {
+    id: 'copernican-revolution',
+    chineseName: '哥白尼革命',
+    englishName: 'Copernican Revolution',
+    startYear: 1543,
+    endYear: 1687, // 到牛頓《原理》出版
+    coordinates: [54.3520, 18.6466], // 波蘭托倫
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/哥白尼革命'
+  },
+  {
+    id: 'galileo-telescope-observations',
+    chineseName: '伽利略望遠鏡觀測',
+    englishName: 'Galileo\'s Telescope Observations',
+    startYear: 1609,
+    endYear: 1610,
+    coordinates: [45.4408, 12.3155], // 義大利威尼斯（首次展示望遠鏡）
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/伽利略望遠鏡'
+  },
+  {
+    id: 'galileo-trial',
+    chineseName: '伽利略審判',
+    englishName: 'Trial of Galileo',
+    startYear: 1633,
+    endYear: 1633, // 單一事件
+    coordinates: [41.9028, 12.4964], // 義大利羅馬
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/伽利略事件'
+  },
+  {
+    id: 'invention-of-calculus',
+    chineseName: '微積分發明',
+    englishName: 'Invention of Calculus',
+    startYear: 1665,
+    endYear: 1676, // 萊布尼茲獨立發明
+    coordinates: [52.2053, 0.1218], // 英國劍橋（牛頓）
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/微積分'
+  },
+  {
+    id: 'scientific-revolution',
+    chineseName: '科學革命',
+    englishName: 'Scientific Revolution',
+    startYear: 1543,
+    endYear: 1687,
+    coordinates: [51.5074, -0.1278], // 英國倫敦（皇家學會）
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/科學革命'
+  },
+  {
+    id: 'discovery-of-gravity',
+    chineseName: '萬有引力定律發現',
+    englishName: 'Discovery of Universal Gravitation',
+    startYear: 1687,
+    endYear: 1687, // 單一事件
+    coordinates: [52.2053, 0.1218], // 英國劍橋
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/萬有引力定律'
+  },
   {
     id: 'industrial-revolution',
     chineseName: '工業革命',

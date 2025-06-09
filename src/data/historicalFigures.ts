@@ -97,6 +97,53 @@ export const historicalFigures: HistoricalFigure[] = [
     coordinates: [43.7696, 11.2558], // 義大利佛羅倫斯
     wikipediaUrl: 'https://zh.wikipedia.org/wiki/李奧納多·達文西'
   },
+
+  // 科學革命時代人物
+  {
+    id: 'copernicus',
+    chineseName: '尼古拉·哥白尼',
+    englishName: 'Nicolaus Copernicus',
+    startYear: 1473,
+    endYear: 1543,
+    coordinates: [54.3520, 18.6466], // 波蘭托倫
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/尼古拉·哥白尼'
+  },
+  {
+    id: 'kepler',
+    chineseName: '約翰尼斯·開普勒',
+    englishName: 'Johannes Kepler',
+    startYear: 1571,
+    endYear: 1630,
+    coordinates: [48.7758, 9.1829], // 德國魏爾
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/約翰尼斯·開普勒'
+  },
+  {
+    id: 'galileo',
+    chineseName: '伽利略·伽利萊',
+    englishName: 'Galileo Galilei',
+    startYear: 1564,
+    endYear: 1642,
+    coordinates: [43.7230, 10.4017], // 義大利比薩
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/伽利略·伽利萊'
+  },
+  {
+    id: 'leibniz',
+    chineseName: '戈特弗里德·萊布尼茲',
+    englishName: 'Gottfried Wilhelm Leibniz',
+    startYear: 1646,
+    endYear: 1716,
+    coordinates: [52.3705, 9.7332], // 德國漢諾威
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/戈特弗里德·萊布尼茲'
+  },
+  {
+    id: 'jakob-bernoulli',
+    chineseName: '雅各布·白努利',
+    englishName: 'Jakob Bernoulli',
+    startYear: 1654,
+    endYear: 1705,
+    coordinates: [47.5596, 7.5886], // 瑞士巴塞爾
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/雅各布·白努利'
+  },
   {
     id: 'isaac-newton',
     chineseName: '艾薩克·牛頓',

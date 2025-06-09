@@ -24,6 +24,16 @@
             顯示重大事件 ({{ historicalEvents.length }})
           </label>
         </div>
+        <div class="filter-group">
+          <label>
+            <input
+              v-model="showMasterWorks"
+              type="checkbox"
+              @change="updateMarkers"
+            />
+            顯示傳世之作 ({{ masterWorks.length }})
+          </label>
+        </div>
       </div>
 
       <!-- 時間篩選器 -->
@@ -113,6 +123,33 @@
             </div>
           </LPopup>
         </LMarker>
+
+        <!-- 傳世之作標記 -->
+        <LMarker
+          v-for="work in filteredMasterWorks"
+          :key="`work-${work.id}`"
+          :lat-lng="work.coordinates"
+          :options="{ icon: masterWorkIcon }"
+        >
+          <LPopup>
+            <div class="marker-popup masterwork-popup">
+              <h4>{{ work.chineseName }}</h4>
+              <p class="english-name">{{ work.englishName }}</p>
+              <div class="author-info">
+                <span class="author">作者：{{ work.author }}</span>
+                <span class="author-english">{{ work.authorEnglish }}</span>
+              </div>
+              <div class="dates" v-if="work.year">
+                <span class="date-range">
+                  {{ formatYear(work.year) }}
+                </span>
+              </div>
+              <a :href="work.wikipediaUrl" target="_blank" class="wiki-link">
+                📖 維基百科
+              </a>
+            </div>
+          </LPopup>
+        </LMarker>
       </LMap>
     </div>
   </div>
@@ -126,6 +163,7 @@ import 'leaflet/dist/leaflet.css'
 
 import { historicalFigures } from '@/data/historicalFigures'
 import { historicalEvents } from '@/data/historicalEvents'
+import { masterWorks } from '@/data/masterWorks'
 
 // 地圖參考
 const map = ref<InstanceType<typeof LMap> | null>(null)
@@ -142,6 +180,7 @@ const attribution = '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a
 // 過濾控制
 const showFigures = ref(true)
 const showEvents = ref(true)
+const showMasterWorks = ref(true)
 const timeFilter = ref({
   start: -3000, // 西元前3000年
   end: 2024     // 西元2024年
@@ -157,6 +196,13 @@ const figureIcon = L.divIcon({
 
 const eventIcon = L.divIcon({
   html: '<div class="custom-marker event-marker">⚡</div>',
+  className: 'custom-div-icon',
+  iconSize: [30, 30],
+  iconAnchor: [15, 15]
+})
+
+const masterWorkIcon = L.divIcon({
+  html: '<div class="custom-marker masterwork-marker">📚</div>',
   className: 'custom-div-icon',
   iconSize: [30, 30],
   iconAnchor: [15, 15]
@@ -185,6 +231,16 @@ const filteredEvents = computed(() => {
   })
 })
 
+const filteredMasterWorks = computed(() => {
+  if (!showMasterWorks.value) return []
+
+  return masterWorks.filter(work => {
+    if (!work.year) return true // 如果沒有年份資訊，顯示所有
+
+    return work.year >= timeFilter.value.start && work.year <= timeFilter.value.end
+  })
+})
+
 // 格式化年份顯示
 const formatYear = (year: number): string => {
   if (year < 0) {
@@ -198,7 +254,8 @@ const updateMarkers = () => {
   // 這個函數主要是為了確保響應式更新
   console.log('更新標記:', {
     figures: filteredFigures.value.length,
-    events: filteredEvents.value.length
+    events: filteredEvents.value.length,
+    masterWorks: filteredMasterWorks.value.length
   })
 }
 
@@ -364,6 +421,11 @@ onMounted(() => {
   background: #ffebee;
 }
 
+:global(.masterwork-marker) {
+  border-color: #28a745;
+  background: #e8f5e8;
+}
+
 /* 彈出視窗樣式 */
 .marker-popup {
   min-width: 200px;
@@ -379,6 +441,24 @@ onMounted(() => {
 
 .english-name {
   margin: 0 0 12px 0;
+  color: #666;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.author-info {
+  margin-bottom: 12px;
+}
+
+.author {
+  display: block;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 4px;
+}
+
+.author-english {
+  display: block;
   color: #666;
   font-style: italic;
   font-size: 14px;
@@ -405,6 +485,11 @@ onMounted(() => {
 .event-popup .date-range {
   background: #ffebee;
   color: #c62828;
+}
+
+.masterwork-popup .date-range {
+  background: #e8f5e8;
+  color: #1b5e20;
 }
 
 .wiki-link {

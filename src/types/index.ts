@@ -20,9 +20,20 @@ export interface HistoricalEvent {
   wikipediaUrl: string
 }
 
-export type MarkerType = 'figure' | 'event'
+export interface MasterWork {
+  id: string
+  chineseName: string
+  englishName: string
+  author: string // 作者中文名
+  authorEnglish: string // 作者英文名
+  year?: number // 創作/出版年份，西元前用負值
+  coordinates: [number, number] // [緯度, 經度] - 創作地點或相關地點
+  wikipediaUrl: string
+}
+
+export type MarkerType = 'figure' | 'event' | 'masterwork'
 
 export interface MapMarker {
   type: MarkerType
-  data: HistoricalFigure | HistoricalEvent
+  data: HistoricalFigure | HistoricalEvent | MasterWork
 }
