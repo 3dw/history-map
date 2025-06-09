@@ -184,6 +184,13 @@ declare module 'leaflet' {
   }
 }
 
+// 擴展 MarkerClusterGroupOptions 類型
+declare module 'leaflet.markercluster' {
+  interface MarkerClusterGroupOptions {
+    maxZoom?: number
+  }
+}
+
 // 自定義標記類型
 interface CustomMarker extends L.Marker {
   options: L.MarkerOptions & {
@@ -443,21 +450,29 @@ const updateMarkers = () => {
 
   // 創建新的群集組
   markerClusterGroup.value = L.markerClusterGroup({
-    maxClusterRadius: 50,
     spiderfyOnMaxZoom: true,
     showCoverageOnHover: false,
     zoomToBoundsOnClick: true,
-    disableClusteringAtZoom: 8, // 在較大縮放級別時禁用群集
-    chunkedLoading: true, // 使用分塊加載以提高性能
+    spiderLegPolylineOptions: { weight: 1.5, color: '#222', opacity: 0.5 },
+    chunkedLoading: true,
+    clusterPane: 'markerPane',
+    // 使用動態的 maxClusterRadius 來確保重疊的標記始終保持群集
+    maxClusterRadius: (zoom) => {
+      // 根據縮放級別動態調整群集半徑
+      return Math.max(50, 100 - (zoom * 5))
+    },
     iconCreateFunction: (cluster) => {
       const markers = cluster.getAllChildMarkers() as CustomMarker[]
       const figureCount = markers.filter(m => m.options.type === 'figure').length
       const eventCount = markers.filter(m => m.options.type === 'event').length
       const workCount = markers.filter(m => m.options.type === 'masterwork').length
 
+      // 根據群集大小調整圖標大小
+      const size = Math.min(40 + (markers.length * 2), 60)
+
       return L.divIcon({
         html: `
-          <div class="marker-cluster">
+          <div class="marker-cluster" style="width: ${size}px; height: ${size}px;">
             <div class="cluster-count">${markers.length}</div>
             <div class="cluster-details">
               ${figureCount ? `<span class="figure-count">👤${figureCount}</span>` : ''}
@@ -467,7 +482,7 @@ const updateMarkers = () => {
           </div>
         `,
         className: 'custom-cluster',
-        iconSize: L.point(40, 40)
+        iconSize: L.point(size, size)
       })
     }
   })
@@ -958,6 +973,7 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  position: relative;
 }
 
 :global(.cluster-count) {
@@ -966,13 +982,18 @@ onMounted(() => {
   color: #333;
   position: absolute;
   top: 0;
+  text-shadow: 0 0 2px white;
 }
 
 :global(.cluster-details) {
   font-size: 12px;
   display: flex;
   gap: 4px;
-  margin-top: 2px;
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px 2px;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 :global(.figure-count) {
@@ -995,5 +1016,15 @@ onMounted(() => {
 :global(.custom-cluster div) {
   margin-left: 3px;
   margin-top: 3px;
+}
+
+/* 展開線條樣式 */
+:global(.marker-cluster-spider) {
+  opacity: 0.5;
+}
+
+:global(.marker-cluster-spider-leg) {
+  stroke: #222;
+  stroke-width: 1.5;
 }
 </style>
