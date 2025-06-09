@@ -42,6 +42,8 @@
     <!-- 地圖控制面板 -->
     <div class="map-controls">
       <h2 class="title">歷史地圖</h2>
+
+      <!-- 基本篩選控制項 -->
       <div class="filter-controls">
         <div class="filter-group">
           <label>
@@ -71,6 +73,56 @@
               @change="updateMarkers"
             />
             顯示傳世之作 ({{ filteredMasterWorks.length }})
+          </label>
+        </div>
+      </div>
+
+      <!-- 類別篩選 -->
+      <div class="category-filter">
+        <h3>類別篩選</h3>
+        <div class="category-tags">
+          <label
+            v-for="category in availableCategories"
+            :key="category"
+            class="category-tag"
+            :class="{ active: selectedCategories.includes(category) }"
+          >
+            <input
+              type="checkbox"
+              :value="category"
+              v-model="selectedCategories"
+              @change="updateMarkers"
+            />
+            {{ category }}
+          </label>
+        </div>
+      </div>
+
+      <!-- 標籤篩選 -->
+      <div class="tag-filter">
+        <h3>標籤篩選</h3>
+        <div class="tag-search">
+          <input
+            v-model="searchTag"
+            type="text"
+            placeholder="搜尋標籤..."
+            class="tag-search-input"
+          />
+        </div>
+        <div class="tag-tags">
+          <label
+            v-for="tag in filteredTags"
+            :key="tag"
+            class="tag-tag"
+            :class="{ active: selectedTags.includes(tag) }"
+          >
+            <input
+              type="checkbox"
+              :value="tag"
+              v-model="selectedTags"
+              @change="updateMarkers"
+            />
+            {{ tag }}
           </label>
         </div>
       </div>
@@ -175,7 +227,7 @@ import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
 import { historicalFigures } from '@/data/historicalFigures'
 import { historicalEvents } from '@/data/historicalEvents'
 import { masterWorks } from '@/data/masterWorks'
-import type { HistoricalFigure, HistoricalEvent, MasterWork, MarkerType } from '@/types'
+import type { HistoricalFigure, HistoricalEvent, MasterWork, MarkerType, Category } from '@/types'
 
 // 擴展 MarkerOptions 類型
 declare module 'leaflet' {
@@ -248,15 +300,49 @@ const masterWorkIcon = L.divIcon({
   iconAnchor: [15, 15]
 })
 
-// 計算過濾後的資料
+// 類別和標籤篩選
+const selectedCategories = ref<Category[]>([])
+const selectedTags = ref<string[]>([])
+const searchTag = ref('')
+
+// 獲取所有可用的類別和標籤
+const availableCategories = computed(() => {
+  const categories = new Set<Category>()
+  ;[historicalFigures, historicalEvents, masterWorks].forEach(items => {
+    items.forEach(item => categories.add(item.category))
+  })
+  return Array.from(categories).sort()
+})
+
+const availableTags = computed(() => {
+  const tags = new Set<string>()
+  ;[historicalFigures, historicalEvents, masterWorks].forEach(items => {
+    items.forEach(item => item.tags.forEach(tag => tags.add(tag)))
+  })
+  return Array.from(tags).sort()
+})
+
+// 過濾標籤列表
+const filteredTags = computed(() => {
+  if (!searchTag.value) return availableTags.value
+  return availableTags.value.filter(tag =>
+    tag.toLowerCase().includes(searchTag.value.toLowerCase())
+  )
+})
+
+// 更新過濾邏輯
 const filteredFigures = computed(() => {
   if (!showFigures.value) return []
 
   return historicalFigures.filter(figure => {
-    const figureStart = figure.startYear
-    const figureEnd = figure.endYear || new Date().getFullYear()
+    const yearMatch = figure.startYear <= timeFilter.value.end &&
+                     (figure.endYear || new Date().getFullYear()) >= timeFilter.value.start
+    const categoryMatch = selectedCategories.value.length === 0 ||
+                         selectedCategories.value.includes(figure.category)
+    const tagMatch = selectedTags.value.length === 0 ||
+                    selectedTags.value.some(tag => figure.tags.includes(tag))
 
-    return figureStart <= timeFilter.value.end && figureEnd >= timeFilter.value.start
+    return yearMatch && categoryMatch && tagMatch
   })
 })
 
@@ -264,10 +350,14 @@ const filteredEvents = computed(() => {
   if (!showEvents.value) return []
 
   return historicalEvents.filter(event => {
-    const eventStart = event.startYear
-    const eventEnd = event.endYear || event.startYear
+    const yearMatch = event.startYear <= timeFilter.value.end &&
+                     (event.endYear || event.startYear) >= timeFilter.value.start
+    const categoryMatch = selectedCategories.value.length === 0 ||
+                         selectedCategories.value.includes(event.category)
+    const tagMatch = selectedTags.value.length === 0 ||
+                    selectedTags.value.some(tag => event.tags.includes(tag))
 
-    return eventStart <= timeFilter.value.end && eventEnd >= timeFilter.value.start
+    return yearMatch && categoryMatch && tagMatch
   })
 })
 
@@ -275,9 +365,14 @@ const filteredMasterWorks = computed(() => {
   if (!showMasterWorks.value) return []
 
   return masterWorks.filter(work => {
-    if (!work.year) return true // 如果沒有年份資訊，顯示所有
+    const yearMatch = !work.year ||
+                     (work.year >= timeFilter.value.start && work.year <= timeFilter.value.end)
+    const categoryMatch = selectedCategories.value.length === 0 ||
+                         selectedCategories.value.includes(work.category)
+    const tagMatch = selectedTags.value.length === 0 ||
+                    selectedTags.value.some(tag => work.tags.includes(tag))
 
-    return work.year >= timeFilter.value.start && work.year <= timeFilter.value.end
+    return yearMatch && categoryMatch && tagMatch
   })
 })
 
@@ -413,7 +508,7 @@ const formatYear = (year: number): string => {
 }
 
 // 監聽過濾條件的變化
-watch([showFigures, showEvents, showMasterWorks, timeFilter], () => {
+watch([showFigures, showEvents, showMasterWorks, timeFilter, selectedCategories, selectedTags], () => {
   updateMarkers()
 }, { deep: true })
 
@@ -603,6 +698,7 @@ onMounted(() => {
   height: 100vh;
   width: 100vw;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden; /* 防止整體出現滾動條 */
 }
 
 /* 搜尋面板 */
@@ -616,6 +712,7 @@ onMounted(() => {
 .search-panel-top {
   display: block;
   order: 1;
+  flex-shrink: 0; /* 防止搜尋面板被壓縮 */
 }
 
 .search-panel-side {
@@ -744,9 +841,36 @@ onMounted(() => {
 .map-wrapper {
   flex: 1;
   position: relative;
-  height: 100vh;
-  min-height: 100vh;
+  min-height: 0; /* 重要：允許容器在 flex 佈局中收縮 */
   order: 3;
+}
+
+/* 手機版佈局 */
+@media (max-width: 1023px) {
+  .history-map-container {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .map-controls {
+    width: 100%;
+    min-width: 100%;
+    max-height: 40vh; /* 控制面板最大高度 */
+    overflow-y: auto;
+    border-right: none;
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  .map-wrapper {
+    height: calc(60vh - 60px); /* 減去搜尋面板的高度 */
+    min-height: 300px; /* 確保地圖有最小高度 */
+    overflow: hidden;
+  }
+
+  .search-panel-top {
+    height: 60px; /* 固定搜尋面板高度 */
+    overflow: hidden;
+  }
 }
 
 /* 寬螢幕佈局 */
@@ -766,14 +890,18 @@ onMounted(() => {
     order: 3;
     border-left: 1px solid #dee2e6;
     border-right: none;
+    overflow-y: auto;
+    max-height: 100vh;
   }
 
   .map-controls {
     order: 1;
+    max-height: 100vh;
   }
 
   .map-wrapper {
     order: 2;
+    height: 100vh;
   }
 }
 
@@ -1026,5 +1154,88 @@ onMounted(() => {
 :global(.marker-cluster-spider-leg) {
   stroke: #222;
   stroke-width: 1.5;
+}
+
+/* 類別和標籤篩選樣式 */
+.category-filter,
+.tag-filter {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.category-filter h3,
+.tag-filter h3 {
+  margin: 0 0 15px 0;
+  color: #495057;
+  font-size: 18px;
+}
+
+.category-tags,
+.tag-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 5px;
+}
+
+.category-tag,
+.tag-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.category-tag:hover,
+.tag-tag:hover {
+  background: #e9ecef;
+}
+
+.category-tag.active,
+.tag-tag.active {
+  background: #007bff;
+  color: white;
+  border-color: #0056b3;
+}
+
+.category-tag input,
+.tag-tag input {
+  display: none;
+}
+
+.tag-search {
+  margin-bottom: 10px;
+}
+
+.tag-search-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.tag-search-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+/* 手機版樣式調整 */
+@media (max-width: 1023px) {
+  .category-tags,
+  .tag-tags {
+    max-height: 150px;
+  }
 }
 </style>

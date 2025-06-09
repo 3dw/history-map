@@ -1,34 +1,35 @@
 // 歷史地圖資料類型定義
 
-export interface HistoricalFigure {
+export type Category = '社會' | '數理' | '文化' | '政治' | '探險' | '藝術' | '科技'
+export type Tag = string
+
+export interface BaseData {
   id: string
   chineseName: string
   englishName: string
-  startYear: number // 西元前用負值
-  endYear?: number // 還活著就為空值
-  coordinates: [number, number] // [緯度, 經度]
+  coordinates: [number, number]
   wikipediaUrl: string
+  category: Category
+  tags: Tag[]
 }
 
-export interface HistoricalEvent {
-  id: string
-  chineseName: string
-  englishName: string
-  startYear: number // 西元前用負值，發生年份
-  endYear?: number // 結束年份，瞬間事件為空值
-  coordinates: [number, number] // [緯度, 經度]
-  wikipediaUrl: string
+export interface HistoricalFigure extends BaseData {
+  startYear: number
+  endYear?: number
+  description?: string
 }
 
-export interface MasterWork {
-  id: string
-  chineseName: string
-  englishName: string
-  author: string // 作者中文名
-  authorEnglish: string // 作者英文名
-  year?: number // 創作/出版年份，西元前用負值
-  coordinates: [number, number] // [緯度, 經度] - 創作地點或相關地點
-  wikipediaUrl: string
+export interface HistoricalEvent extends BaseData {
+  startYear: number
+  endYear?: number
+  description?: string
+}
+
+export interface MasterWork extends BaseData {
+  author: string
+  authorEnglish: string
+  year?: number
+  description?: string
 }
 
 export type MarkerType = 'figure' | 'event' | 'masterwork'
