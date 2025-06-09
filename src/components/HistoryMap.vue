@@ -278,27 +278,26 @@ const timeFilter = ref({
 const searchKeyword = ref('')
 const searchResults = ref<Array<{ type: MarkerType; data: HistoricalFigure | HistoricalEvent | MasterWork }>>([])
 
-// 自定義圖標
-const figureIcon = L.divIcon({
-  html: '<div class="custom-marker figure-marker">👤</div>',
-  className: 'custom-div-icon',
-  iconSize: [30, 30],
-  iconAnchor: [15, 15]
-})
+// 創建帶標籤的圖標函數
+const createLabeledIcon = (type: 'figure' | 'event' | 'masterwork', name: string) => {
+  const iconMap = {
+    figure: '👤',
+    event: '⚡',
+    masterwork: '📚'
+  }
 
-const eventIcon = L.divIcon({
-  html: '<div class="custom-marker event-marker">⚡</div>',
-  className: 'custom-div-icon',
-  iconSize: [30, 30],
-  iconAnchor: [15, 15]
-})
-
-const masterWorkIcon = L.divIcon({
-  html: '<div class="custom-marker masterwork-marker">📚</div>',
-  className: 'custom-div-icon',
-  iconSize: [30, 30],
-  iconAnchor: [15, 15]
-})
+  return L.divIcon({
+    html: `
+      <div class="labeled-marker">
+        <div class="custom-marker ${type}-marker">${iconMap[type]}</div>
+        <div class="marker-label">${name}</div>
+      </div>
+    `,
+    className: 'custom-div-icon-labeled',
+    iconSize: [120, 40],
+    iconAnchor: [60, 20]
+  })
+}
 
 // 類別和標籤篩選
 const selectedCategories = ref<Category[]>([])
@@ -586,7 +585,7 @@ const updateMarkers = () => {
   if (showFigures.value) {
     displayedFigures.value.forEach(figure => {
       const marker = L.marker(figure.coordinates, {
-        icon: figureIcon,
+        icon: createLabeledIcon('figure', figure.chineseName),
         type: 'figure' as const
       })
       marker.bindPopup(`
@@ -610,7 +609,7 @@ const updateMarkers = () => {
   if (showEvents.value) {
     displayedEvents.value.forEach(event => {
       const marker = L.marker(event.coordinates, {
-        icon: eventIcon,
+        icon: createLabeledIcon('event', event.chineseName),
         type: 'event' as const
       })
       marker.bindPopup(`
@@ -634,7 +633,7 @@ const updateMarkers = () => {
   if (showMasterWorks.value) {
     displayedMasterWorks.value.forEach(work => {
       const marker = L.marker(work.coordinates, {
-        icon: masterWorkIcon,
+        icon: createLabeledIcon('masterwork', work.chineseName),
         type: 'masterwork' as const
       })
       marker.bindPopup(`
@@ -1005,6 +1004,34 @@ onMounted(() => {
 :global(.masterwork-marker) {
   border-color: #28a745;
   background: #e8f5e8;
+}
+
+/* 帶標籤的標記樣式 */
+:global(.labeled-marker) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+:global(.marker-label) {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+:global(.custom-div-icon-labeled) {
+  background: none;
+  border: none;
 }
 
 /* 彈出視窗樣式 */
