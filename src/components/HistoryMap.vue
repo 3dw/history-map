@@ -256,11 +256,13 @@ const map = ref<InstanceType<typeof LMap> | null>(null)
 // 地圖設定
 const mapOptions = {
   zoomSnap: 0.5,
-  zoomDelta: 0.5
+  zoomDelta: 0.5,
+  worldCopyJump: true, // 啟用世界地圖複製跳轉
+  maxBoundsViscosity: 0.0 // 移除邊界粘性
 }
 
-const mapZoom = ref(3)
-const mapCenter = ref<[number, number]>([35, 105])
+const mapZoom = ref(2)
+const mapCenter = ref<[number, number]>([0, 0])
 
 const tileLayerUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 const attribution = '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
@@ -277,6 +279,22 @@ const timeFilter = ref({
 // 搜尋功能
 const searchKeyword = ref('')
 const searchResults = ref<Array<{ type: MarkerType; data: HistoricalFigure | HistoricalEvent | MasterWork }>>([])
+
+// 處理跨越國際換日線的座標
+const normalizeCoordinates = (coordinates: [number, number]): [number, number] => {
+  const [lat, lng] = coordinates
+
+  // 將經度標準化到 -180 到 180 範圍內
+  let normalizedLng = lng
+  while (normalizedLng > 180) {
+    normalizedLng -= 360
+  }
+  while (normalizedLng < -180) {
+    normalizedLng += 360
+  }
+
+  return [lat, normalizedLng]
+}
 
 // 創建帶標籤的圖標函數
 const createLabeledIcon = (type: 'figure' | 'event' | 'masterwork', name: string) => {
@@ -523,6 +541,22 @@ const onMapReady = () => {
   nextTick(() => {
     const mapInstance = map.value?.leafletObject
     if (mapInstance) {
+      // 設定地圖的無限滾動
+      mapInstance.setMinZoom(1)
+
+      // 啟用世界地圖複製功能
+      mapInstance.on('drag', () => {
+        const center = mapInstance.getCenter()
+        const zoom = mapInstance.getZoom()
+
+        // 當經度超出正常範圍時，自動調整到對應的世界地圖位置
+        if (center.lng > 180) {
+          mapInstance.setView([center.lat, center.lng - 360], zoom, { animate: false })
+        } else if (center.lng < -180) {
+          mapInstance.setView([center.lat, center.lng + 360], zoom, { animate: false })
+        }
+      })
+
       setTimeout(() => {
         mapInstance.invalidateSize()
         // 初始化標記
@@ -584,7 +618,8 @@ const updateMarkers = () => {
   // 添加標記到群集
   if (showFigures.value) {
     displayedFigures.value.forEach(figure => {
-      const marker = L.marker(figure.coordinates, {
+      const normalizedCoords = normalizeCoordinates(figure.coordinates)
+      const marker = L.marker(normalizedCoords, {
         icon: createLabeledIcon('figure', figure.chineseName),
         type: 'figure' as const
       })
@@ -608,7 +643,8 @@ const updateMarkers = () => {
 
   if (showEvents.value) {
     displayedEvents.value.forEach(event => {
-      const marker = L.marker(event.coordinates, {
+      const normalizedCoords = normalizeCoordinates(event.coordinates)
+      const marker = L.marker(normalizedCoords, {
         icon: createLabeledIcon('event', event.chineseName),
         type: 'event' as const
       })
@@ -632,7 +668,8 @@ const updateMarkers = () => {
 
   if (showMasterWorks.value) {
     displayedMasterWorks.value.forEach(work => {
-      const marker = L.marker(work.coordinates, {
+      const normalizedCoords = normalizeCoordinates(work.coordinates)
+      const marker = L.marker(normalizedCoords, {
         icon: createLabeledIcon('masterwork', work.chineseName),
         type: 'masterwork' as const
       })

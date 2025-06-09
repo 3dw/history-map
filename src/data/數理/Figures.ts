@@ -1,0 +1,185 @@
+import type { HistoricalFigure } from '@/types'
+
+// 數理類別的歷史人物
+export const scientificFigures: HistoricalFigure[] = [
+  {
+    id: 'thales',
+    chineseName: '泰勒斯',
+    englishName: 'Thales of Miletus',
+    startYear: -624,
+    endYear: -546,
+    coordinates: [37.5167, 27.2833],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/泰勒斯',
+    category: '數理',
+    tags: ['哲學家', '古希臘'],
+    description: '古希臘哲學家，被認為是西方哲學的奠基者之一。'
+  },
+  {
+    id: 'aristotle',
+    chineseName: '亞里士多德',
+    englishName: 'Aristotle',
+    startYear: -384,
+    endYear: -322,
+    coordinates: [40.5169, 23.2132],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/亞里士多德',
+    category: '數理',
+    tags: ['哲學家', '科學家', '邏輯學', '生物學', '物理學', '古希臘'],
+    description: '古希臘哲學家、科學家，被稱為「百科全書式的學者」。'
+  },
+  {
+    id: 'copernicus',
+    chineseName: '尼古拉·哥白尼',
+    englishName: 'Nicolaus Copernicus',
+    startYear: 1473,
+    endYear: 1543,
+    coordinates: [54.3520, 18.6466],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/尼古拉·哥白尼',
+    category: '數理',
+    tags: ['天文學家', '數學家', '科學革命', '地心說'],
+    description: '波蘭天文學家，提出了日心說，推翻了地心說。'
+  },
+  {
+    id: 'kepler',
+    chineseName: '約翰尼斯·開普勒',
+    englishName: 'Johannes Kepler',
+    startYear: 1571,
+    endYear: 1630,
+    coordinates: [48.7758, 9.1829],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/約翰尼斯·開普勒',
+    category: '數理',
+    tags: ['天文學家', '數學家', '科學革命', '行星運動'],
+    description: '德國天文學家、數學家，提出了開普勒定律，描述了行星運動的規律。'
+  },
+  {
+    id: 'galileo',
+    chineseName: '伽利略·伽利萊',
+    englishName: 'Galileo Galilei',
+    startYear: 1564,
+    endYear: 1642,
+    coordinates: [43.7230, 10.4017],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/伽利略·伽利萊',
+    category: '數理',
+    tags: ['物理學家', '天文學家', '數學家', '科學革命', '望遠鏡'],
+    description: '義大利物理學家、天文學家，被稱為「現代科學之父」。'
+  },
+  {
+    id: 'leibniz',
+    chineseName: '戈特弗里德·萊布尼茲',
+    englishName: 'Gottfried Wilhelm Leibniz',
+    startYear: 1646,
+    endYear: 1716,
+    coordinates: [52.3705, 9.7332],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/戈特弗里德·萊布尼茲',
+    category: '數理',
+    tags: ['數學家', '哲學家', '微積分'],
+    description: '德國數學家、哲學家，發明了微積分。'
+  },
+  {
+    id: 'jakob-bernoulli',
+    chineseName: '雅各布·白努利',
+    englishName: 'Jakob Bernoulli',
+    startYear: 1654,
+    endYear: 1705,
+    coordinates: [47.5596, 7.5886],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/雅各布·白努利',
+    category: '數理',
+    tags: ['數學家', '概率論'],
+    description: '瑞士數學家，提出了伯努利定理和概率論的基本原理。'
+  },
+  {
+    id: 'isaac-newton',
+    chineseName: '艾薩克·牛頓',
+    englishName: 'Isaac Newton',
+    startYear: 1643,
+    endYear: 1727,
+    coordinates: [52.8118, -0.5395],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/艾薩克·牛頓',
+    category: '數理',
+    tags: ['物理學家', '數學家', '天文學家', '萬有引力', '微積分'],
+    description: '英國物理學家、數學家，被稱為「現代物理學之父」。'
+  },
+  {
+    id: 'archimedes',
+    chineseName: '阿基米德',
+    englishName: 'Archimedes',
+    startYear: -287,
+    endYear: -212,
+    coordinates: [37.5, 15.1],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/阿基米德',
+    category: '數理',
+    tags: ['數學家', '物理學家', '工程師', '發明家', '古希臘'],
+    description: '古希臘數學家、物理學家、工程師，被稱為「古代最偉大的數學家」。'
+  },
+  {
+    id: 'euclid',
+    chineseName: '歐幾里得',
+    englishName: 'Euclid',
+    startYear: -300,
+    endYear: -200,
+    coordinates: [31.2, 29.9],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/歐幾里得',
+    category: '數理',
+    tags: ['數學家', '幾何學', '《幾何原本》', '古希臘'],
+    description: '古希臘數學家，被稱為「幾何學之父」。'
+  },
+  {
+    id: 'ptolemy',
+    chineseName: '托勒密',
+    englishName: 'Ptolemy',
+    startYear: 100,
+    endYear: 170,
+    coordinates: [31.2, 29.9],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/克勞狄烏斯·托勒密',
+    category: '數理',
+    tags: ['天文學家', '地理學家', '數學家', '古羅馬'],
+    description: '古羅馬天文學家、地理學家，地心說的主要支持者。'
+  },
+  {
+    id: 'zu-chongzhi',
+    chineseName: '祖沖之',
+    englishName: 'Zu Chongzhi',
+    startYear: 429,
+    endYear: 500,
+    coordinates: [32.0, 118.8],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/祖沖之',
+    category: '數理',
+    tags: ['數學家', '天文學家', '中國', '南北朝'],
+    description: '中國南北朝時期數學家、天文學家，計算出圓周率到小數點後七位。'
+  },
+  {
+    id: 'leonhard-euler',
+    chineseName: '萊昂哈德·歐拉',
+    englishName: 'Leonhard Euler',
+    startYear: 1707,
+    endYear: 1783,
+    coordinates: [47.5596, 7.5886],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/萊昂哈德·歐拉',
+    category: '數理',
+    tags: ['數學家', '物理學家', '瑞士', '歐拉公式'],
+    description: '瑞士數學家、物理學家，被稱為「數學之王」，對現代數學有重大貢獻。'
+  },
+  {
+    id: 'carl-friedrich-gauss',
+    chineseName: '卡爾·弗里德里希·高斯',
+    englishName: 'Carl Friedrich Gauss',
+    startYear: 1777,
+    endYear: 1855,
+    coordinates: [52.3759, 9.7320],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/卡爾·弗里德里希·高斯',
+    category: '數理',
+    tags: ['數學家', '物理學家', '天文學家', '德國', '高斯分布'],
+    description: '德國數學家、物理學家、天文學家，被稱為「數學王子」。'
+  },
+  {
+    id: 'evariste-galois',
+    chineseName: '埃瓦里斯特·伽羅瓦',
+    englishName: 'Évariste Galois',
+    startYear: 1811,
+    endYear: 1832,
+    coordinates: [48.8566, 2.3522],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/埃瓦里斯特·伽羅瓦',
+    category: '數理',
+    tags: ['數學家', '法國', '伽羅瓦理論', '群論'],
+    description: '法國數學家，創立了伽羅瓦理論，為代數方程的可解性提供了判別方法。'
+  }
+]

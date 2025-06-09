@@ -1,0 +1,135 @@
+import type { MasterWork } from '@/types'
+
+// 文化類別的著作
+export const culturalMasterWorks: MasterWork[] = [
+  {
+    id: 'i-ching',
+    chineseName: '周易',
+    englishName: 'I Ching (Book of Changes)',
+    author: '周文王',
+    authorEnglish: 'King Wen of Zhou',
+    year: -1000,
+    coordinates: [34.2658, 108.9541],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/易經',
+    category: '文化',
+    tags: ['哲學', '中國', '古代'],
+    description: '中國古代最重要的哲學著作之一。'
+  },
+  {
+    id: 'tao-te-ching',
+    chineseName: '道德經',
+    englishName: 'Tao Te Ching',
+    author: '老子',
+    authorEnglish: 'Laozi',
+    year: -500,
+    coordinates: [33.8818, 113.1142],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/道德經',
+    category: '文化',
+    tags: ['哲學', '中國', '古代'],
+    description: '中國古代最重要的哲學著作之一。'
+  },
+  {
+    id: 'analects',
+    chineseName: '論語',
+    englishName: 'Analects of Confucius',
+    author: '孔子',
+    authorEnglish: 'Confucius',
+    year: -500,
+    coordinates: [35.4, 116.6],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/論語',
+    category: '文化',
+    tags: ['儒家', '哲學', '中國', '古代'],
+    description: '記錄孔子及其弟子言行的儒家經典著作。'
+  },
+  {
+    id: 'new-testament',
+    chineseName: '新約聖經',
+    englishName: 'New Testament',
+    author: '耶穌的門徒',
+    authorEnglish: 'Disciples of Jesus',
+    year: 100,
+    coordinates: [31.7683, 35.2137],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/新約聖經',
+    category: '文化',
+    tags: ['基督教', '聖經', '耶穌', '宗教'],
+    description: '基督教最重要的經典著作之一。'
+  },
+  {
+    id: 'divine-comedy',
+    chineseName: '神曲',
+    englishName: 'Divine Comedy',
+    author: '但丁',
+    authorEnglish: 'Dante Alighieri',
+    year: 1320,
+    coordinates: [43.7, 11.2],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/神曲',
+    category: '文化',
+    tags: ['文學', '詩歌', '中世紀', '義大利'],
+    description: '但丁的史詩作品，描繪了地獄、煉獄和天堂的旅程。'
+  },
+  {
+    id: 'hamlet',
+    chineseName: '哈姆雷特',
+    englishName: 'Hamlet',
+    author: '莎士比亞',
+    authorEnglish: 'William Shakespeare',
+    year: 1601,
+    coordinates: [51.5, -0.1],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/哈姆雷特',
+    category: '文化',
+    tags: ['戲劇', '文學', '英國', '文藝復興'],
+    description: '莎士比亞最著名的悲劇作品。'
+  },
+  {
+    id: 'art-of-war',
+    chineseName: '孫子兵法',
+    englishName: 'The Art of War',
+    author: '孫武',
+    authorEnglish: 'Sun Tzu',
+    year: -500,
+    coordinates: [31.2, 120.6],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/孫子兵法',
+    category: '文化',
+    tags: ['軍事', '戰略', '中國', '古代'],
+    description: '中國古代最重要的軍事理論著作。'
+  },
+  {
+    id: 'republic',
+    chineseName: '理想國',
+    englishName: 'The Republic',
+    author: '柏拉圖',
+    authorEnglish: 'Plato',
+    year: -380,
+    coordinates: [37.9, 23.7],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/理想國',
+    category: '文化',
+    tags: ['哲學', '政治', '古希臘', '雅典'],
+    description: '柏拉圖最重要的哲學著作，探討理想社會的構建。'
+  },
+  {
+    id: 'monadology',
+    chineseName: '單子論',
+    englishName: 'Monadology',
+    author: '戈特弗里德·萊布尼茲',
+    authorEnglish: 'Gottfried Wilhelm Leibniz',
+    year: 1714,
+    coordinates: [52.3705, 9.7332],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/單子論',
+    category: '文化',
+    tags: ['哲學', '德國', '萊布尼茲'],
+    description: '萊布尼茲的哲學著作，探討單子論。'
+  },
+  {
+    id: 'discourse-on-method',
+    chineseName: '方法論',
+    englishName: 'Discourse on the Method',
+    author: '笛卡爾',
+    authorEnglish: 'René Descartes',
+    year: 1637,
+    coordinates: [48.8, 2.3],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/方法論',
+    category: '文化',
+    tags: ['哲學', '數學', '科學方法', '法國'],
+    description: '笛卡爾的哲學著作，提出了理性主義的方法論。'
+  }
+]
