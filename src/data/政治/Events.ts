@@ -2,6 +2,116 @@ import type { HistoricalEvent } from '@/types'
 
 // 政治類別的歷史事件
 export const politicalEvents: HistoricalEvent[] = [
+  // 非洲古典時代事件
+  {
+    id: 'battle-of-kadesh',
+    chineseName: '卡迭石戰役',
+    englishName: 'Battle of Kadesh',
+    startYear: -1274,
+    endYear: -1274,
+    coordinates: [34.5577, 36.5197], // 卡迭石
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/卡迭石戰役',
+    category: '政治',
+    tags: ['戰爭', '古埃及', '赫梯', '拉美西斯二世'],
+    description: '古埃及法老拉美西斯二世與赫梯王國的戰役，是古代歷史上最早有詳細記錄的戰役之一。'
+  },
+  {
+    id: 'mansa-musa-pilgrimage',
+    chineseName: '曼薩·穆薩朝聖',
+    englishName: 'Mansa Musa\'s Pilgrimage',
+    startYear: 1324,
+    endYear: 1325,
+    coordinates: [21.4225, 39.8262], // 麥加
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/曼薩·穆薩',
+    category: '政治',
+    tags: ['朝聖', '馬里帝國', '黃金', '伊斯蘭'],
+    description: '馬里帝國國王曼薩·穆薩攜帶大量黃金朝聖麥加，被認為是歷史上最富有的朝聖之旅。'
+  },
+  {
+    id: 'zulu-kingdom-rise',
+    chineseName: '祖魯王國崛起',
+    englishName: 'Rise of the Zulu Kingdom',
+    startYear: 1816,
+    endYear: 1828,
+    coordinates: [-28.4793, 32.1987], // 祖魯蘭
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/祖魯王國',
+    category: '政治',
+    tags: ['王國', '軍事改革', '南非', '沙卡·祖魯'],
+    description: '沙卡·祖魯建立強大的祖魯王國，軍事改革對南非歷史產生深遠影響。'
+  },
+  // 非洲現代事件
+  {
+    id: 'ghana-independence',
+    chineseName: '加納獨立',
+    englishName: 'Ghana Independence',
+    startYear: 1957,
+    endYear: 1957,
+    coordinates: [5.5600, -0.2057], // 阿克拉
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/加納',
+    category: '政治',
+    tags: ['獨立', '殖民', '恩克魯瑪', '泛非主義'],
+    description: '加納成為撒哈拉以南非洲第一個獨立的國家，由恩克魯瑪領導，開啟了非洲獨立運動的浪潮。'
+  },
+  {
+    id: 'kenya-independence',
+    chineseName: '肯亞獨立',
+    englishName: 'Kenya Independence',
+    startYear: 1963,
+    endYear: 1963,
+    coordinates: [-1.2921, 36.8219], // 內羅畢
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/肯亞',
+    category: '政治',
+    tags: ['獨立', '殖民', '肯雅塔', '茅茅起義'],
+    description: '肯亞脫離英國統治獲得獨立，喬莫·肯雅塔成為首任總統，結束了茅茅起義的動盪時期。'
+  },
+  {
+    id: 'congo-crisis',
+    chineseName: '剛果危機',
+    englishName: 'Congo Crisis',
+    startYear: 1960,
+    endYear: 1965,
+    coordinates: [-4.4419, 15.2663], // 金沙薩
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/剛果危機',
+    category: '政治',
+    tags: ['獨立', '危機', '盧蒙巴', '冷戰'],
+    description: '剛果獨立後的政治動盪，涉及盧蒙巴遇害、聯合國干預和冷戰對抗，對非洲政治產生深遠影響。'
+  },
+  {
+    id: 'ethiopian-resistance',
+    chineseName: '衣索比亞抗義戰爭',
+    englishName: 'Ethiopian Resistance to Italy',
+    startYear: 1935,
+    endYear: 1941,
+    coordinates: [9.0320, 38.7480], // 亞的斯亞貝巴
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/第二次義大利衣索比亞戰爭',
+    category: '政治',
+    tags: ['抵抗', '殖民', '海爾·塞拉西', '二戰'],
+    description: '衣索比亞在海爾·塞拉西領導下抵抗義大利侵略，是非洲唯一成功抵抗歐洲殖民的國家。'
+  },
+  {
+    id: 'south-african-apartheid',
+    chineseName: '南非種族隔離制度',
+    englishName: 'South African Apartheid',
+    startYear: 1948,
+    endYear: 1994,
+    coordinates: [-26.2041, 28.0473], // 約翰內斯堡
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/種族隔離',
+    category: '政治',
+    tags: ['種族隔離', '歧視', '曼德拉', '民主化'],
+    description: '南非實行種族隔離政策，曼德拉領導反種族隔離運動，最終在1994年實現民主選舉。'
+  },
+  {
+    id: 'african-union-formation',
+    chineseName: '非洲聯盟成立',
+    englishName: 'Formation of African Union',
+    startYear: 2002,
+    endYear: 2002,
+    coordinates: [9.0320, 38.7480], // 亞的斯亞貝巴
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/非洲聯盟',
+    category: '政治',
+    tags: ['統一', '合作', '非盟', '泛非主義'],
+    description: '非洲統一組織改組為非洲聯盟，促進非洲國家間的合作與發展。'
+  },
   {
     id: 'greco-persian-wars',
     chineseName: '希波戰爭',

@@ -24,7 +24,7 @@ export const culturalFigures: HistoricalFigure[] = [
     wikipediaUrl: 'https://zh.wikipedia.org/wiki/柏拉圖',
     category: '文化',
     tags: ['哲學家', '思想家', '教育家', '古希臘', '《理想國》'],
-    description: '古希臘哲學家，蘇格拉底的學生，亞里士多德的老師。'
+    description: '古希臘哲學家，蘇格拉底的學生，亞里士多德的老師，被譽為「哲學之父」。蘇格拉底的對話錄大多以柏拉圖的記載而能傳世。柏拉圖的哲學思想對西方哲學的發展產生了深遠的影響。'
   },
   {
     id: 'laozi',
@@ -49,6 +49,19 @@ export const culturalFigures: HistoricalFigure[] = [
     wikipediaUrl: 'https://zh.wikipedia.org/wiki/釋迦牟尼',
     category: '文化',
     tags: ['佛教', '佛陀', '釋迦牟尼', '佛教創始人'],
-    description: '佛教創始人，被尊為佛陀，是佛教的創始人和主要教義的闡述者。'
+    description: '佛教創始人，被尊為佛陀，意為「覺悟者」，是佛教的創始人和主要教義的闡述者。'
+  },
+  // 耶穌
+  {
+    id: 'jesus',
+    chineseName: '耶穌',
+    englishName: 'Jesus',
+    startYear: -6,
+    endYear: 33,
+    coordinates: [31.7683, 35.2137],
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/耶穌',
+    category: '文化',
+    tags: ['基督教', '耶穌', '基督'],
+    description: '基督教中被尊為基督，意為「救世主」，新約聖經中記載的耶穌基督，教導人們相愛，曾被釘在十字架上，據聞復活。'
   }
 ]
