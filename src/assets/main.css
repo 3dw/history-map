@@ -308,7 +308,6 @@ a,
   font-size: 12px;
   font-weight: 500;
   white-space: nowrap;
-  max-width: 100px;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;

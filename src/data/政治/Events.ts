@@ -180,5 +180,41 @@ export const politicalEvents: HistoricalEvent[] = [
     category: '政治',
     tags: ['意識形態', '核武競賽', '美蘇對抗'],
     description: '美國和蘇聯之間的意識形態對抗時期。'
+  },
+  {
+    id: 'first-sino-japanese-war',
+    chineseName: '甲午戰爭',
+    englishName: 'First Sino-Japanese War',
+    startYear: 1894,
+    endYear: 1895,
+    coordinates: [37.5, 122.1], // 山東威海衛
+    wikipediaUrl: 'https://zh.wikipedia.org/zh-tw/%E7%94%B2%E5%8D%88%E6%88%98%E4%BA%89',
+    category: '政治',
+    tags: ['戰爭', '清朝', '日本', '台灣', '近代史'],
+    description: '清朝與日本於1894年至1895年間爆發的戰爭，最終清朝戰敗並簽訂馬關條約，台灣割讓給日本，對中國與台灣歷史影響深遠。'
+  },
+  {
+    id: 'taiwan-under-japanese-rule',
+    chineseName: '日治時代',
+    englishName: 'Taiwan under Japanese Rule',
+    startYear: 1895,
+    endYear: 1945,
+    coordinates: [25.0375, 121.5637], // 台北
+    wikipediaUrl: 'https://zh.wikipedia.org/zh-tw/%E6%97%A5%E6%B2%BB%E6%99%82%E4%BB%A3',
+    category: '政治',
+    tags: ['台灣', '日本', '殖民', '現代化', '近代史'],
+    description: '自1895年馬關條約後，台灣成為日本的殖民地，長達五十年，對台灣社會、經濟、文化與現代化發展產生重大影響。'
+  },
+  {
+    id: 'taiwan-retrocession',
+    chineseName: '台灣光復',
+    englishName: 'Retrocession of Taiwan',
+    startYear: 1945,
+    endYear: 1945,
+    coordinates: [25.0375, 121.5637], // 台北
+    wikipediaUrl: 'https://zh.wikipedia.org/zh-tw/%E5%8F%B0%E7%81%A3%E5%85%89%E5%BE%A9',
+    category: '政治',
+    tags: ['台灣', '中國', '戰後', '主權', '近代史'],
+    description: '1945年第二次世界大戰結束後，台灣結束日本殖民統治，回歸中華民國，史稱台灣光復，象徵台灣主權的重大轉折。'
   }
 ]

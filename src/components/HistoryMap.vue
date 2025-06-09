@@ -43,50 +43,6 @@
     <div class="map-controls">
       <h2 class="title">歷史地圖</h2>
 
-      <!-- 基本篩選控制項 -->
-      <div class="filter-controls">
-        <div class="filter-group">
-          <label>
-            <input
-              v-model="showFigures"
-              type="checkbox"
-              @change="updateMarkers"
-            />
-            <!-- 用emoji顯示數量 -->
-            <span class="filter-count">
-              {{ getResultIcon('figure') }}
-              {{ filteredFigures.length }}
-            </span>
-          </label>
-        </div>
-        <div class="filter-group">
-          <label>
-            <input
-              v-model="showEvents"
-              type="checkbox"
-              @change="updateMarkers"
-            />
-            <span class="filter-count">
-              {{ getResultIcon('event') }}
-              {{ filteredEvents.length }}
-            </span>
-          </label>
-        </div>
-        <div class="filter-group">
-          <label>
-            <input
-              v-model="showMasterWorks"
-              type="checkbox"
-              @change="updateMarkers"
-            />
-            <span class="filter-count">
-              {{ getResultIcon('masterwork') }}
-              {{ filteredMasterWorks.length }}
-            </span>
-          </label>
-        </div>
-      </div>
-
       <!-- 類別篩選 -->
       <div class="category-filter">
         <h3>類別篩選</h3>
@@ -137,29 +93,65 @@
         </div>
       </div>
 
+
+      <!-- 基本篩選控制項 -->
+      <div class="filter-controls">
+        <div class="filter-group">
+          <label>
+            <input
+              v-model="showFigures"
+              type="checkbox"
+              @change="updateMarkers"
+            />
+            <!-- 用emoji顯示數量 -->
+            <span class="filter-count">
+              {{ getResultIcon('figure') }}
+              {{ filteredFigures.length }}
+            </span>
+          </label>
+        </div>
+        <div class="filter-group">
+          <label>
+            <input
+              v-model="showEvents"
+              type="checkbox"
+              @change="updateMarkers"
+            />
+            <span class="filter-count">
+              {{ getResultIcon('event') }}
+              {{ filteredEvents.length }}
+            </span>
+          </label>
+        </div>
+        <div class="filter-group">
+          <label>
+            <input
+              v-model="showMasterWorks"
+              type="checkbox"
+              @change="updateMarkers"
+            />
+            <span class="filter-count">
+              {{ getResultIcon('masterwork') }}
+              {{ filteredMasterWorks.length }}
+            </span>
+          </label>
+        </div>
+      </div>
+
       <!-- 時間篩選器 -->
       <div class="time-filter">
-        <h3>時間範圍篩選</h3>
-        <div class="time-inputs">
-          <div>
-            <label>開始年份：</label>
-            <input
-              v-model.number="timeFilter.start"
-              type="number"
-              placeholder="例：-500"
-              @input="updateMarkers"
-            />
-          </div>
-          <div>
-            <label>結束年份：</label>
-            <input
-              v-model.number="timeFilter.end"
-              type="number"
-              placeholder="例：2000"
-              @input="updateMarkers"
-            />
-          </div>
+        <h3>時間範圍</h3>
+        <div class="mode-switch">
+          <!-- 時光機模式切換 -->
+          <input type="checkbox" v-model="timeMachineMode" />
+          <label> 時光機模式 ({{ timeMachineMode ? '開' : '關' }})</label>
         </div>
+        <input type="range" min="-3000" max="2024" step="1" v-model="timeFilter.start" /> {{ timeFilter.start }}
+        <br/>
+        至
+        <br/>
+        <input type="range" min="-3000" max="2024" step="1" v-model="timeFilter.end" /> {{ timeFilter.end }}
+        <br/>
         <small>註：西元前請使用負值，例如西元前500年輸入 -500</small>
       </div>
     </div>
@@ -290,6 +282,9 @@ const timeFilter = ref({
   end: 2024     // 西元2024年
 })
 
+// 時光機模式
+const timeMachineMode = ref(false)
+
 // 搜尋功能
 const searchKeyword = ref('')
 const searchResults = ref<Array<{ type: MarkerType; data: HistoricalFigure | HistoricalEvent | MasterWork }>>([])
@@ -311,18 +306,24 @@ const normalizeCoordinates = (coordinates: [number, number]): [number, number] =
 }
 
 // 創建帶標籤的圖標函數
-const createLabeledIcon = (type: 'figure' | 'event' | 'masterwork', name: string) => {
+const createLabeledIcon = (type: 'figure' | 'event' | 'masterwork', name: string, ageOrYears?: number) => {
   const iconMap = {
     figure: '👤',
     event: '⚡',
     masterwork: '📚'
   }
-
+  let label = name
+  if (type === 'figure' && typeof ageOrYears === 'number' && ageOrYears >= 0) {
+    label += `（${ageOrYears}歲）`
+  }
+  if (type === 'event' && typeof ageOrYears === 'number' && ageOrYears >= 0) {
+    label += `（已進行${ageOrYears}年）`
+  }
   return L.divIcon({
     html: `
       <div class="labeled-marker">
         <div class="custom-marker ${type}-marker">${iconMap[type]}</div>
-        <div class="marker-label">${name}</div>
+        <div class="marker-label">${label}</div>
       </div>
     `,
     className: 'custom-div-icon-labeled',
@@ -548,6 +549,22 @@ watch(searchResults, () => {
   updateMarkers()
 })
 
+// 監聽時光機模式
+watch(timeMachineMode, () => {
+  if (timeMachineMode.value) {
+    timeFilter.value.end = timeFilter.value.start
+  } else {
+    timeFilter.value.start = -3000
+    timeFilter.value.end = new Date().getFullYear()
+  }
+})
+
+watch(timeFilter, (newVal) => {
+  if (timeMachineMode.value) {
+    timeFilter.value.end = newVal.start
+  }
+}, { deep: true })
+
 const onMapReady = () => {
   console.log('地圖已準備就緒')
 
@@ -633,8 +650,9 @@ const updateMarkers = () => {
   if (showFigures.value) {
     displayedFigures.value.forEach(figure => {
       const normalizedCoords = normalizeCoordinates(figure.coordinates)
+      const age = timeMachineMode.value ? (timeFilter.value.start - figure.startYear) : undefined
       const marker = L.marker(normalizedCoords, {
-        icon: createLabeledIcon('figure', figure.chineseName),
+        icon: createLabeledIcon('figure', figure.chineseName, (typeof age === 'number' && age >= 0) ? age : undefined),
         type: 'figure' as const
       })
       marker.bindPopup(`
@@ -667,8 +685,9 @@ const updateMarkers = () => {
   if (showEvents.value) {
     displayedEvents.value.forEach(event => {
       const normalizedCoords = normalizeCoordinates(event.coordinates)
+      const eventYears = timeMachineMode.value ? (timeFilter.value.start - event.startYear) : undefined
       const marker = L.marker(normalizedCoords, {
-        icon: createLabeledIcon('event', event.chineseName),
+        icon: createLabeledIcon('event', event.chineseName, (typeof eventYears === 'number' && eventYears >= 0) ? eventYears : undefined),
         type: 'event' as const
       })
       marker.bindPopup(`
