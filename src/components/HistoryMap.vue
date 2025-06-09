@@ -34,6 +34,15 @@
               <div class="result-title">{{ result.data.chineseName }}</div>
               <div class="result-subtitle">{{ getResultSubtitle(result) }}</div>
             </div>
+            <div class="result-actions">
+              <button
+                class="time-machine-btn"
+                @click="goToTimeMachine(result)"
+                title="坐時光機去這個時空"
+              >
+                🕰️ 坐時光機去{{ result.data.chineseName }}的時空
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -209,6 +218,15 @@
             <div class="result-content">
               <div class="result-title">{{ result.data.chineseName }}</div>
               <div class="result-subtitle">{{ getResultSubtitle(result) }}</div>
+            </div>
+            <div class="result-actions">
+              <button
+                class="time-machine-btn"
+                @click="goToTimeMachine(result)"
+                title="坐時光機去這個時空"
+              >
+                🕰️ 坐時光機去{{ result.data.chineseName }}的時空
+              </button>
             </div>
           </div>
         </div>
@@ -529,6 +547,42 @@ const focusOnMarker = (result: { type: MarkerType; data: HistoricalFigure | Hist
     const coordinates = result.data.coordinates
     leafletMap.setView(coordinates, 8)
   }
+}
+
+// 時光機功能
+const goToTimeMachine = (result: { type: MarkerType; data: HistoricalFigure | HistoricalEvent | MasterWork }) => {
+  // 切換到時光機模式
+  timeMachineMode.value = true
+
+  // 根據項目類型設定時間
+  let targetYear: number
+
+  switch (result.type) {
+    case 'figure':
+      const figure = result.data as HistoricalFigure
+      // 使用人物的出生年份，如果沒有則使用開始年份
+      targetYear = figure.startYear
+      break
+    case 'event':
+      const event = result.data as HistoricalEvent
+      // 使用事件的開始年份
+      targetYear = event.startYear
+      break
+    case 'masterwork':
+      const work = result.data as MasterWork
+      // 使用著作的年份
+      targetYear = work.year || 0
+      break
+    default:
+      targetYear = 0
+  }
+
+  // 設定時間篩選器到目標年份
+  timeFilter.value.start = targetYear
+  timeFilter.value.end = targetYear
+
+  // 聚焦到地圖位置
+  focusOnMarker(result)
 }
 
 // 格式化年份顯示

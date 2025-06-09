@@ -14,7 +14,7 @@ export const socialFigures: HistoricalFigure[] = [
     startYear: -470,
     endYear: -390,
     description: '墨子是中國古代哲學家，墨家學派創始人，主張兼愛非攻，反對戰爭和暴力。',
-    coordinates: [31.7683, 35.2137],
+    coordinates: [34.7, 113.6],
     wikipediaUrl: 'https://zh.wikipedia.org/wiki/墨子',
   },
   // 孔子

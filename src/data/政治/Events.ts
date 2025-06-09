@@ -2,6 +2,91 @@ import type { HistoricalEvent } from '@/types'
 
 // 政治類別的歷史事件
 export const politicalEvents: HistoricalEvent[] = [
+  // 蘇格拉底時代的重要事件（公元前400年前後）
+  {
+    id: 'thirty-tyrants',
+    chineseName: '三十僭主統治',
+    englishName: 'Rule of the Thirty Tyrants',
+    startYear: -404,
+    endYear: -403,
+    coordinates: [37.9755, 23.7348], // 雅典
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/三十僭主',
+    category: '政治',
+    tags: ['寡頭政治', '雅典', '伯羅奔尼撒戰爭', '克里提亞斯'],
+    description: '伯羅奔尼撒戰爭後，斯巴達在雅典建立寡頭統治，由三十僭主實行恐怖統治，蘇格拉底的學生克里提亞斯是其中之一。'
+  },
+  {
+    id: 'restoration-of-democracy',
+    chineseName: '雅典民主制度恢復',
+    englishName: 'Restoration of Athenian Democracy',
+    startYear: -403,
+    endYear: -403,
+    coordinates: [37.9755, 23.7348], // 雅典
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/特拉西布洛斯',
+    category: '政治',
+    tags: ['民主', '雅典', '特拉西布洛斯', '三十僭主'],
+    description: '特拉西布洛斯領導民主派推翻三十僭主統治，恢復雅典民主制度，為蘇格拉底審判奠定政治背景。'
+  },
+  {
+    id: 'battle-of-aegospotami',
+    chineseName: '羊河戰役',
+    englishName: 'Battle of Aegospotami',
+    startYear: -405,
+    endYear: -405,
+    coordinates: [40.2, 26.4], // 羊河
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/羊河戰役',
+    category: '政治',
+    tags: ['海戰', '伯羅奔尼撒戰爭', '呂山德', '雅典'],
+    description: '斯巴達海軍統帥呂山德在羊河擊敗雅典海軍，這場戰役決定了伯羅奔尼撒戰爭的結局。'
+  },
+  {
+    id: 'march-of-the-ten-thousand',
+    chineseName: '萬人遠征',
+    englishName: 'March of the Ten Thousand',
+    startYear: -401,
+    endYear: -399,
+    coordinates: [29.9342, 52.8916], // 波斯
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/萬人遠征',
+    category: '政治',
+    tags: ['遠征', '波斯', '小居魯士', '希臘僱傭軍'],
+    description: '小居魯士僱傭希臘軍隊發動叛亂，失敗後希臘軍隊從波斯腹地長途跋涉返回家鄉，展現了希臘軍隊的戰鬥力。'
+  },
+  {
+    id: 'socrates-trial',
+    chineseName: '蘇格拉底審判',
+    englishName: 'Trial of Socrates',
+    startYear: -399,
+    endYear: -399,
+    coordinates: [37.9755, 23.7348], // 雅典
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/蘇格拉底審判',
+    category: '政治',
+    tags: ['審判', '哲學', '雅典', '蘇格拉底'],
+    description: '蘇格拉底被雅典法庭以「腐蝕青年」和「不敬神」的罪名審判，最終被判處死刑，成為哲學史上的重要事件。'
+  },
+  {
+    id: 'corinthian-war',
+    chineseName: '科林斯戰爭',
+    englishName: 'Corinthian War',
+    startYear: -395,
+    endYear: -387,
+    coordinates: [37.9, 22.9], // 科林斯
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/科林斯戰爭',
+    category: '政治',
+    tags: ['戰爭', '希臘', '斯巴達', '阿格西勞斯二世'],
+    description: '雅典、科林斯、底比斯等城邦聯合對抗斯巴達霸權的戰爭，阿格西勞斯二世領導斯巴達軍隊作戰。'
+  },
+  {
+    id: 'king-peace',
+    chineseName: '國王和約',
+    englishName: 'King\'s Peace',
+    startYear: -387,
+    endYear: -387,
+    coordinates: [29.9342, 52.8916], // 波斯
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/國王和約',
+    category: '政治',
+    tags: ['和約', '波斯', '希臘', '阿爾塔薛西斯二世'],
+    description: '波斯國王阿爾塔薛西斯二世調停希臘城邦戰爭，確立波斯在希臘事務中的主導地位。'
+  },
   // 非洲古典時代事件
   {
     id: 'battle-of-kadesh',
@@ -326,5 +411,138 @@ export const politicalEvents: HistoricalEvent[] = [
     category: '政治',
     tags: ['台灣', '中國', '戰後', '主權', '近代史'],
     description: '1945年第二次世界大戰結束後，台灣結束日本殖民統治，回歸中華民國，史稱台灣光復，象徵台灣主權的重大轉折。'
+  },
+  // 柏拉圖70歲時（公元前358年）的重要歷史事件
+  {
+    id: 'battle-of-leuctra',
+    chineseName: '留克特拉戰役',
+    englishName: 'Battle of Leuctra',
+    startYear: -371,
+    endYear: -371,
+    coordinates: [38.3, 23.3], // 底比斯
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/留克特拉戰役',
+    category: '政治',
+    tags: ['戰爭', '底比斯', '斯巴達', '伊巴密濃達', '軍事改革'],
+    description: '底比斯將軍伊巴密濃達在留克特拉擊敗斯巴達軍隊，打破斯巴達軍事霸權，標誌著底比斯崛起。'
+  },
+  {
+    id: 'battle-of-mantinea',
+    chineseName: '曼提尼亞戰役',
+    englishName: 'Battle of Mantinea',
+    startYear: -362,
+    endYear: -362,
+    coordinates: [37.6, 22.4], // 曼提尼亞
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/曼提尼亞戰役_(前362年)',
+    category: '政治',
+    tags: ['戰爭', '底比斯', '斯巴達', '雅典', '伊巴密濃達'],
+    description: '底比斯與斯巴達、雅典聯軍的決戰，伊巴密濃達戰死，底比斯霸權結束，希臘城邦陷入混亂。'
+  },
+  {
+    id: 'philip-ii-rise',
+    chineseName: '菲利普二世崛起',
+    englishName: 'Rise of Philip II of Macedon',
+    startYear: -359,
+    endYear: -338,
+    coordinates: [40.5169, 23.2132], // 佩拉
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/菲利普二世_(馬其頓)',
+    category: '政治',
+    tags: ['馬其頓', '軍事改革', '統一希臘', '菲利普二世'],
+    description: '菲利普二世通過軍事改革和外交手段統一希臘，為亞歷山大東征奠定基礎，建立馬其頓霸權。'
+  },
+  {
+    id: 'battle-of-chaeronea',
+    chineseName: '喀羅尼亞戰役',
+    englishName: 'Battle of Chaeronea',
+    startYear: -338,
+    endYear: -338,
+    coordinates: [38.5, 22.9], // 喀羅尼亞
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/喀羅尼亞戰役',
+    category: '政治',
+    tags: ['戰爭', '馬其頓', '雅典', '底比斯', '菲利普二世', '亞歷山大大帝'],
+    description: '菲利普二世在喀羅尼亞擊敗雅典和底比斯聯軍，確立馬其頓對希臘的統治，亞歷山大首次展現軍事才能。'
+  },
+  {
+    id: 'corinthian-league',
+    chineseName: '科林斯同盟成立',
+    englishName: 'Formation of Corinthian League',
+    startYear: -337,
+    endYear: -337,
+    coordinates: [37.9, 22.9], // 科林斯
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/科林斯同盟',
+    category: '政治',
+    tags: ['同盟', '希臘', '馬其頓', '菲利普二世'],
+    description: '菲利普二世在科林斯建立希臘城邦同盟，為東征波斯做準備，確立馬其頓在希臘的領導地位。'
+  },
+  {
+    id: 'battle-of-granicus',
+    chineseName: '格拉尼庫斯河戰役',
+    englishName: 'Battle of the Granicus',
+    startYear: -334,
+    endYear: -334,
+    coordinates: [40.2, 27.2], // 格拉尼庫斯河
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/格拉尼庫斯河戰役',
+    category: '政治',
+    tags: ['戰爭', '亞歷山大大帝', '波斯', '馬其頓'],
+    description: '亞歷山大大帝東征的第一場重要戰役，在格拉尼庫斯河擊敗波斯軍隊，開啟征服波斯帝國的序幕。'
+  },
+  {
+    id: 'battle-of-issus',
+    chineseName: '伊蘇斯戰役',
+    englishName: 'Battle of Issus',
+    startYear: -333,
+    endYear: -333,
+    coordinates: [36.8, 36.2], // 伊蘇斯
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/伊蘇斯戰役',
+    category: '政治',
+    tags: ['戰爭', '亞歷山大大帝', '大流士三世', '波斯'],
+    description: '亞歷山大大帝在伊蘇斯擊敗波斯國王大流士三世，俘獲波斯王室，取得東征的關鍵勝利。'
+  },
+  {
+    id: 'battle-of-gaugamela',
+    chineseName: '高加米拉戰役',
+    englishName: 'Battle of Gaugamela',
+    startYear: -331,
+    endYear: -331,
+    coordinates: [36.6, 43.1], // 高加米拉
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/高加米拉戰役',
+    category: '政治',
+    tags: ['戰爭', '亞歷山大大帝', '大流士三世', '波斯帝國'],
+    description: '亞歷山大大帝在高加米拉徹底擊敗大流士三世，波斯帝國滅亡，亞歷山大成為亞洲霸主。'
+  },
+  {
+    id: 'conquest-of-egypt',
+    chineseName: '征服埃及',
+    englishName: 'Conquest of Egypt',
+    startYear: -332,
+    endYear: -331,
+    coordinates: [31.2001, 29.9187], // 亞歷山大港
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/亞歷山大大帝#征服埃及',
+    category: '政治',
+    tags: ['征服', '亞歷山大大帝', '埃及', '托勒密王朝'],
+    description: '亞歷山大大帝征服埃及，被尊為法老，建立亞歷山大港，為希臘化時代奠定基礎。'
+  },
+  {
+    id: 'conquest-of-india',
+    chineseName: '征服印度',
+    englishName: 'Conquest of India',
+    startYear: -327,
+    endYear: -325,
+    coordinates: [32.0, 74.0], // 印度河
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/亞歷山大大帝#印度遠征',
+    category: '政治',
+    tags: ['征服', '亞歷山大大帝', '印度', '波羅斯'],
+    description: '亞歷山大大帝遠征印度，在希達斯皮斯河擊敗波羅斯王，但軍隊拒絕繼續東進，被迫返回。'
+  },
+  {
+    id: 'alexander-death',
+    chineseName: '亞歷山大大帝逝世',
+    englishName: 'Death of Alexander the Great',
+    startYear: -323,
+    endYear: -323,
+    coordinates: [32.0, 44.4], // 巴比倫
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/亞歷山大大帝#逝世',
+    category: '政治',
+    tags: ['逝世', '亞歷山大大帝', '帝國分裂', '希臘化時代'],
+    description: '亞歷山大大帝在巴比倫逝世，年僅32歲，其龐大帝國隨後分裂為多個希臘化王國。'
   }
 ]

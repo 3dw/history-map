@@ -108,6 +108,71 @@ export const culturalMasterWorks: MasterWork[] = [
     description: '柏拉圖最重要的哲學著作，探討理想社會的構建。'
   },
   {
+    id: 'politics',
+    chineseName: '政治學',
+    englishName: 'Politics',
+    author: '亞里士多德',
+    authorEnglish: 'Aristotle',
+    year: -350,
+    coordinates: [37.9755, 23.7348], // 雅典
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/政治學_(亞里士多德)',
+    category: '文化',
+    tags: ['哲學', '政治學', '古希臘', '亞里士多德'],
+    description: '亞里士多德的政治學著作，系統探討政體形式和理想政治制度，對西方政治思想產生深遠影響。'
+  },
+  {
+    id: 'metaphysics',
+    chineseName: '形而上學',
+    englishName: 'Metaphysics',
+    author: '亞里士多德',
+    authorEnglish: 'Aristotle',
+    year: -350,
+    coordinates: [37.9755, 23.7348], // 雅典
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/形而上學_(亞里士多德)',
+    category: '文化',
+    tags: ['哲學', '形而上學', '古希臘', '亞里士多德'],
+    description: '亞里士多德的形而上學著作，探討存在、本質、原因等根本哲學問題，被稱為「第一哲學」。'
+  },
+  {
+    id: 'nicomachean-ethics',
+    chineseName: '尼各馬可倫理學',
+    englishName: 'Nicomachean Ethics',
+    author: '亞里士多德',
+    authorEnglish: 'Aristotle',
+    year: -350,
+    coordinates: [37.9755, 23.7348], // 雅典
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/尼各馬可倫理學',
+    category: '文化',
+    tags: ['哲學', '倫理學', '古希臘', '亞里士多德'],
+    description: '亞里士多德的倫理學著作，探討幸福、美德、中庸等倫理概念，是西方倫理學的經典之作。'
+  },
+  {
+    id: 'poetics',
+    chineseName: '詩學',
+    englishName: 'Poetics',
+    author: '亞里士多德',
+    authorEnglish: 'Aristotle',
+    year: -335,
+    coordinates: [37.9755, 23.7348], // 雅典
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/詩學_(亞里士多德)',
+    category: '文化',
+    tags: ['文學理論', '戲劇', '古希臘', '亞里士多德'],
+    description: '亞里士多德的文學理論著作，分析悲劇和史詩的結構與功能，對西方文學理論產生深遠影響。'
+  },
+  {
+    id: 'organon',
+    chineseName: '工具論',
+    englishName: 'Organon',
+    author: '亞里士多德',
+    authorEnglish: 'Aristotle',
+    year: -350,
+    coordinates: [37.9755, 23.7348], // 雅典
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/工具論',
+    category: '文化',
+    tags: ['邏輯學', '哲學', '古希臘', '亞里士多德'],
+    description: '亞里士多德的邏輯學著作集，包括《範疇篇》《解釋篇》《前分析篇》等，是形式邏輯的開山之作。'
+  },
+  {
     id: 'monadology',
     chineseName: '單子論',
     englishName: 'Monadology',

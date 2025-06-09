@@ -2,6 +2,103 @@ import type { HistoricalFigure } from '@/types'
 
 // 政治類別的歷史人物
 export const politicalFigures: HistoricalFigure[] = [
+  // 蘇格拉底時代的雅典、斯巴達、波斯政治人物（公元前400年前後）
+  {
+    id: 'alcibiades',
+    chineseName: '阿爾西比亞德斯',
+    englishName: 'Alcibiades',
+    startYear: -450,
+    endYear: -404,
+    coordinates: [37.9755, 23.7348], // 雅典
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/阿爾西比亞德斯',
+    category: '政治',
+    tags: ['將軍', '政治家', '雅典', '伯羅奔尼撒戰爭'],
+    description: '雅典著名政治家和將軍，蘇格拉底的學生，在伯羅奔尼撒戰爭中多次改變立場，最終被流放。'
+  },
+  {
+    id: 'lysander',
+    chineseName: '呂山德',
+    englishName: 'Lysander',
+    startYear: -454,
+    endYear: -395,
+    coordinates: [37.0755, 22.4300], // 斯巴達
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/呂山德',
+    category: '政治',
+    tags: ['海軍統帥', '斯巴達', '伯羅奔尼撒戰爭', '將軍'],
+    description: '斯巴達海軍統帥，在伯羅奔尼撒戰爭末期擊敗雅典海軍，為斯巴達贏得戰爭勝利。'
+  },
+  {
+    id: 'agesilaus-ii',
+    chineseName: '阿格西勞斯二世',
+    englishName: 'Agesilaus II',
+    startYear: -444,
+    endYear: -360,
+    coordinates: [37.0755, 22.4300], // 斯巴達
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/阿格西勞斯二世',
+    category: '政治',
+    tags: ['國王', '斯巴達', '軍事統帥', '希臘'],
+    description: '斯巴達國王，傑出的軍事統帥，在蘇格拉底死後統治斯巴達，是斯巴達最後的偉大國王。'
+  },
+  {
+    id: 'artaxerxes-ii',
+    chineseName: '阿爾塔薛西斯二世',
+    englishName: 'Artaxerxes II',
+    startYear: -436,
+    endYear: -358,
+    coordinates: [29.9342, 52.8916], // 波斯
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/阿爾塔薛西斯二世',
+    category: '政治',
+    tags: ['國王', '波斯帝國', '阿契美尼德王朝'],
+    description: '波斯帝國國王，統治期間與希臘城邦有密切外交關係，支持斯巴達對抗雅典。'
+  },
+  {
+    id: 'cyrus-the-younger',
+    chineseName: '小居魯士',
+    englishName: 'Cyrus the Younger',
+    startYear: -423,
+    endYear: -401,
+    coordinates: [29.9342, 52.8916], // 波斯
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/小居魯士',
+    category: '政治',
+    tags: ['王子', '波斯', '叛亂', '萬人遠征'],
+    description: '波斯王子，發動叛亂企圖奪取王位，僱傭希臘軍隊，其失敗導致著名的「萬人遠征」。'
+  },
+  {
+    id: 'thrasybulus',
+    chineseName: '特拉西布洛斯',
+    englishName: 'Thrasybulus',
+    startYear: -440,
+    endYear: -388,
+    coordinates: [37.9755, 23.7348], // 雅典
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/特拉西布洛斯',
+    category: '政治',
+    tags: ['將軍', '民主派', '雅典', '三十僭主'],
+    description: '雅典民主派領袖，推翻三十僭主統治，恢復雅典民主制度，是蘇格拉底時代的重要政治人物。'
+  },
+  {
+    id: 'critias',
+    chineseName: '克里提亞斯',
+    englishName: 'Critias',
+    startYear: -460,
+    endYear: -403,
+    coordinates: [37.9755, 23.7348], // 雅典
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/克里提亞斯',
+    category: '政治',
+    tags: ['三十僭主', '寡頭政治', '雅典', '蘇格拉底學生'],
+    description: '三十僭主之一，蘇格拉底的學生，實行恐怖統治，最終在與民主派的戰鬥中死亡。'
+  },
+  {
+    id: 'pausanias',
+    chineseName: '保薩尼亞斯',
+    englishName: 'Pausanias',
+    startYear: -470,
+    endYear: -408,
+    coordinates: [37.0755, 22.4300], // 斯巴達
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/保薩尼亞斯_(斯巴達國王)',
+    category: '政治',
+    tags: ['國王', '斯巴達', '伯羅奔尼撒戰爭', '將軍'],
+    description: '斯巴達國王，伯羅奔尼撒戰爭期間的軍事統帥，在普拉提亞戰役中擊敗波斯軍隊。'
+  },
   // 非洲古典時代政治人物
   {
     id: 'ramses-ii',
@@ -207,5 +304,102 @@ export const politicalFigures: HistoricalFigure[] = [
     category: '政治',
     tags: ['總統', '太空', '冷戰', '美國'],
     description: '美國第35任總統，推動太空計劃，在冷戰時期展現領導力。'
+  },
+  // 柏拉圖70歲時（公元前358年）的重要政治人物
+  {
+    id: 'philip-ii-macedon',
+    chineseName: '菲利普二世',
+    englishName: 'Philip II of Macedon',
+    startYear: -382,
+    endYear: -336,
+    coordinates: [40.5169, 23.2132], // 佩拉
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/菲利普二世_(馬其頓)',
+    category: '政治',
+    tags: ['國王', '馬其頓', '軍事改革', '亞歷山大大帝之父'],
+    description: '馬其頓國王，亞歷山大大帝的父親，通過軍事改革和外交手段統一希臘，為亞歷山大東征奠定基礎。'
+  },
+  {
+    id: 'alexander-the-great',
+    chineseName: '亞歷山大大帝',
+    englishName: 'Alexander the Great',
+    startYear: -356,
+    endYear: -323,
+    coordinates: [40.5169, 23.2132], // 佩拉
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/亞歷山大大帝',
+    category: '政治',
+    tags: ['國王', '征服者', '馬其頓', '波斯帝國', '亞里士多德學生'],
+    description: '馬其頓國王，亞里士多德的學生，在短時間內征服波斯帝國，建立歷史上最大的帝國之一，被譽為「大帝」。'
+  },
+  {
+    id: 'darius-iii',
+    chineseName: '大流士三世',
+    englishName: 'Darius III',
+    startYear: -380,
+    endYear: -330,
+    coordinates: [29.9342, 52.8916], // 波斯
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/大流士三世',
+    category: '政治',
+    tags: ['國王', '波斯帝國', '阿契美尼德王朝', '亞歷山大對手'],
+    description: '波斯帝國最後一位阿契美尼德王朝國王，在亞歷山大東征中被擊敗，標誌著波斯帝國的滅亡。'
+  },
+  {
+    id: 'demosthenes',
+    chineseName: '德摩斯梯尼',
+    englishName: 'Demosthenes',
+    startYear: -384,
+    endYear: -322,
+    coordinates: [37.9755, 23.7348], // 雅典
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/德摩斯梯尼',
+    category: '政治',
+    tags: ['演說家', '政治家', '雅典', '反馬其頓'],
+    description: '雅典著名演說家和政治家，反對馬其頓的擴張，其演說被譽為古希臘演說術的典範。'
+  },
+  {
+    id: 'aeschines',
+    chineseName: '埃斯基涅斯',
+    englishName: 'Aeschines',
+    startYear: -389,
+    endYear: -314,
+    coordinates: [37.9755, 23.7348], // 雅典
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/埃斯基涅斯',
+    category: '政治',
+    tags: ['演說家', '政治家', '雅典', '親馬其頓'],
+    description: '雅典演說家和政治家，與德摩斯梯尼對立，支持與馬其頓和解，兩人長期政治鬥爭。'
+  },
+  {
+    id: 'epaminondas',
+    chineseName: '伊巴密濃達',
+    englishName: 'Epaminondas',
+    startYear: -418,
+    endYear: -362,
+    coordinates: [38.3, 23.3], // 底比斯
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/伊巴密濃達',
+    category: '政治',
+    tags: ['將軍', '政治家', '底比斯', '軍事改革'],
+    description: '底比斯將軍和政治家，在留克特拉戰役中擊敗斯巴達，打破斯巴達軍事霸權，但不久後戰死。'
+  },
+  {
+    id: 'pelopidas',
+    chineseName: '佩洛皮達斯',
+    englishName: 'Pelopidas',
+    startYear: -410,
+    endYear: -364,
+    coordinates: [38.3, 23.3], // 底比斯
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/佩洛皮達斯',
+    category: '政治',
+    tags: ['將軍', '政治家', '底比斯', '神聖軍團'],
+    description: '底比斯將軍和政治家，與伊巴密濃達共同領導底比斯崛起，建立著名的神聖軍團。'
+  },
+  {
+    id: 'artaxerxes-iii',
+    chineseName: '阿爾塔薛西斯三世',
+    englishName: 'Artaxerxes III',
+    startYear: -425,
+    endYear: -338,
+    coordinates: [29.9342, 52.8916], // 波斯
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/阿爾塔薛西斯三世',
+    category: '政治',
+    tags: ['國王', '波斯帝國', '阿契美尼德王朝', '鎮壓叛亂'],
+    description: '波斯帝國國王，統治期間鎮壓埃及等地的叛亂，恢復波斯帝國的統一，但最終被謀殺。'
   }
 ]

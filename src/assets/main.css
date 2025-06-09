@@ -133,18 +133,68 @@ a,
 
 .search-result-item {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   padding: 12px;
-  background: #f8f9fa;
-  border-radius: 8px;
+  border-bottom: 1px solid #e0e0e0;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background-color 0.2s;
 }
 
 .search-result-item:hover {
-  background: #e9ecef;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: #f5f5f5;
+}
+
+.search-result-item .result-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.search-result-item .result-info {
+  flex: 1;
+}
+
+.search-result-item .result-actions {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.time-machine-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+  white-space: nowrap;
+}
+
+.time-machine-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.time-machine-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .time-machine-btn {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+
+  .search-result-item .result-actions {
+    justify-content: center;
+  }
 }
 
 .result-icon {
@@ -152,10 +202,6 @@ a,
   margin-right: 12px;
   width: 32px;
   text-align: center;
-}
-
-.result-content {
-  flex: 1;
 }
 
 .result-title {
