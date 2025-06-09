@@ -632,6 +632,15 @@ const updateMarkers = () => {
               ${formatYear(figure.startYear)} - ${figure.endYear ? formatYear(figure.endYear) : '？'}
             </span>
           </div>
+          <div class="category">
+            ${figure.category}
+          </div>
+          <div class="tags">
+            ${figure.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+          </div>
+          <div class="description">
+            ${figure.description}
+          </div>
           <a href="${figure.wikipediaUrl}" target="_blank" class="wiki-link">
             📖 維基百科
           </a>
