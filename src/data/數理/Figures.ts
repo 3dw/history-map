@@ -402,5 +402,42 @@ export const scientificFigures: HistoricalFigure[] = [
     category: '數理',
     tags: ['醫學家', '黑死病', '中世紀醫學', '英國'],
     description: '英國醫學家，黑死病時期的著名醫生，對瘟疫的傳播和治療有重要研究。'
-  }
+  },
+  // 西方文明東傳重要人物
+  {
+    id: 'matteo-ricci',
+    chineseName: '利瑪竇',
+    englishName: 'Matteo Ricci',
+    startYear: 1552,
+    endYear: 1610,
+    coordinates: [39.9042, 116.4074], // 中國北京
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/利瑪竇',
+    category: '數理',
+    tags: ['傳教士', '天文學家', '數學家', '中國', '耶穌會'],
+    description: '義大利耶穌會傳教士，將西方科學技術傳入中國，與徐光啟合作翻譯《幾何原本》，對中西文化交流有重要貢獻。'
+  },
+  {
+    id: 'xu-guangqi',
+    chineseName: '徐光啟',
+    englishName: 'Xu Guangqi',
+    startYear: 1562,
+    endYear: 1633,
+    coordinates: [31.2304, 121.4737], // 中國上海
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/徐光啟',
+    category: '數理',
+    tags: ['科學家', '政治家', '天文學家', '中國', '明朝'],
+    description: '明朝科學家和政治家，與利瑪竇合作翻譯《幾何原本》，推動西方科學技術在中國的傳播，是中國近代科學的先驅。'
+  },
+  {
+    id: 'li-shanlan',
+    chineseName: '李善蘭',
+    englishName: 'Li Shanlan',
+    startYear: 1811,
+    endYear: 1882,
+    coordinates: [30.2741, 120.1551], // 中國杭州
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/李善蘭',
+    category: '數理',
+    tags: ['數學家', '天文學家', '翻譯家', '中國', '清朝'],
+    description: '清朝數學家和天文學家，翻譯西方數學著作，創立中國近代數學，對中國數學現代化有重要貢獻。'
+  },
 ]

@@ -598,5 +598,30 @@ export const politicalFigures: HistoricalFigure[] = [
     category: '政治',
     tags: ['南宋', '愛國者', '詩人', '抗元', '中國'],
     description: '南宋末年的愛國詩人和政治家，抗擊蒙古入侵，被俘後寧死不屈，留下「人生自古誰無死，留取丹心照汗青」的千古名句。'
+  },
+  // 西方文明東傳重要人物
+  {
+    id: 'peter-the-great',
+    chineseName: '彼得大帝',
+    englishName: 'Peter the Great',
+    startYear: 1672,
+    endYear: 1725,
+    coordinates: [59.9311, 30.3609], // 俄羅斯聖彼得堡
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/彼得大帝',
+    category: '政治',
+    tags: ['俄羅斯', '沙皇', '西化', '改革', '歐洲'],
+    description: '俄羅斯沙皇，推動俄羅斯西化改革，建立聖彼得堡，使俄羅斯成為歐洲強國，對俄羅斯現代化有重要影響。'
+  },
+  {
+    id: 'emperor-meiji',
+    chineseName: '明治天皇',
+    englishName: 'Emperor Meiji',
+    startYear: 1852,
+    endYear: 1912,
+    coordinates: [35.6762, 139.6503], // 日本東京
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/明治天皇',
+    category: '政治',
+    tags: ['日本', '天皇', '明治維新', '現代化', '亞洲'],
+    description: '日本天皇，在位期間推動明治維新，使日本從封建社會轉變為現代化國家，成為亞洲第一個工業化國家。'
   }
 ]

@@ -251,5 +251,58 @@ export const culturalMasterWorks: MasterWork[] = [
     category: '文化',
     tags: ['詩歌', '愛國', '南宋', '崖山', '中國'],
     description: '文天祥在崖山海戰後被俘途中所作的詩，其中「人生自古誰無死，留取丹心照汗青」成為千古名句。'
+  },
+  // 西方文明東傳重要著作
+  {
+    id: 'jihe-yuanben',
+    chineseName: '幾何原本',
+    englishName: 'Elements of Geometry',
+    author: '歐幾里得',
+    authorEnglish: 'Euclid',
+    year: 1607,
+    coordinates: [39.9042, 116.4074], // 中國北京
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/幾何原本',
+    category: '文化',
+    tags: ['數學', '翻譯', '幾何學', '中國', '明朝'],
+    description: '利瑪竇與徐光啟合作翻譯的歐幾里得《幾何原本》，是西方數學在中國傳播的重要里程碑。'
+  },
+  {
+    id: 'tianwen-lue',
+    chineseName: '天文略',
+    englishName: 'Summary of Astronomy',
+    author: '利瑪竇',
+    authorEnglish: 'Matteo Ricci',
+    year: 1610,
+    coordinates: [39.9042, 116.4074], // 中國北京
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/利瑪竇',
+    category: '文化',
+    tags: ['天文學', '翻譯', '科學', '中國', '明朝'],
+    description: '利瑪竇編寫的天文學著作，介紹西方天文學知識，對中國天文學發展有重要影響。'
+  },
+  {
+    id: 'daishu-xue',
+    chineseName: '代數學',
+    englishName: 'Algebra',
+    author: '李善蘭',
+    authorEnglish: 'Li Shanlan',
+    year: 1859,
+    coordinates: [30.2741, 120.1551], // 中國杭州
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/李善蘭',
+    category: '文化',
+    tags: ['數學', '代數', '翻譯', '中國', '清朝'],
+    description: '李善蘭翻譯的西方代數學著作，創立了中國近代數學體系，對中國數學現代化有重要貢獻。'
+  },
+  {
+    id: 'weiji-fenxue',
+    chineseName: '微積分學',
+    englishName: 'Calculus',
+    author: '李善蘭',
+    authorEnglish: 'Li Shanlan',
+    year: 1859,
+    coordinates: [30.2741, 120.1551], // 中國杭州
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/李善蘭',
+    category: '文化',
+    tags: ['數學', '微積分', '翻譯', '中國', '清朝'],
+    description: '李善蘭翻譯的微積分學著作，將西方高等數學引入中國，推動中國數學的現代化發展。'
   }
 ]

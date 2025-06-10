@@ -1040,5 +1040,114 @@ export const politicalEvents: HistoricalEvent[] = [
     category: '政治',
     tags: ['忽必烈', '南宋', '征服', '中國', '元朝'],
     description: '忽必烈領導蒙古軍隊最終滅亡南宋，完成中國統一，建立元朝。'
+  },
+  // 西方文明東傳重要事件
+  {
+    id: 'peter-the-great-reforms',
+    chineseName: '彼得大帝改革',
+    englishName: 'Peter the Great\'s Reforms',
+    startYear: 1689,
+    endYear: 1725,
+    coordinates: [59.9311, 30.3609], // 俄羅斯聖彼得堡
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/彼得大帝改革',
+    category: '政治',
+    tags: ['俄羅斯', '西化', '改革', '彼得大帝', '現代化'],
+    description: '彼得大帝推動俄羅斯全面西化改革，包括軍事、行政、教育、文化等方面，使俄羅斯成為歐洲強國。'
+  },
+  {
+    id: 'meiji-restoration',
+    chineseName: '明治維新',
+    englishName: 'Meiji Restoration',
+    startYear: 1868,
+    endYear: 1912,
+    coordinates: [35.6762, 139.6503], // 日本東京
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/明治維新',
+    category: '政治',
+    tags: ['日本', '明治維新', '現代化', '西化', '亞洲'],
+    description: '日本明治天皇推動的全面改革，使日本從封建社會轉變為現代化國家，成為亞洲第一個工業化國家。'
+  },
+  {
+    id: 'opium-wars',
+    chineseName: '鴉片戰爭',
+    englishName: 'Opium Wars',
+    startYear: 1839,
+    endYear: 1860,
+    coordinates: [22.3193, 114.1694], // 中國香港
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/鴉片戰爭',
+    category: '政治',
+    tags: ['戰爭', '中國', '英國', '鴉片', '不平等條約'],
+    description: '英國與中國之間的兩次戰爭，起因是鴉片貿易，結果中國戰敗，被迫簽訂不平等條約，開啟中國近代史。'
+  },
+  {
+    id: 'sino-japanese-war-1894',
+    chineseName: '甲午戰爭',
+    englishName: 'First Sino-Japanese War',
+    startYear: 1894,
+    endYear: 1895,
+    coordinates: [37.5, 122.1], // 山東威海衛
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/甲午戰爭',
+    category: '政治',
+    tags: ['戰爭', '中國', '日本', '清朝', '現代化'],
+    description: '清朝與日本之間的戰爭，清朝戰敗，簽訂馬關條約，割讓台灣，標誌著日本現代化的成功和中國的進一步衰落。'
+  },
+  {
+    id: 'boxer-rebellion',
+    chineseName: '義和團運動',
+    englishName: 'Boxer Rebellion',
+    startYear: 1899,
+    endYear: 1901,
+    coordinates: [39.9042, 116.4074], // 中國北京
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/義和團運動',
+    category: '政治',
+    tags: ['反抗', '中國', '清朝', '外國勢力', '民族主義'],
+    description: '中國民間反外國勢力的運動，最終被八國聯軍鎮壓，清朝被迫簽訂辛丑條約，進一步淪為半殖民地。'
+  },
+  {
+    id: 'russian-japanese-war',
+    chineseName: '日俄戰爭',
+    englishName: 'Russo-Japanese War',
+    startYear: 1904,
+    endYear: 1905,
+    coordinates: [38.7223, 125.7442], // 朝鮮半島
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/日俄戰爭',
+    category: '政治',
+    tags: ['戰爭', '日本', '俄羅斯', '朝鮮', '亞洲'],
+    description: '日本與俄羅斯為爭奪朝鮮和中國東北而爆發的戰爭，日本勝利，確立了日本在亞洲的強國地位。'
+  },
+  {
+    id: 'establishment-of-tongwen-guan',
+    chineseName: '同文館建立',
+    englishName: 'Establishment of Tongwen Guan',
+    startYear: 1862,
+    endYear: 1862,
+    coordinates: [39.9042, 116.4074], // 中國北京
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/同文館',
+    category: '政治',
+    tags: ['教育', '中國', '清朝', '西學', '翻譯'],
+    description: '清朝建立的翻譯學校，培養外語人才，翻譯西方著作，是中國近代教育的重要機構。'
+  },
+  {
+    id: 'self-strengthening-movement',
+    chineseName: '洋務運動',
+    englishName: 'Self-Strengthening Movement',
+    startYear: 1861,
+    endYear: 1895,
+    coordinates: [31.2304, 121.4737], // 中國上海
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/洋務運動',
+    category: '政治',
+    tags: ['改革', '中國', '清朝', '西學', '現代化'],
+    description: '清朝後期的改革運動，學習西方技術，建立近代工業和軍事，但最終因甲午戰爭失敗而告終。'
+  },
+  {
+    id: 'hundred-days-reform',
+    chineseName: '戊戌變法',
+    englishName: 'Hundred Days\' Reform',
+    startYear: 1898,
+    endYear: 1898,
+    coordinates: [39.9042, 116.4074], // 中國北京
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/戊戌變法',
+    category: '政治',
+    tags: ['改革', '中國', '清朝', '康有為', '梁啟超'],
+    description: '光緒皇帝推動的變法運動，由康有為、梁啟超等人主導，但被慈禧太后鎮壓，僅持續103天。'
   }
 ]

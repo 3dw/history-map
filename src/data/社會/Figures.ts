@@ -215,5 +215,138 @@ export const socialFigures: HistoricalFigure[] = [
     description: '奧地利心理學家和醫生，個體心理學的創始人，提出自卑情結和社會興趣理論，對現代心理學有重要影響。',
     coordinates: [48.2082, 16.3738], // 維也納
     wikipediaUrl: 'https://zh.wikipedia.org/wiki/阿爾弗雷德·阿德勒',
+  },
+  {
+    id: 'george-leslie-mackay',
+    chineseName: '馬偕',
+    englishName: 'George Leslie Mackay',
+    startYear: 1844,
+    endYear: 1901,
+    coordinates: [25.0375, 121.5637], // 台灣台北
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/馬偕',
+    category: '社會',
+    tags: ['傳教士', '醫生', '教育家', '台灣', '加拿大'],
+    description: '加拿大長老會傳教士，在台灣北部傳教、行醫、辦學，建立馬偕醫院和牛津學堂，對台灣現代化有重要貢獻。'
+  },
+  // 戊戌變法和民國初期社會思想家
+  {
+    id: 'kang-youwei',
+    chineseName: '康有為',
+    englishName: 'Kang Youwei',
+    category: '社會',
+    tags: ['思想家', '改革家', '戊戌變法', '保皇派', '中國'],
+    startYear: 1858,
+    endYear: 1927,
+    description: '中國近代思想家、政治家和改革家，戊戌變法的主要領導者，主張君主立憲制，著有《大同書》等著作。',
+    coordinates: [23.1291, 113.2644], // 廣東南海
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/康有為',
+  },
+  {
+    id: 'liang-qichao',
+    chineseName: '梁啟超',
+    englishName: 'Liang Qichao',
+    category: '社會',
+    tags: ['思想家', '改革家', '戊戌變法', '學者', '中國'],
+    startYear: 1873,
+    endYear: 1929,
+    description: '中國近代思想家、政治家和學者，戊戌變法的重要參與者，後期轉向學術研究，對中國近代思想文化有重要影響。',
+    coordinates: [23.1291, 113.2644], // 廣東新會
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/梁啟超',
+  },
+  {
+    id: 'hu-shi',
+    chineseName: '胡適',
+    englishName: 'Hu Shi',
+    category: '社會',
+    tags: ['思想家', '學者', '白話文運動', '新文化運動', '中國'],
+    startYear: 1891,
+    endYear: 1962,
+    description: '中國近代思想家、學者和教育家，新文化運動的領導者，推動白話文運動，主張「大膽假設，小心求證」的治學方法。',
+    coordinates: [31.2304, 121.4737], // 上海
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/胡適',
+  },
+  {
+    id: 'chen-duxiu',
+    chineseName: '陳獨秀',
+    englishName: 'Chen Duxiu',
+    category: '社會',
+    tags: ['思想家', '革命家', '新文化運動', '共產黨', '中國'],
+    startYear: 1879,
+    endYear: 1942,
+    description: '中國近代思想家、革命家和教育家，新文化運動的領導者，《新青年》雜誌創辦人，中國共產黨創始人之一。',
+    coordinates: [31.2304, 121.4737], // 上海
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/陳獨秀',
+  },
+  {
+    id: 'lu-xun',
+    chineseName: '魯迅',
+    englishName: 'Lu Xun',
+    category: '社會',
+    tags: ['作家', '思想家', '新文化運動', '白話文', '中國'],
+    startYear: 1881,
+    endYear: 1936,
+    description: '中國近代作家、思想家和革命家，新文化運動的重要參與者，被譽為「中國現代文學之父」，作品深刻批判社會現實。',
+    coordinates: [30.2741, 120.1551], // 杭州
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/魯迅',
+  },
+  {
+    id: 'li-dazhao',
+    chineseName: '李大釗',
+    englishName: 'Li Dazhao',
+    category: '社會',
+    tags: ['思想家', '革命家', '馬克思主義', '共產黨', '中國'],
+    startYear: 1889,
+    endYear: 1927,
+    description: '中國近代思想家、革命家和教育家，馬克思主義在中國的早期傳播者，中國共產黨創始人之一，被軍閥殺害。',
+    coordinates: [39.9042, 116.4074], // 北京
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/李大釗',
+  },
+  {
+    id: 'sun-yat-sen',
+    chineseName: '孫中山',
+    englishName: 'Sun Yat-sen',
+    category: '社會',
+    tags: ['革命家', '政治家', '三民主義', '中華民國', '中國'],
+    startYear: 1866,
+    endYear: 1925,
+    description: '中國近代革命家、政治家和思想家，中華民國國父，提出三民主義，領導辛亥革命推翻清朝，建立亞洲第一個共和國。',
+    coordinates: [22.3193, 114.1694], // 香港
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/孫中山',
+  },
+  {
+    id: 'zhang-binglin',
+    chineseName: '章炳麟',
+    englishName: 'Zhang Binglin',
+    category: '社會',
+    tags: ['學者', '思想家', '國學', '革命家', '中國'],
+    startYear: 1869,
+    endYear: 1936,
+    description: '中國近代學者、思想家和革命家，國學大師，參與辛亥革命，對中國傳統文化有深入研究，被譽為「國學泰斗」。',
+    coordinates: [30.2741, 120.1551], // 杭州
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/章炳麟',
+  },
+  {
+    id: 'wang-guo-wei',
+    chineseName: '王國維',
+    englishName: 'Wang Guowei',
+    category: '社會',
+    tags: ['學者', '思想家', '國學', '美學', '中國'],
+    startYear: 1877,
+    endYear: 1927,
+    description: '中國近代學者、思想家和美學家，國學大師，在文學、史學、哲學等領域都有重要貢獻，著有《人間詞話》等。',
+    coordinates: [30.2741, 120.1551], // 杭州
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/王國維',
+  },
+  {
+    id: 'chen-yinke',
+    chineseName: '陳寅恪',
+    englishName: 'Chen Yinke',
+    category: '社會',
+    tags: ['學者', '史學家', '國學', '教授', '中國'],
+    startYear: 1890,
+    endYear: 1969,
+    description: '中國近代史學家、學者，被譽為「教授中的教授」，在隋唐史、佛教史等領域有重要研究，堅持「獨立之精神，自由之思想」。',
+    coordinates: [39.9042, 116.4074], // 北京
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/陳寅恪',
   }
 ]
