@@ -335,12 +335,12 @@
 
         <div v-show="timeMachineMode">
           <!-- 自動播放速度 -->
-          <input type="range" min="-10" max="10" step="1" v-model="autoPlaySpeed" /> {{ autoPlaySpeed }}x速 
+          <input type="range" min="-10" max="10" step="1" v-model="autoPlaySpeed" /> {{ autoPlaySpeed }}x速
         </div>
 
         <input type="range" min="-3000" max="2024" step="1" v-model="timeFilter.start" /> {{ timeFilter.start }} ~
         <br/>
-        
+
         <div v-show="!timeMachineMode">
           <input type="range" min="-3000" max="2024" step="1" v-model="timeFilter.end" /> {{ timeFilter.end }}
         </div>
@@ -872,7 +872,7 @@ const onMapReady = () => {
 
   setInterval(() => {
     if (timeMachineMode.value) {
-      timeFilter.value.start = parseInt(timeFilter.value.start) + parseInt(autoPlaySpeed.value)
+      timeFilter.value.start = Number(timeFilter.value.start) + Number(autoPlaySpeed.value)
     }
   }, 1000)
 
@@ -894,6 +894,15 @@ const onMapReady = () => {
         } else if (center.lng < -180) {
           mapInstance.setView([center.lat, center.lng + 360], zoom, { animate: false })
         }
+      })
+
+      // 監聽縮放級別變化
+      mapInstance.on('zoomend', () => {
+        console.log(`縮放級別改變: ${mapInstance.getZoom()}`)
+        // 延遲更新標記，確保縮放動畫完成
+        setTimeout(() => {
+          updateMarkers()
+        }, 100)
       })
 
       // 添加地圖點擊事件監聽器
@@ -937,6 +946,191 @@ const updateMarkers = () => {
     }
   }
 
+  // 收集所有要顯示的標記數據
+  const allMarkers: Array<{
+    type: 'figure' | 'event' | 'masterwork'
+    data: HistoricalFigure | HistoricalEvent | MasterWork
+    coordinates: [number, number]
+  }> = []
+
+  if (showFigures.value) {
+    displayedFigures.value.forEach(figure => {
+      allMarkers.push({
+        type: 'figure',
+        data: figure,
+        coordinates: normalizeCoordinates(figure.coordinates)
+      })
+    })
+  }
+
+  if (showEvents.value) {
+    displayedEvents.value.forEach(event => {
+      allMarkers.push({
+        type: 'event',
+        data: event,
+        coordinates: normalizeCoordinates(event.coordinates)
+      })
+    })
+  }
+
+  if (showMasterWorks.value) {
+    displayedMasterWorks.value.forEach(work => {
+      allMarkers.push({
+        type: 'masterwork',
+        data: work,
+        coordinates: normalizeCoordinates(work.coordinates)
+      })
+    })
+  }
+
+  // 自動分散重疊標記的函數
+  const spreadOverlappingMarkers = (markers: typeof allMarkers): typeof allMarkers => {
+    const currentZoom = leafletMap.getZoom()
+
+    console.log(`spreadOverlappingMarkers 被調用，當前縮放級別: ${currentZoom}，標記數量: ${markers.length}`)
+
+    // 只在縮放級別 >= 7 時進行分散（與 disableClusteringAtZoom 保持一致）
+    if (currentZoom < 7) {
+      console.log(`縮放級別 ${currentZoom} < 7，跳過分散`)
+      return markers
+    }
+
+    console.log(`開始分散處理，標記數量: ${markers.length}`)
+
+    const spreadMarkers = [...markers]
+    const markerRadius = 0.005 // 標記的影響半徑（度）- 更小的檢測範圍
+    const baseSpreadDistance = 0.04 // 進一步增加基礎分散距離（度）- 從 0.025 增加到 0.04
+
+    // 分組重疊的標記
+    const overlappingGroups: Array<typeof spreadMarkers> = []
+    const processed = new Set<number>()
+
+    for (let i = 0; i < spreadMarkers.length; i++) {
+      if (processed.has(i)) continue
+
+      const group = [spreadMarkers[i]]
+      processed.add(i)
+
+      // 找到所有與當前標記重疊的標記
+      for (let j = i + 1; j < spreadMarkers.length; j++) {
+        if (processed.has(j)) continue
+
+        const marker1 = spreadMarkers[i]
+        const marker2 = spreadMarkers[j]
+
+        const latDiff = Math.abs(marker1.coordinates[0] - marker2.coordinates[0])
+        const lngDiff = Math.abs(marker1.coordinates[1] - marker2.coordinates[1])
+
+        // 如果兩個標記距離太近（重疊）
+        if (latDiff < markerRadius && lngDiff < markerRadius) {
+          group.push(spreadMarkers[j])
+          processed.add(j)
+        }
+      }
+
+      if (group.length > 1) {
+        overlappingGroups.push(group)
+      }
+    }
+
+    // 調試信息
+    if (overlappingGroups.length > 0) {
+      console.log(`發現 ${overlappingGroups.length} 個重疊組，當前縮放級別: ${currentZoom}`)
+      overlappingGroups.forEach((group, index) => {
+        console.log(`重疊組 ${index + 1}: ${group.length} 個標記`)
+        group.forEach(marker => {
+          if (marker.type === 'figure') {
+            console.log(`  - ${(marker.data as HistoricalFigure).chineseName}: [${marker.coordinates[0]}, ${marker.coordinates[1]}]`)
+          }
+        })
+      })
+    } else {
+      console.log('沒有發現重疊的標記組')
+    }
+
+    // 對每個重疊組進行分散
+    overlappingGroups.forEach((group, groupIndex) => {
+      console.log(`開始分散重疊組 ${groupIndex + 1}，包含 ${group.length} 個標記`)
+
+      if (group.length === 2) {
+        // 兩個標記的情況：向相反方向分散
+        const marker1 = group[0]
+        const marker2 = group[1]
+
+        // 使用隨機角度避免固定方向
+        const angle = Math.random() * 2 * Math.PI
+
+        const spreadLat1 = marker1.coordinates[0] + Math.sin(angle) * baseSpreadDistance
+        const spreadLng1 = marker1.coordinates[1] + Math.cos(angle) * baseSpreadDistance
+
+        const spreadLat2 = marker2.coordinates[0] - Math.sin(angle) * baseSpreadDistance
+        const spreadLng2 = marker2.coordinates[1] - Math.cos(angle) * baseSpreadDistance
+
+        console.log(`分散兩個標記: 角度=${angle.toFixed(2)}, 距離=${baseSpreadDistance}`)
+        console.log(`標記1: [${marker1.coordinates[0].toFixed(6)}, ${marker1.coordinates[1].toFixed(6)}] -> [${spreadLat1.toFixed(6)}, ${spreadLng1.toFixed(6)}]`)
+        console.log(`標記2: [${marker2.coordinates[0].toFixed(6)}, ${marker2.coordinates[1].toFixed(6)}] -> [${spreadLat2.toFixed(6)}, ${spreadLng2.toFixed(6)}]`)
+
+        marker1.coordinates = [spreadLat1, spreadLng1]
+        marker2.coordinates = [spreadLat2, spreadLng2]
+      } else if (group.length === 3) {
+        // 三個標記的情況：形成三角形
+        const centerLat = group[0].coordinates[0]
+        const centerLng = group[0].coordinates[1]
+
+        console.log(`分散三個標記: 中心點 [${centerLat.toFixed(6)}, ${centerLng.toFixed(6)}], 距離=${baseSpreadDistance}`)
+
+        group.forEach((marker, index) => {
+          const angle = (index * 2 * Math.PI / 3) + (Math.PI / 6) // 120度間隔，稍微偏移
+          const spreadLat = centerLat + Math.sin(angle) * baseSpreadDistance
+          const spreadLng = centerLng + Math.cos(angle) * baseSpreadDistance
+
+          console.log(`標記${index + 1}: [${marker.coordinates[0].toFixed(6)}, ${marker.coordinates[1].toFixed(6)}] -> [${spreadLat.toFixed(6)}, ${spreadLng.toFixed(6)}] (角度: ${angle.toFixed(2)})`)
+
+          marker.coordinates = [spreadLat, spreadLng]
+        })
+      } else if (group.length === 4) {
+        // 四個標記的情況：形成正方形
+        const centerLat = group[0].coordinates[0]
+        const centerLng = group[0].coordinates[1]
+
+        console.log(`分散四個標記: 中心點 [${centerLat.toFixed(6)}, ${centerLng.toFixed(6)}], 距離=${baseSpreadDistance}`)
+
+        group.forEach((marker, index) => {
+          const angle = (index * 2 * Math.PI / 4) + (Math.PI / 4) // 90度間隔，45度偏移
+          const spreadLat = centerLat + Math.sin(angle) * baseSpreadDistance
+          const spreadLng = centerLng + Math.cos(angle) * baseSpreadDistance
+
+          console.log(`標記${index + 1}: [${marker.coordinates[0].toFixed(6)}, ${marker.coordinates[1].toFixed(6)}] -> [${spreadLat.toFixed(6)}, ${spreadLng.toFixed(6)}] (角度: ${angle.toFixed(2)})`)
+
+          marker.coordinates = [spreadLat, spreadLng]
+        })
+      } else {
+        // 五個或更多標記的情況：形成圓形排列
+        const centerLat = group[0].coordinates[0]
+        const centerLng = group[0].coordinates[1]
+        const radius = baseSpreadDistance * 1.2 // 稍微大一點的圓
+
+        console.log(`分散${group.length}個標記: 中心點 [${centerLat.toFixed(6)}, ${centerLng.toFixed(6)}], 半徑=${radius}`)
+
+        group.forEach((marker, index) => {
+          const angle = (index * 2 * Math.PI / group.length) + (Math.PI / group.length)
+          const spreadLat = centerLat + Math.sin(angle) * radius
+          const spreadLng = centerLng + Math.cos(angle) * radius
+
+          console.log(`標記${index + 1}: [${marker.coordinates[0].toFixed(6)}, ${marker.coordinates[1].toFixed(6)}] -> [${spreadLat.toFixed(6)}, ${spreadLng.toFixed(6)}] (角度: ${angle.toFixed(2)})`)
+
+          marker.coordinates = [spreadLat, spreadLng]
+        })
+      }
+    })
+
+    console.log(`分散處理完成，返回 ${spreadMarkers.length} 個標記`)
+    return spreadMarkers
+  }
+
+  // 應用自動分散
+  const spreadMarkers = spreadOverlappingMarkers(allMarkers)
+
   // 創建新的群集組
   markerClusterGroup.value = L.markerClusterGroup({
     spiderfyOnMaxZoom: true,
@@ -945,7 +1139,7 @@ const updateMarkers = () => {
     spiderLegPolylineOptions: { weight: 1.5, color: '#222', opacity: 0.5 },
     chunkedLoading: true,
     clusterPane: 'markerPane',
-    disableClusteringAtZoom: 5, // zoom >= 5 時自動展開所有 cluster
+    disableClusteringAtZoom: 7, // zoom >= 7 時自動展開所有 cluster
     // 使用動態的 maxClusterRadius 來確保重疊的標記始終保持群集
     maxClusterRadius: (zoom) => {
       // 根據縮放級別和設備類型動態調整群集半徑
@@ -982,12 +1176,22 @@ const updateMarkers = () => {
     }
   })
 
-  // 添加標記到群集
-  if (showFigures.value) {
-    displayedFigures.value.forEach(figure => {
-      const normalizedCoords = normalizeCoordinates(figure.coordinates)
-      const age = timeMachineMode.value ? (timeFilter.value.start - figure.startYear) : undefined
-      const marker = L.marker(normalizedCoords, {
+  // 使用分散後的座標創建標記
+  spreadMarkers.forEach(markerData => {
+    const { type, data, coordinates } = markerData
+
+    // 調試信息：檢查分散後的座標
+    // if (type === 'figure') {
+      // const figure = data as HistoricalFigure
+      // if (figure.chineseName.includes('白努利') || figure.chineseName.includes('歐拉')) {
+      //   console.log(`創建標記: ${figure.chineseName}, 座標: [${coordinates[0].toFixed(6)}, ${coordinates[1].toFixed(6)}]`)
+      // }
+    // }
+
+    if (type === 'figure') {
+      const figure = data as HistoricalFigure
+      const age = timeMachineMode.value ? (Number(timeFilter.value.start) - figure.startYear) : undefined
+      const marker = L.marker(coordinates, {
         icon: createLabeledIcon('figure', figure.chineseName, (typeof age === 'number' && age >= 0) ? age : undefined),
         type: 'figure' as const
       })
@@ -1037,15 +1241,16 @@ const updateMarkers = () => {
         }
       })
 
-      markerClusterGroup.value?.addLayer(marker)
-    })
-  }
+      // 調試信息：檢查標記是否成功添加到群集
+      // if (figure.chineseName.includes('白努利') || figure.chineseName.includes('歐拉')) {
+      //   console.log(`添加標記到群集: ${figure.chineseName}`)
+      // }
 
-  if (showEvents.value) {
-    displayedEvents.value.forEach(event => {
-      const normalizedCoords = normalizeCoordinates(event.coordinates)
-      const eventYears = timeMachineMode.value ? (timeFilter.value.start - event.startYear) : undefined
-      const marker = L.marker(normalizedCoords, {
+      markerClusterGroup.value?.addLayer(marker)
+    } else if (type === 'event') {
+      const event = data as HistoricalEvent
+      const eventYears = timeMachineMode.value ? (Number(timeFilter.value.start) - event.startYear) : undefined
+      const marker = L.marker(coordinates, {
         icon: createLabeledIcon('event', event.chineseName, (typeof eventYears === 'number' && eventYears >= 0) ? eventYears : undefined),
         type: 'event' as const
       })
@@ -1073,13 +1278,9 @@ const updateMarkers = () => {
         </div>
       `)
       markerClusterGroup.value?.addLayer(marker)
-    })
-  }
-
-  if (showMasterWorks.value) {
-    displayedMasterWorks.value.forEach(work => {
-      const normalizedCoords = normalizeCoordinates(work.coordinates)
-      const marker = L.marker(normalizedCoords, {
+    } else if (type === 'masterwork') {
+      const work = data as MasterWork
+      const marker = L.marker(coordinates, {
         icon: createLabeledIcon('masterwork', work.chineseName),
         type: 'masterwork' as const
       })
@@ -1113,13 +1314,17 @@ const updateMarkers = () => {
         </div>
       `)
       markerClusterGroup.value?.addLayer(marker)
-    })
-  }
+    }
+  })
+
+  // 調試信息：檢查群集是否成功添加到地圖
+  // console.log(`群集包含 ${markerClusterGroup.value?.getLayers().length || 0} 個標記`)
 
   // 安全地將群集添加到地圖
   try {
     if (markerClusterGroup.value) {
       leafletMap.addLayer(markerClusterGroup.value as unknown as L.Layer)
+      // console.log('群集已成功添加到地圖')
     }
   } catch (error) {
     console.warn('添加標記群集到地圖時出現錯誤:', error)
