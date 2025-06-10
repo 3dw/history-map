@@ -377,18 +377,6 @@ export const politicalEvents: HistoricalEvent[] = [
     description: '美國和蘇聯之間的意識形態對抗時期。'
   },
   {
-    id: 'first-sino-japanese-war',
-    chineseName: '甲午戰爭',
-    englishName: 'First Sino-Japanese War',
-    startYear: 1894,
-    endYear: 1895,
-    coordinates: [37.5, 122.1], // 山東威海衛
-    wikipediaUrl: 'https://zh.wikipedia.org/zh-tw/%E7%94%B2%E5%8D%88%E6%88%98%E4%BA%89',
-    category: '政治',
-    tags: ['戰爭', '清朝', '日本', '台灣', '近代史'],
-    description: '清朝與日本於1894年至1895年間爆發的戰爭，最終清朝戰敗並簽訂馬關條約，台灣割讓給日本，對中國與台灣歷史影響深遠。'
-  },
-  {
     id: 'taiwan-under-japanese-rule',
     chineseName: '日治時代',
     englishName: 'Taiwan under Japanese Rule',
