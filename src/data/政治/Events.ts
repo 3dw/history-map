@@ -1320,17 +1320,5 @@ export const politicalEvents: HistoricalEvent[] = [
     description: '蘇聯解體後，俄羅斯聯邦成立，葉爾欽擔任首任總統，開始民主化改革。',
     coordinates: [55.7558, 37.6176], // 莫斯科
     wikipediaUrl: 'https://zh.wikipedia.org/wiki/俄羅斯聯邦',
-  },
-  {
-    id: 'putin-era',
-    chineseName: '普丁時代',
-    englishName: 'Putin Era',
-    category: '政治',
-    tags: ['普丁', '俄羅斯', '總統', '強權'],
-    startYear: 2000,
-    endYear: 2024,
-    description: '弗拉基米爾·普丁擔任俄羅斯總統，恢復俄羅斯國際地位，實行強權政治。',
-    coordinates: [55.7558, 37.6176], // 莫斯科
-    wikipediaUrl: 'https://zh.wikipedia.org/wiki/弗拉基米爾·普丁',
   }
 ]
