@@ -221,7 +221,7 @@ export const socialFigures: HistoricalFigure[] = [
     englishName: 'George Leslie Mackay',
     startYear: 1844,
     endYear: 1901,
-    coordinates: [25.0375, 121.5637], // 台灣台北
+    coordinates: [25.1754, 121.4516], // 台灣淡水
     wikipediaUrl: 'https://zh.wikipedia.org/wiki/馬偕',
     category: '社會',
     tags: ['傳教士', '醫生', '教育家', '台灣', '加拿大'],

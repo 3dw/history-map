@@ -242,5 +242,79 @@ export const artFigures: HistoricalFigure[] = [
     category: '藝術',
     tags: ['作曲家', '現代主義', '俄羅斯', '《春之祭》', '《火鳥》'],
     description: '俄羅斯作曲家，現代主義音樂的重要代表人物，作品如《春之祭》《火鳥》《彼得魯什卡》，對20世紀音樂有重大影響。'
-  }
+  },
+  // 台灣藝術家
+  {
+    id: 'lin-yu-shan',
+    chineseName: '林玉山',
+    englishName: 'Lin Yu‑shan',
+    startYear: 1907,
+    endYear: 2004,
+    coordinates: [23.4809, 120.4480], // 嘉義
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/林玉山',
+    category: '藝術',
+    tags: ['膠彩畫','水墨畫','台展三少年','台灣近代'],
+    description: '擅長膠彩與水墨作品，1927 年入選第 1 屆台灣美術展，代表作《蓮池》已被列為國寶。'
+  },
+  {
+    id: 'liao-xiu-ping',
+    chineseName: '廖修平',
+    englishName: 'Liao Hsiu‑ping',
+    startYear: 1936,
+    coordinates: [25.0330, 121.5654], // 台北
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/廖修平',
+    category: '藝術',
+    tags: ['版畫','現代版畫','臺灣現代版畫之父'],
+    description: '臺灣現代版畫先驅，被譽為「臺灣現代版畫之父」，曾獲多項國際版畫獎項。'
+  },
+  {
+    id: 'chen-ting-shih',
+    chineseName: '陳庭詩',
+    englishName: 'Chen Ting‑shih',
+    startYear: 1913,
+    endYear: 2002,
+    coordinates: [22.6273, 120.3014], // 高雄
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/陳庭詩',
+    category: '藝術',
+    tags: ['版畫','雕塑','現成物藝術'],
+    description: '以甘蔗板版畫聞名，曾獲韓國國際版畫展首獎，後期轉向現成物雕塑，名聲響亮。'
+  },
+
+  // 中國藝術家
+  {
+    id: 'qi-bai-shi',
+    chineseName: '齊白石',
+    englishName: 'Qi Baishi',
+    startYear: 1864,
+    endYear: 1957,
+    coordinates: [27.8290, 112.9370], // 湖南湘潭
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/齐白石',
+    category: '藝術',
+    tags: ['花鳥畫','國畫大師','墨蝦','文化名人'],
+    description: '擅長山水、花鳥、蟲魚，以濃艷明快的色彩和簡練造型聞名，是近現代國畫大師。'
+  },
+  {
+    id: 'xu-bei-hong',
+    chineseName: '徐悲鴻',
+    englishName: 'Xu Beihong',
+    startYear: 1895,
+    endYear: 1953,
+    coordinates: [31.2304, 121.4737], // 上海
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/徐悲鸿',
+    category: '藝術',
+    tags: ['寫實主義','油畫','國畫','馬','教育家'],
+    description: '中國近代畫家，推崇寫實主義，以油畫和國畫著稱，代表作多描繪馬，並曾創辦多所藝術學校。'
+  },
+  {
+    id: 'zhang-da-qian',
+    chineseName: '張大千',
+    englishName: 'Zhang Daqian',
+    startYear: 1899,
+    endYear: 1983,
+    coordinates: [30.6510, 104.0759], // 四川
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/张大千',
+    category: '藝術',
+    tags: ['山水畫','潑墨','青綠山水','融合中西'],
+    description: '兼通青綠與水墨兩宗，以變幻多樣畫風著稱，作品橫跨傳統與創新，是 20 世紀最具影響力的中國畫家之一。'
+  },
 ]

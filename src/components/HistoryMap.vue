@@ -802,7 +802,7 @@ const focusOnMarker = (result: { type: MarkerType; data: HistoricalFigure | Hist
   const leafletMap = map.value?.leafletObject
   if (leafletMap) {
     const coordinates = result.data.coordinates
-    leafletMap.setView(coordinates, 8)
+    leafletMap.setView(coordinates, 7)
   }
 }
 

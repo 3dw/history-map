@@ -842,5 +842,111 @@ export const politicalFigures: HistoricalFigure[] = [
     description: '俄羅斯沙皇，推動西化改革，建立海軍，遷都聖彼得堡，使俄羅斯成為歐洲強國。',
     coordinates: [59.9311, 30.3609], // 聖彼得堡
     wikipediaUrl: 'https://zh.wikipedia.org/wiki/彼得大帝',
-  }
+  },
+  // 鄭成功 (1624–1662)
+  {
+    id: 'zheng-chenggong',
+    chineseName: '鄭成功',
+    englishName: 'Zheng Chenggong',
+    startYear: 1624,
+    endYear: 1662,
+    coordinates: [22.9833, 120.2], // 鹿耳門—台灣首府位置
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/鄭成功',
+    category: '政治',
+    tags: ['國姓爺', '抗清', '收復臺灣', '軍事家'],
+    description: '明末清初軍事將領，驅逐荷蘭殖民者，收復臺灣，建立明鄭政權，對臺灣漢文化的奠基者。'
+  },
+  // 蔣渭水 (1888–1931)
+{
+  id: 'jiang-weishui',
+  chineseName: '蔣渭水',
+  englishName: 'Chiang Wei-shui',
+  startYear: 1888,
+  endYear: 1931,
+  coordinates: [25.0330, 121.5654], // 臺北
+  wikipediaUrl: 'https://zh.wikipedia.org/wiki/蔣渭水',
+  category: '政治',
+  tags: ['醫生', '社會運動', '臺灣民眾黨', '抗日'],
+  description: '臺灣醫師與抗日社會運動領袖，創立臺灣民眾黨，推動自治與社會改革，為日治時期的重要政治人物。'
+},
+// 劉銘傳 (1836–1896)
+{
+  id: 'liu-mingchuan',
+  chineseName: '劉銘傳',
+  englishName: 'Liu Mingchuan',
+  startYear: 1836,
+  endYear: 1896,
+  coordinates: [25.0478, 121.5170], // 臺北
+  wikipediaUrl: 'https://zh.wikipedia.org/wiki/劉銘傳',
+  category: '政治',
+  tags: ['清治臺灣', '首任巡撫', '現代化'],
+  description: '清朝官員，首任臺灣巡撫，推動鐵路、公堂、郵政與教育現代化，被稱為臺灣近代化先驅。'
+},
+// 林獻堂 (1881–1955)
+{
+  id: 'lin-xian-tang',
+  chineseName: '林獻堂',
+  englishName: 'Lin Hsian-tang',
+  startYear: 1881,
+  endYear: 1955,
+  coordinates: [25.0330, 121.5654], // 臺北
+  wikipediaUrl: 'https://zh.wikipedia.org/wiki/林獻堂',
+  category: '政治',
+  tags: ['臺灣民眾黨', '抗日', '臺灣文化協會', '臺灣議會設置請願運動'],
+  description: '臺灣民眾黨創辦人，推動臺灣文化協會與臺灣議會設置請願運動，為臺灣文化運動的重要人物。'
+},
+// 蔣中正 (1887–1975)
+{
+  id: 'chiang-kai-shek',
+  chineseName: '蔣中正',
+  englishName: 'Chiang Kai-shek',
+  startYear: 1887,
+  endYear: 1975,
+  coordinates: [29.5630, 121.4236], // 浙江奉化
+  wikipediaUrl: 'https://zh.wikipedia.org/wiki/蔣中正',
+  category: '政治',
+  tags: ['中華民國總統', '國共內戰', '威權體制'],
+  description: '中華民國領導人，長期統治臺灣，推動政府重建與經濟起飛，但亦建立了威權統治體制。'
+},
+// 蔣經國 (1910–1988)
+{
+  id: 'chiang-ching-kuo',
+  chineseName: '蔣經國',
+  englishName: 'Chiang Ching-kuo',
+  startYear: 1910,
+  endYear: 1988,
+  coordinates: [25.0478, 121.5170], // 臺北
+  wikipediaUrl: 'https://zh.wikipedia.org/wiki/蔣經國',
+  category: '政治',
+  tags: ['中華民國總統', '經濟起飛', '逐步民主化'],
+  description: '蔣中正之子，接任總統，推動經濟發展與最高領導人轉型為民選，促進黨外運動與民主進程。'
+},
+// 李登輝 (1923–2020)
+{
+  id: 'lee-teng-hui',
+  chineseName: '李登輝',
+  englishName: 'Lee Teng-hui',
+  startYear: 1923,
+  endYear: 2020,
+  coordinates: [25.1754, 121.4516], // 三芝
+  wikipediaUrl: 'https://zh.wikipedia.org/wiki/李登輝',
+  category: '政治',
+  tags: ['中華民國總統', '民主化', '本土化'],
+  description: '首位民選總統，推動憲政改革與本土化政治，開啟臺灣民主化新篇章。'
+},
+// 蔡英文 (1956–)，臺灣第一位女性總統（任期：2016–2024）
+{
+  id: 'tsai-ing-wen',
+  chineseName: '蔡英文',
+  englishName: 'Tsai Ing‑wen',
+  startYear: 1956,
+  coordinates: [25.0330, 121.5654], // 臺北
+  wikipediaUrl: 'https://zh.wikipedia.org/wiki/蔡英文',
+  category: '政治',
+  tags: ['總統', '民進黨', '女性領導人', '臺灣', '首位女性總統'],
+  description: '臺灣第一位女性總統，任期2016–2024年，連任成功，任內推動民主深化與國際關係，其卸任後仍以重要國際角色持續活躍。'
+}
+
+
+
 ]
