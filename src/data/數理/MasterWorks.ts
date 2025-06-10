@@ -131,5 +131,32 @@ export const scientificMasterWorks: MasterWork[] = [
     category: '數理',
     tags: ['數學', '代數', '伊斯蘭', '花拉子米'],
     description: '伊斯蘭黃金時代數學家花拉子米所著，系統闡述方程解法，開創代數學科，對後世影響深遠。'
+  },
+  // 熱學相關著作
+  {
+    id: 'traite-elementaire-de-chimie',
+    chineseName: '化學基本論述',
+    englishName: 'Traité Élémentaire de Chimie',
+    author: '安托萬·拉瓦節',
+    authorEnglish: 'Antoine Lavoisier',
+    year: 1789,
+    coordinates: [48.8566, 2.3522], // 法國巴黎
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/化學基本論述',
+    category: '數理',
+    tags: ['化學', '熱學', '燃燒理論', '法國', '科學革命'],
+    description: '拉瓦節的化學著作，系統闡述了燃燒理論和質量守恆定律，奠定了現代化學的基礎。'
+  },
+  {
+    id: 'on-the-mechanical-equivalent-of-heat',
+    chineseName: '論熱的機械當量',
+    englishName: 'On the Mechanical Equivalent of Heat',
+    author: '詹姆斯·普雷斯科特·焦耳',
+    authorEnglish: 'James Prescott Joule',
+    year: 1845,
+    coordinates: [53.4808, -2.2426], // 英國曼徹斯特
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/詹姆斯·普雷斯科特·焦耳',
+    category: '數理',
+    tags: ['物理學', '熱學', '能量守恆', '焦耳定律', '英國'],
+    description: '焦耳的重要論文，確立了熱和機械功之間的定量關係，為熱力學第一定律奠定基礎。'
   }
 ]

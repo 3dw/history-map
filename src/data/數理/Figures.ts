@@ -340,5 +340,30 @@ export const scientificFigures: HistoricalFigure[] = [
     category: '數理',
     tags: ['物理學家', '數學家', '電磁學', '馬克士威方程', '蘇格蘭'],
     description: '蘇格蘭物理學家和數學家，建立了電磁學的統一理論，提出了馬克士威方程組，為現代物理學奠定基礎。'
+  },
+  // 熱學相關科學家
+  {
+    id: 'antoine-lavoisier',
+    chineseName: '安托萬·拉瓦節',
+    englishName: 'Antoine Lavoisier',
+    startYear: 1743,
+    endYear: 1794,
+    coordinates: [48.8566, 2.3522], // 法國巴黎
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/安托萬·拉瓦節',
+    category: '數理',
+    tags: ['化學家', '物理學家', '熱學', '燃燒理論', '法國', '科學革命'],
+    description: '法國化學家，被稱為「現代化學之父」，發現了燃燒的本質，建立了質量守恆定律，對熱學和化學有重要貢獻。'
+  },
+  {
+    id: 'james-prescott-joule',
+    chineseName: '詹姆斯·普雷斯科特·焦耳',
+    englishName: 'James Prescott Joule',
+    startYear: 1818,
+    endYear: 1889,
+    coordinates: [53.4808, -2.2426], // 英國曼徹斯特
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/詹姆斯·普雷斯科特·焦耳',
+    category: '數理',
+    tags: ['物理學家', '熱學', '能量守恆', '焦耳定律', '英國'],
+    description: '英國物理學家，發現了熱和機械功之間的關係，建立了能量守恆定律，熱量單位以他的名字命名。'
   }
 ]
