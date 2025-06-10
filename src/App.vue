@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <HistoryMap />
+
+    <router-view />
   </div>
 </template>
 
 <script setup lang="ts">
-import HistoryMap from '@/components/HistoryMap.vue'
+  import { RouterView } from 'vue-router'
 </script>
 
 <style>

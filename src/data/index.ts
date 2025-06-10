@@ -4,9 +4,9 @@ export { socialFigures } from './社會/Figures'
 export { socialMasterWorks } from './社會/MasterWorks'
 
 // 數理類別
-export { mathematicalEvents } from './數理/Events'
-export { mathematicalFigures } from './數理/Figures'
-export { mathematicalMasterWorks } from './數理/MasterWorks'
+export { mathematicalEvents } from './數理'
+export { mathematicalFigures } from './數理'
+export { mathematicalMasterWorks } from './數理'
 
 // 文化類別
 export { culturalEvents } from './文化/Events'
@@ -24,14 +24,14 @@ export { explorationFigures } from './探險/Figures'
 export { explorationMasterWorks } from './探險/MasterWorks'
 
 // 藝術類別
-export { artisticEvents } from './藝術/Events'
-export { artisticFigures } from './藝術/Figures'
-export { artisticMasterWorks } from './藝術/MasterWorks'
+export { artisticEvents } from './藝術'
+export { artisticFigures } from './藝術'
+export { artisticMasterWorks } from './藝術'
 
 // 科技類別
-export { technologicalEvents } from './科技/Events'
-export { technologicalFigures } from './科技/Figures'
-export { technologicalMasterWorks } from './科技/MasterWorks'
+export { technologicalEvents } from './科技'
+export { technologicalFigures } from './科技'
+export { technologicalMasterWorks } from './科技'
 
 // 整合所有資料
 import { socialEvents, socialFigures, socialMasterWorks } from './社會'

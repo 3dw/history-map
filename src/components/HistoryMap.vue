@@ -237,6 +237,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, nextTick, watch } from 'vue'
+import { useRouter } from 'vue-router'
 import { LMap, LTileLayer } from '@vue-leaflet/vue-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
@@ -252,6 +253,9 @@ import type { HistoricalFigure, HistoricalEvent, MasterWork, MarkerType, Categor
 // 導入樣式
 import '@/assets/main.css'
 import '@/assets/rwd.css'
+
+// 路由
+const router = useRouter()
 
 // 擴展 MarkerOptions 類型
 declare module 'leaflet' {
@@ -738,29 +742,50 @@ const updateMarkers = () => {
         icon: createLabeledIcon('figure', figure.chineseName, (typeof age === 'number' && age >= 0) ? age : undefined),
         type: 'figure' as const
       })
-      marker.bindPopup(`
-        <div class="marker-popup figure-popup">
-          <h4>${figure.chineseName}</h4>
-          <p class="english-name">${figure.englishName}</p>
-          <div class="dates">
-            <span class="date-range">
-              ${formatYear(figure.startYear)} - ${figure.endYear ? formatYear(figure.endYear) : '？'}
-            </span>
-          </div>
-          <div class="category">
-            ${figure.category}
-          </div>
-          <div class="tags">
-            ${figure.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-          </div>
-          <div class="description">
-            ${figure.description}
-          </div>
+
+      // 創建彈出窗口內容
+      const popupContent = document.createElement('div')
+      popupContent.className = 'marker-popup figure-popup'
+      popupContent.innerHTML = `
+        <h4>${figure.chineseName}</h4>
+        <p class="english-name">${figure.englishName}</p>
+        <div class="dates">
+          <span class="date-range">
+            ${formatYear(figure.startYear)} - ${figure.endYear ? formatYear(figure.endYear) : '？'}
+          </span>
+        </div>
+        <div class="category">
+          ${figure.category}
+        </div>
+        <div class="tags">
+          ${figure.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+        </div>
+        <div class="description">
+          ${figure.description}
+        </div>
+        <div class="popup-actions">
+          <button class="detail-btn" data-figure-name="${figure.chineseName}">
+            👤 查看詳情
+          </button>
           <a href="${figure.wikipediaUrl}" target="_blank" class="wiki-link">
             📖 維基百科
           </a>
         </div>
-      `)
+      `
+
+      // 綁定彈出窗口
+      marker.bindPopup(popupContent)
+
+      // 監聽彈出窗口打開事件
+      marker.on('popupopen', () => {
+        const detailBtn = popupContent.querySelector('.detail-btn')
+        if (detailBtn) {
+          detailBtn.addEventListener('click', () => {
+            router.push(`/figure/${figure.chineseName}`)
+          })
+        }
+      })
+
       markerClusterGroup.value?.addLayer(marker)
     })
   }
