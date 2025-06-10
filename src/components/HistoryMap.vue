@@ -1,7 +1,178 @@
 <template>
   <div class="history-map-container">
+    <!-- 手機版選單按鈕 -->
+    <button
+      class="mobile-menu-toggle"
+      :class="{ active: mobileMenuOpen }"
+      @click="toggleMobileMenu"
+      v-if="isMobile"
+    >
+      ⚙️
+    </button>
+
+    <!-- 手機版設定面板 -->
+    <div class="mobile-settings-panel" :class="{ open: mobileMenuOpen }" v-if="isMobile">
+      <div class="mobile-settings-header">
+        <h2>歷史地圖設定</h2>
+        <button class="mobile-settings-close" @click="closeMobileMenu">✕</button>
+      </div>
+      <div class="mobile-settings-content">
+        <!-- 搜尋框 -->
+        <div class="search-box">
+          <input
+            v-model="searchKeyword"
+            type="text"
+            placeholder="搜尋歷史人物、事件或傳世之作..."
+            class="search-input"
+            @input="updateSearchResults"
+          />
+          <button class="search-clear" @click="clearSearch" v-if="searchKeyword">
+            ✕
+          </button>
+        </div>
+
+        <!-- 搜尋結果 -->
+        <div class="search-results" v-if="searchKeyword && searchResults.length > 0">
+          <div class="search-results-header">
+            找到 {{ searchResults.length }} 個結果
+          </div>
+          <div class="search-result-items">
+            <div
+              v-for="result in searchResults"
+              :key="`${result.type}-${result.data.id}`"
+              class="search-result-item"
+              @click="focusOnMarker(result)"
+            >
+              <div class="result-icon">
+                {{ getResultIcon(result.type) }}
+              </div>
+              <div class="result-content">
+                <div class="result-title">{{ result.data.chineseName }}</div>
+                <div class="result-subtitle">{{ getResultSubtitle(result) }}</div>
+              </div>
+              <div class="result-actions">
+                <button
+                  class="time-machine-btn"
+                  @click="goToTimeMachine(result)"
+                  title="坐時光機去這個時空"
+                >
+                  🕰️ 坐時光機去{{ result.data.chineseName }}的時空
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 類別篩選 -->
+        <div class="category-filter">
+          <h3>類別篩選</h3>
+          <div class="category-tags">
+            <label
+              v-for="category in availableCategories"
+              :key="category"
+              class="category-tag"
+              :class="{ active: selectedCategories.includes(category) }"
+            >
+              <input
+                type="checkbox"
+                :value="category"
+                v-model="selectedCategories"
+                @change="updateMarkers"
+              />
+              {{ category }}
+            </label>
+          </div>
+        </div>
+
+        <!-- 標籤篩選 -->
+        <!--<div class="tag-filter">
+          <h3>標籤篩選</h3>
+          <div class="tag-search">
+            <input
+              v-model="searchTag"
+              type="text"
+              placeholder="搜尋標籤..."
+              class="tag-search-input"
+            />
+          </div>
+          <div class="tag-tags">
+            <label
+              v-for="tag in filteredTags"
+              :key="tag"
+              class="tag-tag"
+              :class="{ active: selectedTags.includes(tag) }"
+            >
+              <input
+                type="checkbox"
+                :value="tag"
+                v-model="selectedTags"
+                @change="updateMarkers"
+              />
+              {{ tag }}
+            </label>
+          </div>
+        </div> -->
+
+        <!-- 基本篩選控制項 -->
+        <div class="filter-controls">
+          <div class="filter-group">
+            <label>
+              <input
+                v-model="showFigures"
+                type="checkbox"
+                @change="updateMarkers"
+              />
+              <span class="filter-count">
+                {{ getResultIcon('figure') }}
+                {{ filteredFigures.length }}
+              </span>
+            </label>
+          </div>
+          <div class="filter-group">
+            <label>
+              <input
+                v-model="showEvents"
+                type="checkbox"
+                @change="updateMarkers"
+              />
+              <span class="filter-count">
+                {{ getResultIcon('event') }}
+                {{ filteredEvents.length }}
+              </span>
+            </label>
+          </div>
+          <div class="filter-group">
+            <label>
+              <input
+                v-model="showMasterWorks"
+                type="checkbox"
+                @change="updateMarkers"
+              />
+              <span class="filter-count">
+                {{ getResultIcon('masterwork') }}
+                {{ filteredMasterWorks.length }}
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 時間篩選器 -->
+        <div class="time-filter">
+          <h3>時間範圍</h3>
+          <div class="mode-switch">
+            <input type="checkbox" v-model="timeMachineMode" />
+            <label> 時光機模式 ({{ timeMachineMode ? '開' : '關' }})</label>
+          </div>
+          <input type="range" min="-3000" max="2024" step="1" v-model="timeFilter.start" /> {{ timeFilter.start }}~
+          <input type="range" min="-3000" max="2024" step="1" v-model="timeFilter.end" /> {{ timeFilter.end }}
+          <br/>
+          <small>註：西元前請使用負值，例如西元前500年輸入 -500</small>
+        </div>
+      </div>
+    </div>
+
     <!-- 搜尋區域 - 窄螢幕時在上方 -->
-    <div class="search-panel search-panel-top">
+    <div class="search-panel search-panel-top" v-if="!isMobile">
       <div class="search-box">
         <input
           v-model="searchKeyword"
@@ -49,7 +220,7 @@
     </div>
 
     <!-- 地圖控制面板 -->
-    <div class="map-controls">
+    <div class="map-controls" v-if="!isMobile">
       <h2 class="title">歷史地圖</h2>
 
       <!-- 類別篩選 -->
@@ -155,9 +326,7 @@
           <input type="checkbox" v-model="timeMachineMode" />
           <label> 時光機模式 ({{ timeMachineMode ? '開' : '關' }})</label>
         </div>
-        <input type="range" min="-3000" max="2024" step="1" v-model="timeFilter.start" /> {{ timeFilter.start }}
-        <br/>
-        至
+        <input type="range" min="-3000" max="2024" step="1" v-model="timeFilter.start" /> {{ timeFilter.start }} ~
         <br/>
         <input type="range" min="-3000" max="2024" step="1" v-model="timeFilter.end" /> {{ timeFilter.end }}
         <br/>
@@ -183,7 +352,7 @@
     </div>
 
     <!-- 搜尋區域 - 寬螢幕時在右側 -->
-    <div class="search-panel search-panel-side">
+    <div class="search-panel search-panel-side" v-if="!isMobile">
       <div class="search-box">
         <input
           v-model="searchKeyword"
@@ -256,6 +425,25 @@ import '@/assets/rwd.css'
 
 // 路由
 const router = useRouter()
+
+// 手機版相關狀態
+const isMobile = ref(false)
+const mobileMenuOpen = ref(false)
+
+// 檢測是否為手機版
+const checkMobile = () => {
+  isMobile.value = window.innerWidth < 1024
+}
+
+// 切換手機版選單
+const toggleMobileMenu = () => {
+  mobileMenuOpen.value = !mobileMenuOpen.value
+}
+
+// 關閉手機版選單
+const closeMobileMenu = () => {
+  mobileMenuOpen.value = false
+}
 
 // 擴展 MarkerOptions 類型
 declare module 'leaflet' {
@@ -341,6 +529,14 @@ const createLabeledIcon = (type: 'figure' | 'event' | 'masterwork', name: string
   if (type === 'event' && typeof ageOrYears === 'number' && ageOrYears >= 0) {
     label += `（已進行${ageOrYears}年）`
   }
+
+  // 根據設備類型調整圖標大小
+  const isMobileDevice = window.innerWidth < 1024
+  const iconWidth = isMobileDevice ? 160 : 140  // 手機版更寬
+  const iconHeight = isMobileDevice ? 50 : 45   // 手機版更高
+  const anchorX = iconWidth / 2
+  const anchorY = iconHeight / 2
+
   return L.divIcon({
     html: `
       <div class="labeled-marker">
@@ -349,8 +545,8 @@ const createLabeledIcon = (type: 'figure' | 'event' | 'masterwork', name: string
       </div>
     `,
     className: 'custom-div-icon-labeled',
-    iconSize: [120, 40],
-    iconAnchor: [60, 20]
+    iconSize: [iconWidth, iconHeight],
+    iconAnchor: [anchorX, anchorY]
   })
 }
 
@@ -664,6 +860,17 @@ const onMapReady = () => {
         }
       })
 
+      // 添加地圖點擊事件監聽器
+      mapInstance.on('click', () => {
+        // 如果是手機版且設定面板是開啟的，則關閉它
+        if (isMobile.value && mobileMenuOpen.value) {
+          // 延遲一點時間確保不是點擊標記
+          setTimeout(() => {
+            closeMobileMenu()
+          }, 100)
+        }
+      })
+
       setTimeout(() => {
         mapInstance.invalidateSize()
         // 初始化標記
@@ -704,8 +911,11 @@ const updateMarkers = () => {
     clusterPane: 'markerPane',
     // 使用動態的 maxClusterRadius 來確保重疊的標記始終保持群集
     maxClusterRadius: (zoom) => {
-      // 根據縮放級別動態調整群集半徑
-      return Math.max(50, 100 - (zoom * 5))
+      // 根據縮放級別和設備類型動態調整群集半徑
+      const isMobileDevice = window.innerWidth < 1024
+      const baseRadius = isMobileDevice ? 120 : 100  // 手機版更大的群集半徑
+      const zoomFactor = Math.max(1, zoom - 1) * 10
+      return Math.max(baseRadius, baseRadius - zoomFactor)
     },
     iconCreateFunction: (cluster) => {
       const markers = cluster.getAllChildMarkers() as CustomMarker[]
@@ -714,7 +924,9 @@ const updateMarkers = () => {
       const workCount = markers.filter(m => m.options.type === 'masterwork').length
 
       // 根據群集大小調整圖標大小
-      const size = Math.min(40 + (markers.length * 2), 60)
+      const isMobileDevice = window.innerWidth < 1024
+      const baseSize = isMobileDevice ? 50 : 45
+      const size = Math.min(baseSize + (markers.length * 3), isMobileDevice ? 80 : 70)
 
       return L.divIcon({
         html: `
@@ -885,11 +1097,20 @@ onMounted(() => {
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
   })
 
+  // 初始化手機版檢測
+  checkMobile()
+
   // 監聽視窗大小變化
   const handleResize = () => {
     if (map.value?.leafletObject) {
       map.value.leafletObject.invalidateSize()
     }
+    checkMobile()
+
+    // 重新更新標記以調整圖標大小
+    setTimeout(() => {
+      updateMarkers()
+    }, 100)
   }
 
   window.addEventListener('resize', handleResize)

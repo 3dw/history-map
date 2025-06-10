@@ -7,29 +7,135 @@
     overflow: hidden;
   }
 
+  /* 隱藏原本的設定面板 */
   .map-controls {
-    width: 100%;
-    min-width: 100%;
-    max-height: 40vh;
-    overflow-y: auto;
-    border-right: none;
-    border-bottom: 1px solid #dee2e6;
+    display: none;
   }
 
-  .map-wrapper {
-    height: calc(60vh - 60px);
-    min-height: 300px;
-    overflow: hidden;
-  }
-
+  /* 隱藏頂部搜尋面板 */
   .search-panel-top {
-    height: 60px;
+    display: none;
+  }
+
+  /* 地圖容器佔滿整個螢幕 */
+  .map-wrapper {
+    height: 100vh;
+    width: 100vw;
     overflow: hidden;
   }
 
-  .category-tags,
-  .tag-tags {
-    max-height: 150px;
+  /* 側邊搜尋面板在手機版也隱藏 */
+  .search-panel-side {
+    display: none;
+  }
+
+  /* 手機版搜尋結果浮動顯示 */
+  .mobile-search-results {
+    position: absolute;
+    top: 80px;
+    left: 15px;
+    right: 15px;
+    max-height: 60vh;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow-y: auto;
+    display: none;
+  }
+
+  .mobile-search-results.show {
+    display: block;
+  }
+
+  /* 手機版設定面板優化 */
+  .mobile-settings-content {
+    padding: 15px;
+  }
+
+  .mobile-settings-content .search-box {
+    margin-bottom: 20px;
+  }
+
+  .mobile-settings-content .category-filter,
+  .mobile-settings-content .tag-filter,
+  .mobile-settings-content .filter-controls,
+  .mobile-settings-content .time-filter {
+    margin-bottom: 25px;
+  }
+
+  .mobile-settings-content h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #333;
+  }
+
+  .mobile-settings-content .category-tags,
+  .mobile-settings-content .tag-tags {
+    max-height: 120px;
+    gap: 8px;
+  }
+
+  .mobile-settings-content .category-tag,
+  .mobile-settings-content .tag-tag {
+    font-size: 13px;
+    padding: 6px 10px;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-settings-content .filter-group {
+    margin-bottom: 15px;
+  }
+
+  .mobile-settings-content .filter-group label {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+  }
+
+  .mobile-settings-content .time-filter input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .mobile-settings-content .mode-switch {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mobile-settings-content .mode-switch label {
+    font-size: 14px;
+  }
+
+  .mobile-settings-content small {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.4;
+  }
+
+  /* 手機版搜尋結果優化 */
+  .mobile-settings-content .search-results {
+    margin-bottom: 20px;
+  }
+
+  .mobile-settings-content .search-result-item {
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+  }
+
+  .mobile-settings-content .time-machine-btn {
+    font-size: 11px;
+    padding: 6px 10px;
+    white-space: normal;
+    line-height: 1.2;
   }
 }
 
@@ -37,6 +143,16 @@
 @media (min-width: 1024px) {
   .history-map-container {
     flex-direction: row;
+  }
+
+  /* 隱藏手機版選單按鈕 */
+  .mobile-menu-toggle {
+    display: none;
+  }
+
+  /* 隱藏手機版設定面板 */
+  .mobile-settings-panel {
+    display: none;
   }
 
   .search-panel-top {
@@ -55,6 +171,7 @@
   }
 
   .map-controls {
+    display: block;
     order: 1;
     max-height: 100vh;
   }
@@ -137,8 +254,13 @@
     font-size: 18px;
   }
 
+  .category-filter {
+    padding: .4em !important;
+  }
+
   .filter-controls {
-    margin-bottom: 20px;
+    margin-bottom: 0px !important;
+    max-height: 1.4em;
   }
 
   .filter-group {
@@ -164,6 +286,10 @@
   .tag-tag {
     font-size: 11px;
     padding: 3px 6px;
+  }
+
+  .result-icon {
+    display: none;
   }
 }
 
