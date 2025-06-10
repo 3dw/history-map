@@ -332,10 +332,20 @@
           <input type="checkbox" v-model="timeMachineMode" />
           <label> 時光機模式 ({{ timeMachineMode ? '開' : '關' }})</label>
         </div>
+
+        <div v-show="timeMachineMode">
+          <!-- 自動播放速度 -->
+          <input type="range" min="-10" max="10" step="1" v-model="autoPlaySpeed" /> {{ autoPlaySpeed }}x速 
+        </div>
+
         <input type="range" min="-3000" max="2024" step="1" v-model="timeFilter.start" /> {{ timeFilter.start }} ~
         <br/>
-        <input type="range" min="-3000" max="2024" step="1" v-model="timeFilter.end" /> {{ timeFilter.end }}
+        
+        <div v-show="!timeMachineMode">
+          <input type="range" min="-3000" max="2024" step="1" v-model="timeFilter.end" /> {{ timeFilter.end }}
+        </div>
         <br/>
+
         <small>註：西元前請使用負值，例如西元前500年輸入 -500</small>
       </div>
     </div>
@@ -502,6 +512,9 @@ const timeFilter = ref({
 
 // 時光機模式
 const timeMachineMode = ref(false)
+
+// 自動播放速度
+const autoPlaySpeed = ref(0)
 
 // 搜尋功能
 const searchKeyword = ref('')
@@ -830,6 +843,7 @@ watch(searchResults, () => {
 // 監聽時光機模式
 watch(timeMachineMode, () => {
   if (timeMachineMode.value) {
+    autoPlaySpeed.value = 1
     timeFilter.value.end = timeFilter.value.start
   } else {
     timeFilter.value.start = -3000
@@ -855,6 +869,12 @@ watch(timeFilter, (newVal) => {
 
 const onMapReady = () => {
   console.log('地圖已準備就緒')
+
+  setInterval(() => {
+    if (timeMachineMode.value) {
+      timeFilter.value.start = parseInt(timeFilter.value.start) + parseInt(autoPlaySpeed.value)
+    }
+  }, 1000)
 
   // 確保地圖尺寸正確並初始化標記
   nextTick(() => {
