@@ -679,6 +679,18 @@ a,
   font-size: 18px;
 }
 
+.category-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.category-value {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+}
+
 .category-tags,
 .tag-tags {
   display: flex;
@@ -702,11 +714,13 @@ a,
   font-size: 14px;
 }
 
+.category-value:hover,
 .category-tag:hover,
 .tag-tag:hover {
   background: #e9ecef;
 }
 
+.category-value.active,
 .category-tag.active,
 .tag-tag.active {
   background: #007bff;
@@ -714,6 +728,7 @@ a,
   border-color: #0056b3;
 }
 
+.category-value input,
 .category-tag input,
 .tag-tag input {
   display: none;

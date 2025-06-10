@@ -68,6 +68,12 @@
         <!-- 類別篩選 -->
         <div class="category-filter">
           <h3>類別篩選</h3>
+          <div class="category-values">
+            <label v-for="value in availableValues" :key="value.name" class="category-value" :class="{ active: selectedValues.includes(value.name) }">
+            <input type="checkbox" :value="value.name" v-model="selectedValues" @change="updateMarkers" />
+            {{ value.name }}
+          </label>
+          </div>
           <div class="category-tags">
             <label
               v-for="category in availableCategories"
@@ -232,6 +238,12 @@
       <!-- 類別篩選 -->
       <div class="category-filter">
         <h3>類別篩選</h3>
+        <div class="category-values">
+          <label v-for="value in availableValues" :key="value.name" class="category-value" :class="{ active: selectedValues.includes(value.name) }">
+            <input type="checkbox" :value="value.name" v-model="selectedValues" @change="updateMarkers" />
+            {{ value.name }}
+          </label>
+        </div>
         <div class="category-tags">
           <label
             v-for="category in availableCategories"
@@ -577,7 +589,23 @@ const createLabeledIcon = (type: 'figure' | 'event' | 'masterwork', name: string
 // 類別和標籤篩選
 const selectedCategories = ref<Category[]>([])
 const selectedTags = ref<string[]>([])
+const selectedValues = ref<string[]>([])
 const searchTag = ref('')
+
+const availableValues = ref([
+  {
+    name: '真',
+    categories: ['數理', '科技'] as Category[]
+  },
+  {
+    name: '善',
+    categories: ['文化', '社會'] as Category[]
+  },
+  {
+    name: '美',
+    categories: ['藝術'] as Category[]
+  }
+])
 
 // 獲取所有可用的類別和標籤
 const availableCategories = computed(() => {
@@ -829,6 +857,23 @@ const formatYear = (year: number): string => {
   }
   return `西元${year}年`
 }
+
+// 監聽類別篩選的變化
+watch(selectedValues, () => {
+  selectedCategories.value = []
+  // 將 selectedValues 的值的 categories 轉換為 category
+  selectedValues.value.forEach(value => {
+    const valueData = availableValues.value.find(v => v.name === value)
+    if (valueData) {
+      valueData.categories.forEach(category => {
+        selectedCategories.value.push(category as Category)
+      })
+    }
+  })
+
+  // console.log(selectedCategories.value)
+  updateMarkers()
+})
 
 // 監聽過濾條件的變化
 watch([showFigures, showEvents, showMasterWorks, timeFilter, selectedCategories, selectedTags], () => {
