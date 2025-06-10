@@ -1320,5 +1320,74 @@ export const politicalEvents: HistoricalEvent[] = [
     description: '蘇聯解體後，俄羅斯聯邦成立，葉爾欽擔任首任總統，開始民主化改革。',
     coordinates: [55.7558, 37.6176], // 莫斯科
     wikipediaUrl: 'https://zh.wikipedia.org/wiki/俄羅斯聯邦',
-  }
+  },
+  // 台美斷交（美國與中華民國斷交）
+{
+  id: 'taiwan-us-diplomatic-break',
+  chineseName: '台美斷交',
+  englishName: 'Taiwan–United States Diplomatic Break',
+  startYear: 1979,
+  endYear: 1979,
+  coordinates: [38.9072, -77.0369], // 華盛頓特區
+  wikipediaUrl: 'https://en.wikipedia.org/wiki/Taiwan%E2%80%93United_States_relations',
+  category: '政治',
+  tags: ['外交', '美國', '中華民國', '台灣關係法'],
+  description: '1979年1月1日，美國終止與中華民國（台灣）的外交關係，轉而承認中華人民共和國；同年4月10日通過《台灣關係法》以維持非正式關係與安全保障。'
+},
+
+// 台灣退出聯合國
+{
+  id: 'taiwan-withdraw-from-un',
+  chineseName: '台灣退出聯合國',
+  englishName: 'Taiwan Withdrawal from UN',
+  startYear: 1971,
+  endYear: 1971,
+  coordinates: [40.0, 20.0], // 聯合國總部紐約，粗略座標
+  wikipediaUrl: 'https://en.wikipedia.org/wiki/United_Nations_General_Assembly_Resolution_2758_%28XXVI%29',
+  category: '政治',
+  tags: ['聯合國', '國際承認', '中華人民共和國', '中華民國'],
+  description: '1971年聯合國大會通過2758號決議，將中華人民共和國取代中華民國成為中國唯一合法代表，導致台灣退出聯合國體系。'
+},
+
+// 美麗島事件（高雄事件）
+{
+  id: 'formosa-incident',
+  chineseName: '美麗島事件',
+  englishName: 'Formosa (Kaohsiung) Incident',
+  startYear: 1979,
+  endYear: 1979,
+  coordinates: [22.6273, 120.3014], // 高雄市
+  wikipediaUrl: 'https://en.wikipedia.org/wiki/Kaohsiung_Incident',
+  category: '政治',
+  tags: ['高雄事件', '民主運動', '美麗島雜誌', '戒嚴時期'],
+  description: '1979年12月10日，美麗島雜誌主辦示威紀念人權日，遭政府逮捕群眾，觸發高雄事件，是台灣民主轉型的重要里程碑。'
+},
+
+// 太陽花學運
+{
+  id: 'sunflower-movement',
+  chineseName: '太陽花學運',
+  englishName: 'Sunflower Movement',
+  startYear: 2014,
+  endYear: 2014,
+  coordinates: [25.0375, 121.5637], // 台北立法院
+  wikipediaUrl: 'https://en.wikipedia.org/wiki/Sunflower_Student_Movement',
+  category: '政治',
+  tags: ['學運', '公民運動', '服貿', '民主深化'],
+  description: '2014年3月18日至4月10日，大批學生及公民佔領立法院，抗議兩岸服貿協議未逐條審查，促成台灣民主深化與公民參與力量崛起。'
+},
+
+// 台灣加入WHA
+{
+  id: 'taiwan-joining-wha',
+  chineseName: '台灣加入WHA',
+  englishName: 'Taiwan Joining WHA',
+  startYear: 2009,
+  endYear: 2016,
+  coordinates: [41.2915, 69.2589], // 世界衛生大會（瑞士日內瓦附近）
+  wikipediaUrl: 'https://history.state.gov/…', // 雖無官方wiki，參考WHO歷史
+  category: '政治',
+  tags: ['WHO', 'WHA', '國際參與', '中華台北'],
+  description: '2009–2016年間，台灣以「中華台北」身分受邀出席世界衛生大會，為自1971年退出聯合國後少數重要國際參與。'
+},
 ]
