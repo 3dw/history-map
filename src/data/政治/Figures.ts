@@ -548,5 +548,55 @@ export const politicalFigures: HistoricalFigure[] = [
     category: '政治',
     tags: ['政治家', '人文主義者', '佛羅倫斯', '文藝復興', '黑死病'],
     description: '義大利政治家和人文主義者，佛羅倫斯共和國的執政官，黑死病後期的重要政治人物，對文藝復興有重要影響。'
+  },
+  // 蒙古帝國重要人物
+  {
+    id: 'genghis-khan',
+    chineseName: '成吉思汗',
+    englishName: 'Genghis Khan',
+    startYear: 1162,
+    endYear: 1227,
+    coordinates: [47.9184, 106.9177], // 蒙古烏蘭巴托
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/成吉思汗',
+    category: '政治',
+    tags: ['蒙古帝國', '征服者', '軍事家', '政治家', '亞洲'],
+    description: '蒙古帝國的建立者，統一蒙古各部，建立龐大的蒙古帝國，是歷史上最偉大的征服者之一。'
+  },
+  {
+    id: 'kublai-khan',
+    chineseName: '忽必烈',
+    englishName: 'Kublai Khan',
+    startYear: 1215,
+    endYear: 1294,
+    coordinates: [39.9042, 116.4074], // 中國北京
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/忽必烈',
+    category: '政治',
+    tags: ['蒙古帝國', '元朝', '皇帝', '政治家', '中國'],
+    description: '成吉思汗之孫，建立元朝，統一中國，是蒙古帝國第五位大汗，也是中國歷史上第一位非漢族皇帝。'
+  },
+  {
+    id: 'batu-khan',
+    chineseName: '拔都',
+    englishName: 'Batu Khan',
+    startYear: 1207,
+    endYear: 1255,
+    coordinates: [55.7558, 37.6176], // 俄羅斯莫斯科
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/拔都',
+    category: '政治',
+    tags: ['蒙古帝國', '金帳汗國', '征服者', '軍事家', '歐洲'],
+    description: '成吉思汗之孫，建立金帳汗國，領導蒙古西征，征服俄羅斯和東歐大片地區。'
+  },
+  // 南宋重要人物
+  {
+    id: 'wen-tianxiang',
+    chineseName: '文天祥',
+    englishName: 'Wen Tianxiang',
+    startYear: 1236,
+    endYear: 1283,
+    coordinates: [28.6820, 115.8579], // 中國吉安
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/文天祥',
+    category: '政治',
+    tags: ['南宋', '愛國者', '詩人', '抗元', '中國'],
+    description: '南宋末年的愛國詩人和政治家，抗擊蒙古入侵，被俘後寧死不屈，留下「人生自古誰無死，留取丹心照汗青」的千古名句。'
   }
 ]

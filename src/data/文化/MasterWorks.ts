@@ -222,7 +222,34 @@ export const culturalMasterWorks: MasterWork[] = [
     coordinates: [44.8378, -0.5792], // 法國波爾多
     wikipediaUrl: 'https://zh.wikipedia.org/wiki/居伊·德·肖利亞克',
     category: '文化',
-    tags: ['醫學', '外科學', '黑死病', '中世紀醫學', '法國'],
-    description: '肖利亞克的醫學著作，是中世紀最重要的外科學著作之一，對黑死病等疾病的治療有詳細記載。'
+    tags: ['醫學', '外科', '黑死病', '中世紀', '法國'],
+    description: '中世紀重要的外科醫學著作，對黑死病等疾病有詳細描述，是中世紀醫學的重要文獻。'
+  },
+  // 文天祥的重要著作
+  {
+    id: 'zhengqi-ge',
+    chineseName: '正氣歌',
+    englishName: 'Song of Righteousness',
+    author: '文天祥',
+    authorEnglish: 'Wen Tianxiang',
+    year: 1281,
+    coordinates: [39.9042, 116.4074], // 中國北京
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/正氣歌',
+    category: '文化',
+    tags: ['詩歌', '愛國', '南宋', '抗元', '中國'],
+    description: '文天祥在被囚期間創作的愛國詩歌，表達了堅貞不屈的民族氣節和愛國精神，是中國文學史上的經典作品。'
+  },
+  {
+    id: 'guo-ling-ding-yang',
+    chineseName: '過零丁洋',
+    englishName: 'Crossing the Lonely Ocean',
+    author: '文天祥',
+    authorEnglish: 'Wen Tianxiang',
+    year: 1279,
+    coordinates: [22.1667, 113.5000], // 廣東崖山
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/過零丁洋',
+    category: '文化',
+    tags: ['詩歌', '愛國', '南宋', '崖山', '中國'],
+    description: '文天祥在崖山海戰後被俘途中所作的詩，其中「人生自古誰無死，留取丹心照汗青」成為千古名句。'
   }
 ]

@@ -919,5 +919,126 @@ export const politicalEvents: HistoricalEvent[] = [
     category: '政治',
     tags: ['十字軍', '宗教戰爭', '阿卡', '馬木留克', '耶路撒冷王國'],
     description: '馬木留克蘇丹國攻佔阿卡，最後一個十字軍據點淪陷，標誌著十字軍東征時代的結束。'
+  },
+  // 蒙古帝國與南宋重大事件
+  {
+    id: 'mongol-unification',
+    chineseName: '蒙古統一',
+    englishName: 'Mongol Unification',
+    startYear: 1206,
+    endYear: 1206,
+    coordinates: [47.9184, 106.9177], // 蒙古烏蘭巴托
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/成吉思汗',
+    category: '政治',
+    tags: ['蒙古帝國', '成吉思汗', '統一', '亞洲', '征服'],
+    description: '成吉思汗統一蒙古各部，建立蒙古帝國，開始了蒙古帝國的擴張時代。'
+  },
+  {
+    id: 'mongol-conquest-of-china',
+    chineseName: '蒙古征服中國',
+    englishName: 'Mongol Conquest of China',
+    startYear: 1211,
+    endYear: 1279,
+    coordinates: [39.9042, 116.4074], // 中國北京
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/蒙古征服中國',
+    category: '政治',
+    tags: ['蒙古帝國', '征服', '中國', '金朝', '南宋'],
+    description: '蒙古帝國征服中國的過程，先後滅亡金朝和南宋，統一中國全境。'
+  },
+  {
+    id: 'battle-of-yamen',
+    chineseName: '崖山海戰',
+    englishName: 'Battle of Yamen',
+    startYear: 1279,
+    endYear: 1279,
+    coordinates: [22.1667, 113.5000], // 廣東崖山
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/崖山海戰',
+    category: '政治',
+    tags: ['海戰', '南宋', '蒙古', '崖山', '中國'],
+    description: '南宋與蒙古的最後一戰，南宋軍隊在崖山海戰中全軍覆沒，南宋滅亡，標誌著中國歷史上第一次完全被外族統治。'
+  },
+  {
+    id: 'yuan-dynasty-establishment',
+    chineseName: '元朝建立',
+    englishName: 'Establishment of Yuan Dynasty',
+    startYear: 1271,
+    endYear: 1271,
+    coordinates: [39.9042, 116.4074], // 中國北京
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/元朝',
+    category: '政治',
+    tags: ['元朝', '忽必烈', '中國', '蒙古帝國', '王朝'],
+    description: '忽必烈建立元朝，定都大都（今北京），是中國歷史上第一個由少數民族建立的全國性政權。'
+  },
+  {
+    id: 'mongol-invasion-of-europe',
+    chineseName: '蒙古西征歐洲',
+    englishName: 'Mongol Invasion of Europe',
+    startYear: 1236,
+    endYear: 1242,
+    coordinates: [55.7558, 37.6176], // 俄羅斯莫斯科
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/蒙古西征',
+    category: '政治',
+    tags: ['蒙古帝國', '西征', '歐洲', '拔都', '金帳汗國'],
+    description: '拔都領導蒙古軍隊西征歐洲，征服俄羅斯、波蘭、匈牙利等地，建立金帳汗國。'
+  },
+  {
+    id: 'battle-of-legnica',
+    chineseName: '列格尼卡戰役',
+    englishName: 'Battle of Legnica',
+    startYear: 1241,
+    endYear: 1241,
+    coordinates: [51.2093, 16.1585], // 波蘭列格尼卡
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/列格尼卡戰役',
+    category: '政治',
+    tags: ['蒙古帝國', '歐洲', '波蘭', '拔都', '西征'],
+    description: '蒙古軍隊在列格尼卡擊敗波蘭軍隊，是蒙古西征歐洲的重要戰役之一。'
+  },
+  {
+    id: 'mongol-conquest-of-persia',
+    chineseName: '蒙古征服波斯',
+    englishName: 'Mongol Conquest of Persia',
+    startYear: 1219,
+    endYear: 1258,
+    coordinates: [35.6892, 51.3890], // 伊朗德黑蘭
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/蒙古征服波斯',
+    category: '政治',
+    tags: ['蒙古帝國', '征服', '波斯', '花剌子模', '伊兒汗國'],
+    description: '蒙古帝國征服波斯地區，滅亡花剌子模王朝，建立伊兒汗國。'
+  },
+  {
+    id: 'mongol-conquest-of-central-asia',
+    chineseName: '蒙古征服中亞',
+    englishName: 'Mongol Conquest of Central Asia',
+    startYear: 1218,
+    endYear: 1225,
+    coordinates: [43.2220, 76.8512], // 哈薩克阿拉木圖
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/蒙古征服中亞',
+    category: '政治',
+    tags: ['蒙古帝國', '征服', '中亞', '花剌子模', '成吉思汗'],
+    description: '成吉思汗領導蒙古軍隊征服中亞地區，滅亡花剌子模帝國。'
+  },
+  {
+    id: 'southern-song-resistance',
+    chineseName: '南宋抗元',
+    englishName: 'Southern Song Resistance',
+    startYear: 1234,
+    endYear: 1279,
+    coordinates: [30.2741, 120.1551], // 中國杭州
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/南宋',
+    category: '政治',
+    tags: ['南宋', '抗元', '中國', '文天祥', '崖山'],
+    description: '南宋抵抗蒙古入侵的戰爭，文天祥等愛國將領奮力抗擊，最終在崖山海戰中失敗。'
+  },
+  {
+    id: 'kublai-khan-conquest-of-southern-song',
+    chineseName: '忽必烈滅南宋',
+    englishName: 'Kublai Khan\'s Conquest of Southern Song',
+    startYear: 1268,
+    endYear: 1279,
+    coordinates: [30.2741, 120.1551], // 中國杭州
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/忽必烈',
+    category: '政治',
+    tags: ['忽必烈', '南宋', '征服', '中國', '元朝'],
+    description: '忽必烈領導蒙古軍隊最終滅亡南宋，完成中國統一，建立元朝。'
   }
 ]
