@@ -110,5 +110,18 @@ export const culturalEvents: HistoricalEvent[] = [
     category: '文化',
     tags: ['軍事', '戰術', '馬其頓', '菲利普二世'],
     description: '菲利普二世發展馬其頓方陣戰術，結合長矛和騎兵，成為古代最有效的軍事戰術之一。'
+  },
+  // 中國上古時期文化事件
+  {
+    id: 'invention-of-go',
+    chineseName: '圍棋發明',
+    englishName: 'Invention of Go',
+    startYear: -2300,
+    endYear: -2300,
+    coordinates: [34.7, 113.6], // 中原
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/圍棋',
+    category: '文化',
+    tags: ['發明', '棋類', '智力遊戲', '上古', '中國', '堯舜'],
+    description: '相傳圍棋是上古時期堯舜時代發明的智力遊戲，最初用於教育丹朱，後來發展成為中國傳統文化的重要組成部分。'
   }
 ]

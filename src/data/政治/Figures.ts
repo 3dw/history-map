@@ -401,5 +401,54 @@ export const politicalFigures: HistoricalFigure[] = [
     category: '政治',
     tags: ['國王', '波斯帝國', '阿契美尼德王朝', '鎮壓叛亂'],
     description: '波斯帝國國王，統治期間鎮壓埃及等地的叛亂，恢復波斯帝國的統一，但最終被謀殺。'
+  },
+  // 中國上古時期聖王
+  {
+    id: 'tang-yao',
+    chineseName: '唐堯',
+    englishName: 'Tang Yao',
+    startYear: -2357,
+    endYear: -2258,
+    coordinates: [34.7, 113.6], // 中原
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/堯',
+    category: '政治',
+    tags: ['聖王', '五帝', '上古', '禪讓', '中國'],
+    description: '中國上古時期五帝之一，以仁德治國，實行禪讓制度，將帝位傳給虞舜，被後世尊為聖王典範。'
+  },
+  {
+    id: 'dan-zhu',
+    chineseName: '丹朱',
+    englishName: 'Dan Zhu',
+    startYear: -2300,
+    endYear: -2200,
+    coordinates: [34.7, 113.6], // 中原
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/丹朱',
+    category: '政治',
+    tags: ['王子', '唐堯之子', '上古', '中國'],
+    description: '唐堯的兒子，因品行不端未能繼承帝位，堯將帝位禪讓給虞舜，體現了上古禪讓制度的公正性。'
+  },
+  {
+    id: 'yu-shun',
+    chineseName: '虞舜',
+    englishName: 'Yu Shun',
+    startYear: -2294,
+    endYear: -2184,
+    coordinates: [34.7, 113.6], // 中原
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/舜',
+    category: '政治',
+    tags: ['聖王', '五帝', '上古', '禪讓', '中國'],
+    description: '中國上古時期五帝之一，唐堯禪讓帝位給他，以孝道和仁德聞名，後將帝位禪讓給大禹，是禪讓制度的典範。'
+  },
+  {
+    id: 'da-yu',
+    chineseName: '大禹',
+    englishName: 'Da Yu',
+    startYear: -2200,
+    endYear: -2100,
+    coordinates: [34.7, 113.6], // 中原
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/大禹',
+    category: '政治',
+    tags: ['聖王', '五帝', '上古', '治水', '中國'],
+    description: '中國上古時期五帝之一，因治水有功而獲得虞舜禪讓帝位，開創夏朝，是中國歷史上第一位王朝的建立者。'
   }
 ]

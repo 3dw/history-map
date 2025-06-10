@@ -554,6 +554,10 @@ const goToTimeMachine = (result: { type: MarkerType; data: HistoricalFigure | Hi
   // 切換到時光機模式
   timeMachineMode.value = true
 
+  // 清空搜尋內容
+  searchKeyword.value = ''
+  searchResults.value = []
+
   // 根據項目類型設定時間
   let targetYear: number
 
@@ -581,8 +585,12 @@ const goToTimeMachine = (result: { type: MarkerType; data: HistoricalFigure | Hi
   timeFilter.value.start = targetYear
   timeFilter.value.end = targetYear
 
-  // 聚焦到地圖位置
-  focusOnMarker(result)
+  // 延遲聚焦到地圖位置，確保狀態更新完成
+  nextTick(() => {
+    setTimeout(() => {
+      focusOnMarker(result)
+    }, 100)
+  })
 }
 
 // 格式化年份顯示
@@ -611,12 +619,22 @@ watch(timeMachineMode, () => {
     timeFilter.value.start = -3000
     timeFilter.value.end = new Date().getFullYear()
   }
+
+  // 延遲更新標記，確保狀態變更完成
+  nextTick(() => {
+    updateMarkers()
+  })
 })
 
 watch(timeFilter, (newVal) => {
   if (timeMachineMode.value) {
     timeFilter.value.end = newVal.start
   }
+
+  // 延遲更新標記，確保狀態變更完成
+  nextTick(() => {
+    updateMarkers()
+  })
 }, { deep: true })
 
 const onMapReady = () => {
@@ -656,9 +674,20 @@ const updateMarkers = () => {
   const leafletMap = map.value?.leafletObject
   if (!leafletMap) return
 
-  // 清除現有的群集
+  // 安全地清除現有的群集
   if (markerClusterGroup.value) {
-    leafletMap.removeLayer(markerClusterGroup.value as unknown as L.Layer)
+    try {
+      // 檢查群集是否仍然存在於地圖上
+      if (leafletMap.hasLayer(markerClusterGroup.value as unknown as L.Layer)) {
+        leafletMap.removeLayer(markerClusterGroup.value as unknown as L.Layer)
+      }
+      // 清理群集內的所有標記
+      markerClusterGroup.value.clearLayers()
+      markerClusterGroup.value = null
+    } catch (error) {
+      console.warn('清理標記群集時出現錯誤:', error)
+      markerClusterGroup.value = null
+    }
   }
 
   // 創建新的群集組
@@ -811,8 +840,14 @@ const updateMarkers = () => {
     })
   }
 
-  // 將群集添加到地圖
-  leafletMap.addLayer(markerClusterGroup.value as unknown as L.Layer)
+  // 安全地將群集添加到地圖
+  try {
+    if (markerClusterGroup.value) {
+      leafletMap.addLayer(markerClusterGroup.value as unknown as L.Layer)
+    }
+  } catch (error) {
+    console.warn('添加標記群集到地圖時出現錯誤:', error)
+  }
 }
 
 onMounted(() => {
@@ -834,9 +869,23 @@ onMounted(() => {
 
   window.addEventListener('resize', handleResize)
 
-  // 組件卸載時清理事件監聽器
+  // 組件卸載時清理事件監聽器和標記群集
   return () => {
     window.removeEventListener('resize', handleResize)
+
+    // 清理標記群集
+    if (markerClusterGroup.value) {
+      try {
+        const leafletMap = map.value?.leafletObject
+        if (leafletMap && leafletMap.hasLayer(markerClusterGroup.value as unknown as L.Layer)) {
+          leafletMap.removeLayer(markerClusterGroup.value as unknown as L.Layer)
+        }
+        markerClusterGroup.value.clearLayers()
+        markerClusterGroup.value = null
+      } catch (error) {
+        console.warn('清理標記群集時出現錯誤:', error)
+      }
+    }
   }
 })
 </script>

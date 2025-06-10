@@ -544,5 +544,42 @@ export const politicalEvents: HistoricalEvent[] = [
     category: '政治',
     tags: ['逝世', '亞歷山大大帝', '帝國分裂', '希臘化時代'],
     description: '亞歷山大大帝在巴比倫逝世，年僅32歲，其龐大帝國隨後分裂為多個希臘化王國。'
+  },
+  // 中國上古時期政治事件
+  {
+    id: 'yao-shun-abdication',
+    chineseName: '堯舜禪讓',
+    englishName: 'Yao-Shun Abdication',
+    startYear: -2258,
+    endYear: -2258,
+    coordinates: [34.7, 113.6], // 中原
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/禪讓',
+    category: '政治',
+    tags: ['禪讓', '政治制度', '上古', '中國', '堯', '舜'],
+    description: '唐堯將帝位禪讓給虞舜，開創了中國上古時期的禪讓制度，體現了選賢與能的理想政治理念。'
+  },
+  {
+    id: 'shun-yu-abdication',
+    chineseName: '舜禹禪讓',
+    englishName: 'Shun-Yu Abdication',
+    startYear: -2184,
+    endYear: -2184,
+    coordinates: [34.7, 113.6], // 中原
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/禪讓',
+    category: '政治',
+    tags: ['禪讓', '政治制度', '上古', '中國', '舜', '禹'],
+    description: '虞舜將帝位禪讓給大禹，延續禪讓制度，大禹因治水有功而獲得帝位，體現了功績與德行的結合。'
+  },
+  {
+    id: 'great-flood-control',
+    chineseName: '大禹治水',
+    englishName: 'Great Yu\'s Flood Control',
+    startYear: -2200,
+    endYear: -2100,
+    coordinates: [34.7, 113.6], // 中原
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/大禹治水',
+    category: '政治',
+    tags: ['治水', '工程', '上古', '中國', '大禹'],
+    description: '大禹領導人民治理洪水，採用疏導的方法，歷時十三年，最終成功治理水患，為中國古代水利工程奠定基礎。'
   }
 ]
