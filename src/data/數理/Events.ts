@@ -35,7 +35,7 @@ export const scientificEvents: HistoricalEvent[] = [
     coordinates: [52.2053, 0.1218],
     wikipediaUrl: 'https://zh.wikipedia.org/wiki/微積分',
     category: '數理',
-    tags: ['數學', '科學方法', '英國'],
+    tags: ['數學', '科學方法', '英國', '微積分'],
     description: '牛頓和萊布尼茲獨立發現微積分學，對現代數學和物理學有重要影響。'
   },
   {
