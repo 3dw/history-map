@@ -117,7 +117,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { historicalFigures, historicalEvents, masterWorks } from '@/data'
 import type { HistoricalFigure } from '@/types'
@@ -185,10 +185,23 @@ const findFigureByName = (name: string): HistoricalFigure | null => {
   return historicalFigures.find(f => f.chineseName === name) || null
 }
 
-onMounted(() => {
-  const figureName = route.params.name as string
+// 載入人物數據
+const loadFigure = (figureName: string) => {
+  loading.value = true
   figure.value = findFigureByName(figureName)
   loading.value = false
+}
+
+// 監聽路由變化
+watch(() => route.params.name, (newName) => {
+  if (newName) {
+    loadFigure(newName as string)
+  }
+}, { immediate: true })
+
+onMounted(() => {
+  const figureName = route.params.name as string
+  loadFigure(figureName)
 })
 </script>
 
