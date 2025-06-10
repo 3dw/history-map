@@ -707,85 +707,61 @@ export const politicalEvents: HistoricalEvent[] = [
     id: 'russian-revolution',
     chineseName: '俄國革命',
     englishName: 'Russian Revolution',
+    category: '政治',
+    tags: ['革命', '俄國', '布爾什維克', '列寧'],
+    startYear: 1917,
+    endYear: 1923,
+    description: '推翻沙皇統治的革命運動，建立世界上第一個社會主義國家，影響整個20世紀世界格局。',
+    coordinates: [59.9311, 30.3609], // 聖彼得堡
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/俄國革命',
+  },
+  {
+    id: 'october-revolution',
+    chineseName: '十月革命',
+    englishName: 'October Revolution',
+    category: '政治',
+    tags: ['革命', '布爾什維克', '列寧', '社會主義'],
     startYear: 1917,
     endYear: 1917,
-    coordinates: [59.9311, 30.3609], // 俄羅斯聖彼得堡
-    wikipediaUrl: 'https://zh.wikipedia.org/wiki/俄國革命',
-    category: '政治',
-    tags: ['革命', '蘇聯', '列寧', '布爾什維克', '社會主義'],
-    description: '俄國發生二月革命和十月革命，推翻沙皇制度，建立世界上第一個社會主義國家。'
+    description: '布爾什維克黨在列寧領導下發動武裝起義，推翻臨時政府，建立蘇維埃政權。',
+    coordinates: [59.9311, 30.3609], // 聖彼得堡
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/十月革命',
   },
   {
-    id: 'chinese-revolution-1911',
-    chineseName: '辛亥革命',
-    englishName: 'Xinhai Revolution',
-    startYear: 1911,
-    endYear: 1912,
-    coordinates: [30.5928, 114.3055], // 中國武漢
-    wikipediaUrl: 'https://zh.wikipedia.org/wiki/辛亥革命',
+    id: 'soviet-union-formation',
+    chineseName: '蘇聯成立',
+    englishName: 'Soviet Union Formation',
     category: '政治',
-    tags: ['革命', '中國', '孫中山', '共和制', '清朝'],
-    description: '孫中山領導的革命推翻清朝統治，建立中華民國，結束中國兩千多年的君主制度。'
+    tags: ['蘇聯', '聯邦', '社會主義', '史達林'],
+    startYear: 1922,
+    endYear: 1922,
+    description: '俄羅斯、烏克蘭、白俄羅斯、外高加索聯邦等國組成蘇維埃社會主義共和國聯盟。',
+    coordinates: [55.7558, 37.6176], // 莫斯科
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/蘇聯',
   },
   {
-    id: 'indian-independence',
-    chineseName: '印度獨立',
-    englishName: 'Indian Independence',
-    startYear: 1947,
-    endYear: 1947,
-    coordinates: [28.6139, 77.2090], // 印度新德里
-    wikipediaUrl: 'https://zh.wikipedia.org/wiki/印度獨立運動',
+    id: 'great-purge',
+    chineseName: '大清洗',
+    englishName: 'Great Purge',
     category: '政治',
-    tags: ['獨立', '印度', '甘地', '英國', '非暴力'],
-    description: '甘地領導非暴力不合作運動，印度脫離英國統治獲得獨立，建立民主制度。'
+    tags: ['史達林', '清洗', '恐怖', '蘇聯'],
+    startYear: 1936,
+    endYear: 1938,
+    description: '史達林發動的政治清洗運動，大量黨政軍領導人被處決或流放，造成數百萬人死亡。',
+    coordinates: [55.7558, 37.6176], // 莫斯科
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/大清洗',
   },
   {
-    id: 'chinese-revolution-1949',
-    chineseName: '中華人民共和國成立',
-    englishName: 'Founding of People\'s Republic of China',
-    startYear: 1949,
-    endYear: 1949,
-    coordinates: [39.9042, 116.4074], // 中國北京
-    wikipediaUrl: 'https://zh.wikipedia.org/wiki/中華人民共和國',
+    id: 'russian-federation-formation',
+    chineseName: '俄羅斯聯邦成立',
+    englishName: 'Russian Federation Formation',
     category: '政治',
-    tags: ['革命', '中國', '毛澤東', '社會主義', '共和國'],
-    description: '毛澤東領導中國共產黨建立中華人民共和國，確立社會主義制度。'
-  },
-  {
-    id: 'berlin-wall-fall',
-    chineseName: '柏林圍牆倒塌',
-    englishName: 'Fall of the Berlin Wall',
-    startYear: 1989,
-    endYear: 1989,
-    coordinates: [52.5200, 13.4050], // 德國柏林
-    wikipediaUrl: 'https://zh.wikipedia.org/wiki/柏林圍牆',
-    category: '政治',
-    tags: ['統一', '德國', '冷戰', '蘇聯', '民主化'],
-    description: '柏林圍牆倒塌，象徵冷戰結束，德國重新統一，推動東歐民主化進程。'
-  },
-  {
-    id: 'soviet-union-collapse',
-    chineseName: '蘇聯解體',
-    englishName: 'Dissolution of the Soviet Union',
+    tags: ['俄羅斯', '聯邦', '葉爾欽', '民主'],
     startYear: 1991,
     endYear: 1991,
-    coordinates: [55.7558, 37.6176], // 俄羅斯莫斯科
-    wikipediaUrl: 'https://zh.wikipedia.org/wiki/蘇聯解體',
-    category: '政治',
-    tags: ['解體', '蘇聯', '冷戰', '俄羅斯', '獨立國家'],
-    description: '蘇聯解體，冷戰結束，15個加盟共和國獨立，俄羅斯聯邦成立。'
-  },
-  {
-    id: 'european-union-formation',
-    chineseName: '歐洲聯盟成立',
-    englishName: 'Formation of European Union',
-    startYear: 1993,
-    endYear: 1993,
-    coordinates: [50.8503, 4.3517], // 比利時布魯塞爾
-    wikipediaUrl: 'https://zh.wikipedia.org/wiki/歐洲聯盟',
-    category: '政治',
-    tags: ['統一', '歐洲', '歐盟', '經濟合作', '政治聯盟'],
-    description: '歐洲共同體改組為歐洲聯盟，推動歐洲政治和經濟一體化，建立超國家組織。'
+    description: '蘇聯解體後，俄羅斯聯邦成立，葉爾欽擔任首任總統，開始民主化改革。',
+    coordinates: [55.7558, 37.6176], // 莫斯科
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/俄羅斯聯邦',
   },
   // 十字軍東征重要事件
   {
@@ -1137,5 +1113,224 @@ export const politicalEvents: HistoricalEvent[] = [
     category: '政治',
     tags: ['改革', '中國', '清朝', '康有為', '梁啟超'],
     description: '光緒皇帝推動的變法運動，由康有為、梁啟超等人主導，但被慈禧太后鎮壓，僅持續103天。'
+  },
+  // 北美地區重要事件
+  {
+    id: 'american-independence',
+    chineseName: '美國獨立戰爭',
+    englishName: 'American Revolutionary War',
+    category: '政治',
+    tags: ['獨立戰爭', '美國', '英國', '殖民地', '自由'],
+    startYear: 1775,
+    endYear: 1783,
+    description: '北美十三個殖民地反抗英國統治的戰爭，最終建立美利堅合眾國，是現代民主制度的重要里程碑。',
+    coordinates: [39.8283, -98.5795], // 美國中部
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/美國獨立戰爭',
+  },
+  {
+    id: 'civil-war',
+    chineseName: '美國內戰',
+    englishName: 'American Civil War',
+    category: '政治',
+    tags: ['內戰', '美國', '奴隸制', '聯邦', '邦聯'],
+    startYear: 1861,
+    endYear: 1865,
+    description: '美國歷史上最血腥的戰爭，北方聯邦與南方邦聯之間的衝突，最終廢除奴隸制，維護國家統一。',
+    coordinates: [38.9072, -77.0369], // 華盛頓特區
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/美國內戰',
+  },
+  {
+    id: 'canadian-confederation',
+    chineseName: '加拿大聯邦成立',
+    englishName: 'Canadian Confederation',
+    category: '政治',
+    tags: ['聯邦', '加拿大', '自治領', '英國'],
+    startYear: 1867,
+    endYear: 1867,
+    description: '加拿大從英國殖民地轉變為自治領，建立聯邦制度，為日後完全獨立奠定基礎。',
+    coordinates: [45.4215, -75.6972], // 渥太華
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/加拿大聯邦',
+  },
+  {
+    id: 'mexican-revolution',
+    chineseName: '墨西哥革命',
+    englishName: 'Mexican Revolution',
+    category: '政治',
+    tags: ['革命', '墨西哥', '土地改革', '民主'],
+    startYear: 1910,
+    endYear: 1920,
+    description: '墨西哥推翻獨裁統治的革命運動，實現土地改革和社會變革，建立現代墨西哥政治制度。',
+    coordinates: [19.4326, -99.1332], // 墨西哥城
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/墨西哥革命',
+  },
+  {
+    id: 'cuban-revolution',
+    chineseName: '古巴革命',
+    englishName: 'Cuban Revolution',
+    category: '政治',
+    tags: ['革命', '古巴', '卡斯楚', '社會主義'],
+    startYear: 1953,
+    endYear: 1959,
+    description: '菲德爾·卡斯楚領導的革命運動，推翻巴蒂斯塔獨裁政權，建立社會主義政權，影響整個拉丁美洲。',
+    coordinates: [23.1136, -82.3666], // 哈瓦那
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/古巴革命',
+  },
+  {
+    id: 'north-american-free-trade',
+    chineseName: '北美自由貿易協定',
+    englishName: 'North American Free Trade Agreement',
+    category: '政治',
+    tags: ['貿易協定', '美國', '加拿大', '墨西哥', '經濟'],
+    startYear: 1994,
+    endYear: 1994,
+    description: '美國、加拿大、墨西哥三國簽署的自由貿易協定，建立北美自由貿易區，促進區域經濟一體化。',
+    coordinates: [39.8283, -98.5795], // 美國中部
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/北美自由貿易協定',
+  },
+  // 南美地區重要事件
+  {
+    id: 'south-american-independence',
+    chineseName: '南美獨立運動',
+    englishName: 'South American Independence',
+    category: '政治',
+    tags: ['獨立運動', '南美', '西班牙', '玻利瓦爾'],
+    startYear: 1808,
+    endYear: 1830,
+    description: '西蒙·玻利瓦爾和何塞·德·聖馬丁領導的南美獨立運動，推翻西班牙殖民統治，建立多個獨立國家。',
+    coordinates: [-12.0464, -77.0428], // 利馬
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/南美獨立戰爭',
+  },
+  {
+    id: 'brazilian-independence',
+    chineseName: '巴西獨立',
+    englishName: 'Brazilian Independence',
+    category: '政治',
+    tags: ['獨立', '巴西', '葡萄牙', '帝國'],
+    startYear: 1822,
+    endYear: 1822,
+    description: '佩德羅一世宣布巴西脫離葡萄牙獨立，建立巴西帝國，是南美唯一以君主制獨立的國家。',
+    coordinates: [-15.7801, -47.9292], // 巴西利亞
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/巴西獨立',
+  },
+  {
+    id: 'paraguayan-war',
+    chineseName: '巴拉圭戰爭',
+    englishName: 'Paraguayan War',
+    category: '政治',
+    tags: ['戰爭', '巴拉圭', '巴西', '阿根廷', '烏拉圭'],
+    startYear: 1864,
+    endYear: 1870,
+    description: '巴拉圭與巴西、阿根廷、烏拉圭三國聯盟的戰爭，巴拉圭戰敗，人口損失慘重。',
+    coordinates: [-25.2637, -57.5759], // 亞松森
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/巴拉圭戰爭',
+  },
+  {
+    id: 'chilean-civil-war',
+    chineseName: '智利內戰',
+    englishName: 'Chilean Civil War',
+    category: '政治',
+    tags: ['內戰', '智利', '議會制', '總統制'],
+    startYear: 1891,
+    endYear: 1891,
+    description: '智利總統何塞·曼努埃爾·巴爾馬塞達與國會之間的衝突，最終確立議會制政體。',
+    coordinates: [-33.4489, -70.6693], // 聖地亞哥
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/智利內戰',
+  },
+  {
+    id: 'peruvian-revolution',
+    chineseName: '秘魯革命',
+    englishName: 'Peruvian Revolution',
+    category: '政治',
+    tags: ['革命', '秘魯', '軍政府', '改革'],
+    startYear: 1968,
+    endYear: 1980,
+    description: '胡安·貝拉斯科·阿爾瓦拉多將軍領導的革命，實施土地改革和國有化政策。',
+    coordinates: [-12.0464, -77.0428], // 利馬
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/秘魯革命',
+  },
+  {
+    id: 'mercosur-formation',
+    chineseName: '南方共同市場成立',
+    englishName: 'Mercosur Formation',
+    category: '政治',
+    tags: ['經濟聯盟', '南美', '貿易', '一體化'],
+    startYear: 1991,
+    endYear: 1991,
+    description: '阿根廷、巴西、巴拉圭、烏拉圭四國簽署《亞松森條約》，建立南方共同市場，促進南美經濟一體化。',
+    coordinates: [-34.6118, -58.3960], // 布宜諾斯艾利斯
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/南方共同市場',
+  },
+  // 俄羅斯地區重要事件
+  {
+    id: 'october-revolution',
+    chineseName: '十月革命',
+    englishName: 'October Revolution',
+    category: '政治',
+    tags: ['革命', '布爾什維克', '列寧', '社會主義'],
+    startYear: 1917,
+    endYear: 1917,
+    description: '布爾什維克黨在列寧領導下發動武裝起義，推翻臨時政府，建立蘇維埃政權。',
+    coordinates: [59.9311, 30.3609], // 聖彼得堡
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/十月革命',
+  },
+  {
+    id: 'soviet-union-formation',
+    chineseName: '蘇聯成立',
+    englishName: 'Soviet Union Formation',
+    category: '政治',
+    tags: ['蘇聯', '聯邦', '社會主義', '史達林'],
+    startYear: 1922,
+    endYear: 1922,
+    description: '俄羅斯、烏克蘭、白俄羅斯、外高加索聯邦等國組成蘇維埃社會主義共和國聯盟。',
+    coordinates: [55.7558, 37.6176], // 莫斯科
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/蘇聯',
+  },
+  {
+    id: 'great-purge',
+    chineseName: '大清洗',
+    englishName: 'Great Purge',
+    category: '政治',
+    tags: ['史達林', '清洗', '恐怖', '蘇聯'],
+    startYear: 1936,
+    endYear: 1938,
+    description: '史達林發動的政治清洗運動，大量黨政軍領導人被處決或流放，造成數百萬人死亡。',
+    coordinates: [55.7558, 37.6176], // 莫斯科
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/大清洗',
+  },
+  {
+    id: 'soviet-collapse',
+    chineseName: '蘇聯解體',
+    englishName: 'Soviet Union Collapse',
+    category: '政治',
+    tags: ['蘇聯', '解體', '戈巴契夫', '冷戰'],
+    startYear: 1991,
+    endYear: 1991,
+    description: '蘇聯各加盟共和國紛紛獨立，蘇聯正式解體，標誌著冷戰結束和社會主義陣營瓦解。',
+    coordinates: [55.7558, 37.6176], // 莫斯科
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/蘇聯解體',
+  },
+  {
+    id: 'russian-federation-formation',
+    chineseName: '俄羅斯聯邦成立',
+    englishName: 'Russian Federation Formation',
+    category: '政治',
+    tags: ['俄羅斯', '聯邦', '葉爾欽', '民主'],
+    startYear: 1991,
+    endYear: 1991,
+    description: '蘇聯解體後，俄羅斯聯邦成立，葉爾欽擔任首任總統，開始民主化改革。',
+    coordinates: [55.7558, 37.6176], // 莫斯科
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/俄羅斯聯邦',
+  },
+  {
+    id: 'putin-era',
+    chineseName: '普丁時代',
+    englishName: 'Putin Era',
+    category: '政治',
+    tags: ['普丁', '俄羅斯', '總統', '強權'],
+    startYear: 2000,
+    endYear: 2024,
+    description: '弗拉基米爾·普丁擔任俄羅斯總統，恢復俄羅斯國際地位，實行強權政治。',
+    coordinates: [55.7558, 37.6176], // 莫斯科
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/弗拉基米爾·普丁',
   }
 ]
