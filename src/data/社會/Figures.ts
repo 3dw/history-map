@@ -113,7 +113,6 @@ export const socialFigures: HistoricalFigure[] = [
     category: '社會',
     tags: ['教育活動家', '諾貝爾和平獎', '巴基斯坦', '女權'],
     startYear: 1997,
-    endYear: 2024,
     description: '巴基斯坦教育活動家，為女童教育權利而奮鬥，2014年成為最年輕的諾貝爾和平獎得主，被譽為「女童教育之聲」。',
     coordinates: [34.0150, 71.5249], // 巴基斯坦
     wikipediaUrl: 'https://zh.wikipedia.org/wiki/馬拉拉·優素福扎伊',

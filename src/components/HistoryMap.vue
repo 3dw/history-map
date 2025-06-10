@@ -743,7 +743,9 @@ const getResultSubtitle = (result: { type: MarkerType; data: HistoricalFigure | 
   switch (result.type) {
     case 'figure':
       const figure = result.data as HistoricalFigure
-      return `${formatYear(figure.startYear)} - ${figure.endYear ? formatYear(figure.endYear) : '？'}`
+      const currentYear = new Date().getFullYear()
+      const endYear = figure.endYear && figure.endYear <= currentYear ? formatYear(figure.endYear) : '至今'
+      return `${formatYear(figure.startYear)} - ${endYear}`
     case 'event':
       const event = result.data as HistoricalEvent
       return `${formatYear(event.startYear)}${event.endYear && event.endYear !== event.startYear ? ' - ' + formatYear(event.endYear) : ''}`
@@ -972,12 +974,14 @@ const updateMarkers = () => {
       // 創建彈出窗口內容
       const popupContent = document.createElement('div')
       popupContent.className = 'marker-popup figure-popup'
+      const currentYear = new Date().getFullYear()
+      const endYear = figure.endYear && figure.endYear <= currentYear ? formatYear(figure.endYear) : '至今'
       popupContent.innerHTML = `
         <h4>${figure.chineseName}</h4>
         <p class="english-name">${figure.englishName}</p>
         <div class="dates">
           <span class="date-range">
-            ${formatYear(figure.startYear)} - ${figure.endYear ? formatYear(figure.endYear) : '？'}
+            ${formatYear(figure.startYear)} - ${endYear}
           </span>
         </div>
         <div class="category">
