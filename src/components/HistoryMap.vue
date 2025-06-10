@@ -945,6 +945,7 @@ const updateMarkers = () => {
     spiderLegPolylineOptions: { weight: 1.5, color: '#222', opacity: 0.5 },
     chunkedLoading: true,
     clusterPane: 'markerPane',
+    disableClusteringAtZoom: 5, // zoom >= 5 時自動展開所有 cluster
     // 使用動態的 maxClusterRadius 來確保重疊的標記始終保持群集
     maxClusterRadius: (zoom) => {
       // 根據縮放級別和設備類型動態調整群集半徑
