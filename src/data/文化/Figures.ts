@@ -149,5 +149,29 @@ export const culturalFigures: HistoricalFigure[] = [
     category: '文化',
     tags: ['作家', '詩人', '黑死病', '文藝復興', '義大利', '《十日談》'],
     description: '義大利作家和詩人，文藝復興時期的重要文學家，著有《十日談》，以黑死病為背景，對歐洲文學有重要影響。'
-  }
+  },
+  {
+    id: 'sima-qian',
+    chineseName: '司馬遷',
+    englishName: 'Sima Qian',
+    startYear: -145,
+    endYear: -86,
+    coordinates: [34.2675, 108.9345], // 西安（漢朝都城長安）
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/司馬遷',
+    category: '文化',
+    tags: ['歷史學家', '司馬遷', '《史記》', '漢朝', '中國'],
+    description: '中國西漢時期歷史學家，《史記》作者，被尊為「史聖」，首創紀傳體通史，對後世史書編纂有深遠影響。'
+  },
+  {
+    id: 'herodotus',
+    chineseName: '希羅多德',
+    englishName: 'Herodotus',
+    startYear: -484,
+    endYear: -425,
+    coordinates: [37.9400, 27.3400], // 古希臘小亞細亞哈利卡那索斯，今土耳其博德魯姆
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/希羅多德',
+    category: '文化',
+    tags: ['歷史學家', '古希臘', '《歷史》', '希羅多德', '歷史之父'],
+    description: '古希臘歷史學家，被譽為「歷史之父」，著有《歷史》，記述希波戰爭及多民族文化，是西方歷史學的奠基者之一。'
+  },
 ]

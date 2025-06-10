@@ -812,3 +812,14 @@ a,
     border: 2px solid rgba(255, 255, 255, 0.8);
   }
 }
+
+
+.title a.link {
+  font-size: 14px;
+  color: #00f;
+  text-decoration: underline;
+}
+
+.title a.link:hover {
+  color: #007bff;
+}

@@ -233,7 +233,9 @@
 
     <!-- 地圖控制面板 -->
     <div class="map-controls" v-if="!isMobile">
-      <h2 class="title">歷史地圖</h2>
+      <h2 class="title">歷史地圖
+        <a class="link" href="https://github.com/3dw/history-map/issues" target="_blank">校對請到這裡</a>
+      </h2>
 
       <!-- 類別篩選 -->
       <div class="category-filter">
