@@ -1278,6 +1278,7 @@ const updateMarkers = () => {
 
       // 監聽彈出窗口打開事件
       marker.on('popupopen', () => {
+        autoPlaySpeed.value = 0
         const detailBtn = popupContent.querySelector('.detail-btn')
         if (detailBtn) {
           detailBtn.addEventListener('click', () => {
