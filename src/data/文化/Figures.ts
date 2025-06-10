@@ -63,5 +63,78 @@ export const culturalFigures: HistoricalFigure[] = [
     category: '文化',
     tags: ['基督教', '耶穌', '基督'],
     description: '基督教中被尊為基督，意為「救世主」，新約聖經中記載的耶穌基督，教導人們相愛，曾被釘在十字架上，據聞復活。'
+  },
+  {
+    id: 'aristotle',
+    chineseName: '亞里士多德',
+    englishName: 'Aristotle',
+    startYear: -384,
+    endYear: -322,
+    coordinates: [37.9755, 23.7348], // 雅典
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/亞里士多德',
+    category: '文化',
+    tags: ['哲學家', '思想家', '科學家', '古希臘', '柏拉圖學生', '亞歷山大大帝老師'],
+    description: '古希臘哲學家，柏拉圖的學生，亞歷山大大帝的老師，被稱為「百科全書式的學者」，其思想對西方哲學、科學、政治學等領域產生深遠影響。'
+  },
+  // 著名女性文化人物
+  {
+    id: 'helen-keller',
+    chineseName: '海倫·凱勒',
+    englishName: 'Helen Keller',
+    startYear: 1880,
+    endYear: 1968,
+    coordinates: [34.7304, -86.5861], // 阿拉巴馬
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/海倫·凱勒',
+    category: '文化',
+    tags: ['作家', '演說家', '社會活動家', '盲聾', '美國'],
+    description: '美國作家、演說家和社會活動家，雖然失明失聰，但在老師安妮·沙利文的幫助下學會溝通，成為激勵無數人的典範。'
+  },
+  {
+    id: 'virginia-satir',
+    chineseName: '維琴尼亞·薩提爾',
+    englishName: 'Virginia Satir',
+    startYear: 1916,
+    endYear: 1988,
+    coordinates: [42.3601, -71.0589], // 波士頓
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/維琴尼亞·薩提爾',
+    category: '文化',
+    tags: ['心理治療師', '家庭治療', '社會工作者', '美國'],
+    description: '美國心理治療師和社會工作者，被稱為「家庭治療之母」，開創了現代家庭治療方法，對心理治療領域有重大影響。'
+  },
+  {
+    id: 'simone-de-beauvoir',
+    chineseName: '西蒙·波娃',
+    englishName: 'Simone de Beauvoir',
+    startYear: 1908,
+    endYear: 1986,
+    coordinates: [48.8566, 2.3522], // 巴黎
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/西蒙·波娃',
+    category: '文化',
+    tags: ['哲學家', '作家', '女權主義', '存在主義', '法國'],
+    description: '法國哲學家、作家和女權主義者，著有《第二性》，被認為是現代女權主義運動的重要理論家。'
+  },
+  {
+    id: 'emily-dickinson',
+    chineseName: '艾米莉·狄金森',
+    englishName: 'Emily Dickinson',
+    startYear: 1830,
+    endYear: 1886,
+    coordinates: [42.3601, -71.0589], // 麻薩諸塞
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/艾米莉·狄金森',
+    category: '文化',
+    tags: ['詩人', '隱士', '美國文學', '浪漫主義'],
+    description: '美國著名女詩人，一生創作了近1800首詩歌，以其獨特的風格和深刻的主題被譽為美國文學史上最重要的詩人之一。'
+  },
+  {
+    id: 'jane-austen',
+    chineseName: '珍·奧斯汀',
+    englishName: 'Jane Austen',
+    startYear: 1775,
+    endYear: 1817,
+    coordinates: [51.5074, -0.1278], // 倫敦
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/珍·奧斯汀',
+    category: '文化',
+    tags: ['小說家', '浪漫主義', '英國文學', '《傲慢與偏見》'],
+    description: '英國著名女小說家，著有《傲慢與偏見》《理性與感性》等經典作品，被譽為英國文學史上最偉大的女作家之一。'
   }
 ]

@@ -205,5 +205,66 @@ export const scientificFigures: HistoricalFigure[] = [
     category: '數理',
     tags: ['物理學家', '相對論', '猶太裔', '德國'],
     description: '提出相對論，改變人類對時空與宇宙的認知，20世紀最重要的物理學家之一。'
+  },
+  // 著名女性數理人物
+  {
+    id: 'marie-curie',
+    chineseName: '瑪麗·居里',
+    englishName: 'Marie Curie',
+    startYear: 1867,
+    endYear: 1934,
+    coordinates: [52.2297, 21.0122], // 華沙
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/瑪麗·居里',
+    category: '數理',
+    tags: ['物理學家', '化學家', '諾貝爾獎', '放射性', '波蘭', '法國'],
+    description: '波蘭裔法國物理學家和化學家，發現鐳和釙元素，兩次獲得諾貝爾獎，是第一位獲得諾貝爾獎的女性。'
+  },
+  {
+    id: 'emmy-noether',
+    chineseName: '艾米·諾特',
+    englishName: 'Emmy Noether',
+    startYear: 1882,
+    endYear: 1935,
+    coordinates: [50.1109, 8.6821], // 法蘭克福
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/艾米·諾特',
+    category: '數理',
+    tags: ['數學家', '代數', '理論物理', '德國', '猶太人'],
+    description: '德國數學家，被愛因斯坦稱為「數學史上最重要的女性」，在抽象代數和理論物理領域有重大貢獻。'
+  },
+  {
+    id: 'sophie-germain',
+    chineseName: '索菲·熱爾曼',
+    englishName: 'Sophie Germain',
+    startYear: 1776,
+    endYear: 1831,
+    coordinates: [48.8566, 2.3522], // 巴黎
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/索菲·熱爾曼',
+    category: '數理',
+    tags: ['數學家', '數論', '彈性理論', '法國'],
+    description: '法國數學家，在數論和彈性理論方面有重要貢獻，是第一位在巴黎科學院發表論文的女性。'
+  },
+  {
+    id: 'ada-byron-king',
+    chineseName: '愛達·拜倫·金',
+    englishName: 'Ada Byron King',
+    startYear: 1815,
+    endYear: 1852,
+    coordinates: [51.5074, -0.1278], // 倫敦
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/愛達·勒芙蕾絲',
+    category: '數理',
+    tags: ['數學家', '程式設計師', '計算機科學', '英國', '拜倫之女'],
+    description: '英國數學家，被認為是世界上第一位程式設計師，為查爾斯·巴貝奇的差分機編寫了第一個算法。'
+  },
+  {
+    id: 'katherine-johnson',
+    chineseName: '凱瑟琳·約翰遜',
+    englishName: 'Katherine Johnson',
+    startYear: 1918,
+    endYear: 2020,
+    coordinates: [37.5407, -77.4360], // 維吉尼亞
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/凱瑟琳·約翰遜',
+    category: '數理',
+    tags: ['數學家', 'NASA', '太空計劃', '非裔美國人', '計算機'],
+    description: '美國數學家，在NASA工作期間為阿波羅登月計劃進行軌道計算，是電影《關鍵少數》的原型人物之一。'
   }
 ]

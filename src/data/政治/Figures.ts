@@ -121,8 +121,8 @@ export const politicalFigures: HistoricalFigure[] = [
     coordinates: [31.2001, 29.9187], // 亞歷山大港
     wikipediaUrl: 'https://zh.wikipedia.org/wiki/克麗奧佩特拉七世',
     category: '政治',
-    tags: ['女王', '托勒密王朝', '古埃及', '羅馬'],
-    description: '托勒密王朝最後一位法老，以智慧和政治手腕聞名，與凱撒和安東尼的關係影響了羅馬歷史。'
+    tags: ['女王', '托勒密王朝', '古埃及', '羅馬', '凱撒', '安東尼'],
+    description: '托勒密王朝最後一位法老，以智慧和政治手腕聞名，與凱撒和安東尼的關係影響了羅馬歷史，是古代最著名的女性統治者之一。'
   },
   {
     id: 'mansa-musa',
@@ -450,5 +450,54 @@ export const politicalFigures: HistoricalFigure[] = [
     category: '政治',
     tags: ['聖王', '五帝', '上古', '治水', '中國'],
     description: '中國上古時期五帝之一，因治水有功而獲得虞舜禪讓帝位，開創夏朝，是中國歷史上第一位王朝的建立者。'
+  },
+  // 著名女性政治人物
+  {
+    id: 'queen-victoria',
+    chineseName: '維多利亞女王',
+    englishName: 'Queen Victoria',
+    startYear: 1819,
+    endYear: 1901,
+    coordinates: [51.5074, -0.1278], // 倫敦
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/維多利亞女王',
+    category: '政治',
+    tags: ['女王', '英國', '維多利亞時代', '大英帝國'],
+    description: '英國歷史上在位時間最長的君主，統治期間英國成為世界最強大的帝國，維多利亞時代以她的名字命名。'
+  },
+  {
+    id: 'indira-gandhi',
+    chineseName: '英迪拉·甘地',
+    englishName: 'Indira Gandhi',
+    startYear: 1917,
+    endYear: 1984,
+    coordinates: [28.6139, 77.2090], // 新德里
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/英迪拉·甘地',
+    category: '政治',
+    tags: ['總理', '印度', '國大黨', '綠色革命'],
+    description: '印度第一位女總理，尼赫魯的女兒，領導印度進行綠色革命，是20世紀最有影響力的女性政治領袖之一。'
+  },
+  {
+    id: 'margaret-thatcher',
+    chineseName: '瑪格麗特·柴契爾',
+    englishName: 'Margaret Thatcher',
+    startYear: 1925,
+    endYear: 2013,
+    coordinates: [51.5074, -0.1278], // 倫敦
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/瑪格麗特·柴契爾',
+    category: '政治',
+    tags: ['首相', '英國', '保守黨', '鐵娘子', '柴契爾主義'],
+    description: '英國第一位女首相，被稱為「鐵娘子」，推行柴契爾主義經濟政策，對英國和世界政治產生深遠影響。'
+  },
+  {
+    id: 'angela-merkel',
+    chineseName: '安格拉·梅克爾',
+    englishName: 'Angela Merkel',
+    startYear: 1954,
+    endYear: 2024,
+    coordinates: [52.5200, 13.4050], // 柏林
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/安格拉·梅克爾',
+    category: '政治',
+    tags: ['總理', '德國', '基民盟', '歐盟', '物理學家'],
+    description: '德國第一位女總理，歐洲最有影響力的政治領袖之一，領導德國度過金融危機和難民危機，被稱為「歐洲的總理」。'
   }
 ]
