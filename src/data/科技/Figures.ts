@@ -91,5 +91,42 @@ export const techFigures: HistoricalFigure[] = [
     tags: ['計算機科學家', '網路工程師', '生成樹協議', '互聯網'],
     description: '美國計算機科學家，發明了生成樹協議，被稱為「互聯網之母」，對現代網路技術有重大貢獻。'
   },
+  // 發明家
+  {
+    id: 'thomas-edison',
+    chineseName: '湯瑪斯·愛迪生',
+    englishName: 'Thomas Edison',
+    startYear: 1847,
+    endYear: 1931,
+    coordinates: [40.7128, -74.0060], // 紐約
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/湯瑪斯·愛迪生',
+    category: '科技',
+    tags: ['發明家', '企業家', '電燈泡', '留聲機', '美國'],
+    description: '美國發明家和企業家，被稱為「發明大王」，發明了電燈泡、留聲機等眾多重要發明，擁有超過1000項專利。'
+  },
+  {
+    id: 'nikola-tesla',
+    chineseName: '尼古拉·特斯拉',
+    englishName: 'Nikola Tesla',
+    startYear: 1856,
+    endYear: 1943,
+    coordinates: [44.7866, 20.4489], // 塞爾維亞貝爾格勒
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/尼古拉·特斯拉',
+    category: '科技',
+    tags: ['發明家', '物理學家', '工程師', '交流電', '無線電', '塞爾維亞'],
+    description: '塞爾維亞裔美國發明家、物理學家和工程師，發明了交流電系統、無線電技術等，被稱為「交流電之父」。'
+  },
+  {
+    id: 'johannes-gutenberg',
+    chineseName: '約翰內斯·古騰堡',
+    englishName: 'Johannes Gutenberg',
+    startYear: 1400,
+    endYear: 1468,
+    coordinates: [49.9929, 8.2473], // 德國美因茨
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/約翰內斯·古騰堡',
+    category: '科技',
+    tags: ['發明家', '印刷術', '活字印刷', '德國', '文藝復興'],
+    description: '德國發明家，發明了活字印刷術，被稱為「印刷術之父」，他的發明推動了歐洲文藝復興和知識傳播。'
+  },
   // 目前科技類別沒有特定的人物，可以根據需要添加
 ]

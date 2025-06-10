@@ -200,11 +200,11 @@ export const scientificFigures: HistoricalFigure[] = [
     englishName: 'Albert Einstein',
     startYear: 1879,
     endYear: 1955,
-    coordinates: [48.1351, 11.5820],
+    coordinates: [48.7758, 9.1829],
     wikipediaUrl: 'https://zh.wikipedia.org/wiki/阿爾伯特·愛因斯坦',
     category: '數理',
-    tags: ['物理學家', '相對論', '猶太裔', '德國'],
-    description: '提出相對論，改變人類對時空與宇宙的認知，20世紀最重要的物理學家之一。'
+    tags: ['物理學家', '相對論', '諾貝爾獎', '德國', '美國'],
+    description: '德國出生的理論物理學家，發展了相對論，被認為是現代物理學最重要的科學家之一。'
   },
   // 著名女性數理人物
   {
@@ -244,18 +244,6 @@ export const scientificFigures: HistoricalFigure[] = [
     description: '法國數學家，在數論和彈性理論方面有重要貢獻，是第一位在巴黎科學院發表論文的女性。'
   },
   {
-    id: 'ada-byron-king',
-    chineseName: '愛達·拜倫·金',
-    englishName: 'Ada Byron King',
-    startYear: 1815,
-    endYear: 1852,
-    coordinates: [51.5074, -0.1278], // 倫敦
-    wikipediaUrl: 'https://zh.wikipedia.org/wiki/愛達·勒芙蕾絲',
-    category: '數理',
-    tags: ['數學家', '程式設計師', '計算機科學', '英國', '拜倫之女'],
-    description: '英國數學家，被認為是世界上第一位程式設計師，為查爾斯·巴貝奇的差分機編寫了第一個算法。'
-  },
-  {
     id: 'katherine-johnson',
     chineseName: '凱瑟琳·約翰遜',
     englishName: 'Katherine Johnson',
@@ -266,5 +254,67 @@ export const scientificFigures: HistoricalFigure[] = [
     category: '數理',
     tags: ['數學家', 'NASA', '太空計劃', '非裔美國人', '計算機'],
     description: '美國數學家，在NASA工作期間為阿波羅登月計劃進行軌道計算，是電影《關鍵少數》的原型人物之一。'
+  },
+  // 化學家
+  {
+    id: 'robert-boyle',
+    chineseName: '羅伯特·波義耳',
+    englishName: 'Robert Boyle',
+    startYear: 1627,
+    endYear: 1691,
+    coordinates: [53.3498, -6.2603], // 愛爾蘭都柏林
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/羅伯特·波義耳',
+    category: '數理',
+    tags: ['化學家', '物理學家', '波義耳定律', '英國', '科學革命'],
+    description: '愛爾蘭化學家、物理學家，被稱為「現代化學之父」，發現了波義耳定律，建立了化學的實驗方法。'
+  },
+  {
+    id: 'evangelista-torricelli',
+    chineseName: '埃萬傑利斯塔·托里切利',
+    englishName: 'Evangelista Torricelli',
+    startYear: 1608,
+    endYear: 1647,
+    coordinates: [43.7230, 10.4017], // 義大利佛羅倫斯
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/埃萬傑利斯塔·托里切利',
+    category: '數理',
+    tags: ['物理學家', '數學家', '氣壓計', '義大利', '科學革命'],
+    description: '義大利物理學家和數學家，發明了氣壓計，證明了空氣有重量，對流體力學有重要貢獻。'
+  },
+  // 電學家
+  {
+    id: 'michael-faraday',
+    chineseName: '麥可·法拉第',
+    englishName: 'Michael Faraday',
+    startYear: 1791,
+    endYear: 1867,
+    coordinates: [51.5074, -0.1278], // 倫敦
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/麥可·法拉第',
+    category: '數理',
+    tags: ['物理學家', '化學家', '電磁學', '電磁感應', '英國'],
+    description: '英國物理學家和化學家，發現了電磁感應現象，建立了電磁學的基礎理論，被稱為「電學之父」。'
+  },
+  {
+    id: 'andre-marie-ampere',
+    chineseName: '安德烈-瑪麗·安培',
+    englishName: 'André-Marie Ampère',
+    startYear: 1775,
+    endYear: 1836,
+    coordinates: [45.7640, 4.8357], // 法國里昂
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/安德烈-瑪麗·安培',
+    category: '數理',
+    tags: ['物理學家', '數學家', '電磁學', '安培定律', '法國'],
+    description: '法國物理學家和數學家，建立了電磁學的數學理論，發現了安培定律，電流單位以他的名字命名。'
+  },
+  {
+    id: 'james-clerk-maxwell',
+    chineseName: '詹姆斯·克拉克·馬克士威',
+    englishName: 'James Clerk Maxwell',
+    startYear: 1831,
+    endYear: 1879,
+    coordinates: [55.9533, -3.1883], // 蘇格蘭愛丁堡
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/詹姆斯·克拉克·馬克士威',
+    category: '數理',
+    tags: ['物理學家', '數學家', '電磁學', '馬克士威方程', '蘇格蘭'],
+    description: '蘇格蘭物理學家和數學家，建立了電磁學的統一理論，提出了馬克士威方程組，為現代物理學奠定基礎。'
   }
 ]
