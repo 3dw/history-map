@@ -122,5 +122,41 @@ export const socialEvents: HistoricalEvent[] = [
     category: '社會',
     tags: ['民主運動', '社會抗議', '中東', '北非', '社會變革'],
     description: '中東和北非地區的民主運動浪潮，多個國家發生反政府抗議，推動政治和社會改革。'
+  },
+  {
+    id: 'sept-11-attacks',
+    chineseName: '九一一恐怖攻擊',
+    englishName: 'September 11 attacks',
+    startYear: 2001,
+    endYear: 2001,
+    coordinates: [40.711449, -74.013855], // 紐約世貿紀念館
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/九一一恐怖攻擊',
+    category: '社會',
+    tags: ['恐怖主義', '美國', '反恐', '社會影響'],
+    description: '2001年9月11日，基地組織策劃並實施四架民航客機劫持並撞擊美國目標（世貿中心雙塔、五角大廈，另有一架墜毀於賓州），造成近三千人死亡，觸發全球「反恐戰爭」，並對美國及全球安全、社會、立法與文化產生深遠影響。'
+  },
+  {
+    id: 'taiwan-921-earthquake',
+    chineseName: '台灣921大地震',
+    englishName: 'Taiwan 921 Earthquake',
+    startYear: 1999,
+    endYear: 1999,
+    coordinates: [23.85, 120.82], // 南投縣集集鎮
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/921大地震',
+    category: '社會',
+    tags: ['地震', '自然災害', '台灣', '1999'],
+    description: '1999年9月21日凌晨1時47分，在台灣中部發生芮氏規模7.3（USGS 7.6–7.7）的大地震，造成2,415人罹難、11,305人受傷，超過5萬棟房屋倒塌，是台灣戰後最嚴重的自然災害之一。政府自此訂9月21日為「國家防災日」。'
+  },
+  {
+    id: 'taiwan-typhoon-morakot',
+    chineseName: '台灣八八風災',
+    englishName: 'Taiwan 88 Flood (Typhoon Morakot)',
+    startYear: 2009,
+    endYear: 2009,
+    coordinates: [23.0, 120.5], // 大致中央南部 Taiwan
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/八八水災',
+    category: '社會',
+    tags: ['颱風', '水災', '自然災害', '台灣', '2009'],
+    description: '2009年8月6日至10日，颱風莫拉克帶來破紀錄豪雨，引發台灣中南部嚴重水災（土石流、山崩），共681人死亡、18人失蹤，數千橋樑道路毀壞，甲仙小林村幾近滅村，造成全島哀悼三天。'
   }
 ]

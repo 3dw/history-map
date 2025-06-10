@@ -945,8 +945,30 @@ export const politicalFigures: HistoricalFigure[] = [
   category: '政治',
   tags: ['總統', '民進黨', '女性領導人', '臺灣', '首位女性總統'],
   description: '臺灣第一位女性總統，任期2016–2024年，連任成功，任內推動民主深化與國際關係，其卸任後仍以重要國際角色持續活躍。'
-}
-
-
-
+},
+// Barack Obama (1961–)，美國第一位黑人總統（任期：2009–2017）
+{
+  id: 'barack-obama',
+  chineseName: '巴拉克·歐巴馬',
+  englishName: 'Barack Obama',
+  startYear: 1961,
+  coordinates: [38.9072, -77.0369], // 華盛頓特區
+  wikipediaUrl: 'https://zh.wikipedia.org/wiki/巴拉克·歐巴馬',
+  category: '政治',
+  tags: ['總統', '民主黨', '第一位黑人總統', '健保改革'],
+  description: '美國第44任總統（2009–2017），首位非裔美國人當選總統，推動醫療保險改革與經濟振興計畫，任內獲諾貝爾和平獎。'
+},
+// Mao Zedong (1893–1976)，中共第一任主席（任期：1949–1959）
+{
+  id: 'mao-zedong',
+  chineseName: '毛澤東',
+  englishName: 'Mao Zedong',
+  startYear: 1949,
+  endYear: 1959,
+  coordinates: [27.9492, 112.5508], // 湖南湘潭韶山沖
+  wikipediaUrl: 'https://zh.wikipedia.org/wiki/毛澤東',
+  category: '政治',
+  tags: ['主席', '共產黨', '建國', '毛澤東思想'],
+  description: '中華人民共和國創始人與首任主席（1949–1959），共產黨領導人，獨裁統治，推動大躍進與文化大革命，對中國現代歷史影響深遠。'
+},
 ]

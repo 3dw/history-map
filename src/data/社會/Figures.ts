@@ -345,7 +345,7 @@ export const socialFigures: HistoricalFigure[] = [
     startYear: 1890,
     endYear: 1969,
     description: '中國近代史學家、學者，被譽為「教授中的教授」，在隋唐史、佛教史等領域有重要研究，堅持「獨立之精神，自由之思想」。',
-    coordinates: [39.9042, 116.4074], // 北京
+    coordinates: [28.1941, 112.9826], // 湖南長沙
     wikipediaUrl: 'https://zh.wikipedia.org/wiki/陳寅恪',
   }
 ]
