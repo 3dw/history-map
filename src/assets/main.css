@@ -197,6 +197,13 @@ a,
   overflow-y: auto;
 }
 
+.tag-pill {
+  background-color: #f0f0f0;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
 .search-results-header {
   padding: 8px 0;
   font-weight: 600;

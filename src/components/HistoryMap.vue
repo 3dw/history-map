@@ -43,8 +43,10 @@
               class="search-result-item"
               @click="focusOnMarker(result)"
             >
-              <div class="result-icon">
+              <div class="result-icon-tags">
                 {{ getResultIcon(result.type) }}
+                <!-- tags 用逗號分隔 -->
+                <span v-for="tag in (result.data.tags || []).slice(0,3)" :key="tag" class="tag-pill">{{ tag }}</span>
               </div>
               <div class="result-content">
                 <div class="result-title">{{ result.data.chineseName }}</div>
@@ -200,9 +202,13 @@
           >
             <div class="result-icon">
               {{ getResultIcon(result.type) }}
+              <!-- tags 用逗號分隔 -->
+              <span v-for="tag in (result.data.tags || []).slice(0,3)" :key="tag" class="tag-pill">{{ tag }}</span>
             </div>
             <div class="result-content">
-              <div class="result-title">{{ result.data.chineseName }}</div>
+              <div class="result-title">
+                {{ result.data.chineseName }}
+              </div>
               <div class="result-subtitle">{{ getResultSubtitle(result) }}</div>
             </div>
             <div class="result-actions">
@@ -381,8 +387,10 @@
             class="search-result-item"
             @click="focusOnMarker(result)"
           >
-            <div class="result-icon">
+            <div class="result-icon-tags">
               {{ getResultIcon(result.type) }}
+              <!-- tags 用逗號分隔 -->
+              <span v-for="tag in (result.data.tags || []).slice(0,3)" :key="tag" class="tag-pill">{{ tag }}</span>
             </div>
             <div class="result-content">
               <div class="result-title">{{ result.data.chineseName }}</div>
@@ -498,6 +506,9 @@ const timeMachineMode = ref(false)
 // 搜尋功能
 const searchKeyword = ref('')
 const searchResults = ref<Array<{ type: MarkerType; data: HistoricalFigure | HistoricalEvent | MasterWork }>>([])
+
+// 群集相關
+const markerClusterGroup = ref<L.MarkerClusterGroup | null>(null)
 
 // 處理跨越國際換日線的座標
 const normalizeCoordinates = (coordinates: [number, number]): [number, number] => {
@@ -657,9 +668,6 @@ const displayedMasterWorks = computed(() => {
   return filteredMasterWorks.value.filter(work => searchResultIds.includes(work.id))
 })
 
-// 群集相關
-const markerClusterGroup = ref<L.MarkerClusterGroup | null>(null)
-
 // 搜尋功能
 const updateSearchResults = () => {
   if (!searchKeyword.value.trim()) {
@@ -675,7 +683,9 @@ const updateSearchResults = () => {
     filteredFigures.value.forEach(figure => {
       if (
         figure.chineseName.toLowerCase().includes(keyword) ||
-        figure.englishName.toLowerCase().includes(keyword)
+        figure.englishName.toLowerCase().includes(keyword) ||
+        figure.tags.some(tag => tag.toLowerCase().includes(keyword)) ||
+        (figure.description && figure.description.toLowerCase().includes(keyword))
       ) {
         results.push({ type: 'figure', data: figure })
       }
@@ -687,7 +697,9 @@ const updateSearchResults = () => {
     filteredEvents.value.forEach(event => {
       if (
         event.chineseName.toLowerCase().includes(keyword) ||
-        event.englishName.toLowerCase().includes(keyword)
+        event.englishName.toLowerCase().includes(keyword) ||
+        event.tags.some(tag => tag.toLowerCase().includes(keyword)) ||
+        (event.description && event.description.toLowerCase().includes(keyword))
       ) {
         results.push({ type: 'event', data: event })
       }
@@ -701,7 +713,9 @@ const updateSearchResults = () => {
         work.chineseName.toLowerCase().includes(keyword) ||
         work.englishName.toLowerCase().includes(keyword) ||
         work.author.toLowerCase().includes(keyword) ||
-        work.authorEnglish.toLowerCase().includes(keyword)
+        work.authorEnglish.toLowerCase().includes(keyword) ||
+        work.tags.some(tag => tag.toLowerCase().includes(keyword)) ||
+        (work.description && work.description.toLowerCase().includes(keyword))
       ) {
         results.push({ type: 'masterwork', data: work })
       }

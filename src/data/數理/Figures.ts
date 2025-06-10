@@ -87,6 +87,18 @@ export const scientificFigures: HistoricalFigure[] = [
     description: '瑞士數學家，提出了伯努利定理和概率論的基本原理。'
   },
   {
+    id: 'johann-bernoulli',
+    chineseName: '約翰·白努利',
+    englishName: 'Johann Bernoulli',
+    startYear: 1667,
+    endYear: 1748,
+    coordinates: [47.5596, 7.5886], // 瑞士巴塞爾
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/約翰·白努利',
+    category: '數理',
+    tags: ['數學家', '物理學家', '微積分', '變分法', '瑞士'],
+    description: '瑞士數學家和物理學家，雅各布·白努利的弟弟，在微積分和變分法方面有重要貢獻，培養了歐拉等著名數學家。'
+  },
+  {
     id: 'isaac-newton',
     chineseName: '艾薩克·牛頓',
     englishName: 'Isaac Newton',
@@ -193,6 +205,18 @@ export const scientificFigures: HistoricalFigure[] = [
     category: '數理',
     tags: ['數學家', '天文學家', '代數之父', '伊斯蘭'],
     description: '寫成《代數學》，系統闡述方程解法，引入"al‑jabr"，開創代數學科。'
+  },
+  {
+    id: 'roger-bacon',
+    chineseName: '羅傑·培根',
+    englishName: 'Roger Bacon',
+    startYear: 1214,
+    endYear: 1294,
+    coordinates: [51.0, -2.7], // 英格蘭薩默塞特郡伊爾切斯特
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/羅吉爾·培根',
+    category: '數理',
+    tags: ['哲學家', '科學家', '放大鏡', '光學', '英國', '中世紀'],
+    description: '英格蘭哲學家和科學家，被認為是放大鏡的發明者，在光學和實驗科學方面有重要貢獻。'
   },
   {
     id: 'albert-einstein',

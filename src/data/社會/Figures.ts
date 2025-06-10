@@ -129,5 +129,91 @@ export const socialFigures: HistoricalFigure[] = [
     description: '美國第一夫人和人權活動家，富蘭克林·羅斯福的妻子，參與起草《世界人權宣言》，被譽為「世界第一夫人」。',
     coordinates: [40.7128, -74.0060], // 紐約
     wikipediaUrl: 'https://zh.wikipedia.org/wiki/埃莉諾·羅斯福',
+  },
+  // 教育家和教育思想家
+  {
+    id: 'rudolf-steiner',
+    chineseName: '魯道夫·史代納',
+    englishName: 'Rudolf Steiner',
+    category: '社會',
+    tags: ['教育家', '哲學家', '華德福教育', '人智學', '奧地利'],
+    startYear: 1861,
+    endYear: 1925,
+    description: '奧地利哲學家、教育家，創立了華德福教育體系和人智學，強調藝術、手工和自然教育，對現代教育有深遠影響。',
+    coordinates: [48.2082, 16.3738], // 維也納
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/魯道夫·史代納',
+  },
+  {
+    id: 'maria-montessori',
+    chineseName: '瑪麗亞·蒙特梭利',
+    englishName: 'Maria Montessori',
+    category: '社會',
+    tags: ['教育家', '醫生', '蒙特梭利教育', '兒童教育', '義大利'],
+    startYear: 1870,
+    endYear: 1952,
+    description: '義大利醫生和教育家，創立了蒙特梭利教育法，強調兒童自主學習和感官教育，對現代幼兒教育有重大影響。',
+    coordinates: [41.9028, 12.4964], // 羅馬
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/瑪麗亞·蒙特梭利',
+  },
+  {
+    id: 'jean-jacques-rousseau',
+    chineseName: '讓-雅克·盧梭',
+    englishName: 'Jean-Jacques Rousseau',
+    category: '社會',
+    tags: ['哲學家', '教育家', '啟蒙運動', '社會契約論', '法國'],
+    startYear: 1712,
+    endYear: 1778,
+    description: '法國啟蒙思想家、哲學家和教育家，提出自然教育理論，強調兒童天性發展，對現代教育理論有深遠影響。',
+    coordinates: [46.2044, 6.1432], // 日內瓦
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/讓-雅克·盧梭',
+  },
+  {
+    id: 'john-dewey',
+    chineseName: '約翰·杜威',
+    englishName: 'John Dewey',
+    category: '社會',
+    tags: ['教育家', '哲學家', '實用主義', '進步教育', '美國'],
+    startYear: 1859,
+    endYear: 1952,
+    description: '美國哲學家、教育家和心理學家，實用主義教育理論的代表人物，主張「做中學」，對現代教育有重大影響。',
+    coordinates: [42.3601, -71.0589], // 波士頓
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/約翰·杜威',
+  },
+  // 心理學家
+  {
+    id: 'sigmund-freud',
+    chineseName: '西格蒙德·佛洛伊德',
+    englishName: 'Sigmund Freud',
+    category: '社會',
+    tags: ['心理學家', '精神分析', '潛意識', '心理治療', '奧地利'],
+    startYear: 1856,
+    endYear: 1939,
+    description: '奧地利神經學家和心理學家，精神分析學派的創始人，發現潛意識理論，對現代心理學和心理治療有深遠影響。',
+    coordinates: [48.2082, 16.3738], // 維也納
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/西格蒙德·佛洛伊德',
+  },
+  {
+    id: 'carl-jung',
+    chineseName: '卡爾·榮格',
+    englishName: 'Carl Jung',
+    category: '社會',
+    tags: ['心理學家', '精神分析', '集體潛意識', '原型理論', '瑞士'],
+    startYear: 1875,
+    endYear: 1961,
+    description: '瑞士心理學家和精神分析學家，分析心理學的創始人，提出集體潛意識和原型理論，對現代心理學有重要貢獻。',
+    coordinates: [47.5596, 7.5886], // 巴塞爾
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/卡爾·榮格',
+  },
+  {
+    id: 'alfred-adler',
+    chineseName: '阿爾弗雷德·阿德勒',
+    englishName: 'Alfred Adler',
+    category: '社會',
+    tags: ['心理學家', '個體心理學', '自卑情結', '社會興趣', '奧地利'],
+    startYear: 1870,
+    endYear: 1937,
+    description: '奧地利心理學家和醫生，個體心理學的創始人，提出自卑情結和社會興趣理論，對現代心理學有重要影響。',
+    coordinates: [48.2082, 16.3738], // 維也納
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/阿爾弗雷德·阿德勒',
   }
 ]

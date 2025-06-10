@@ -35,8 +35,7 @@ export const techFigures: HistoricalFigure[] = [
     englishName: 'Wings Brothers',
     startYear: 1877,
     endYear: 1927,
-    // 坐標：33°50N－36°35'N, 75°28'W－84°19'W
-    coordinates: [33.8333, -75.4667],
+    coordinates: [35.2271, -80.8431],
     wikipediaUrl: 'https://zh.wikipedia.org/wiki/萊特兄弟',
     category: '科技',
     tags: ['飛機發明者'],
