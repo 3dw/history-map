@@ -1,9 +1,14 @@
 @import './base.css';
 
+body {
+  padding: 0;
+}
+
 #app {
   margin: 0 auto;
   padding: 2rem;
   font-weight: normal;
+  padding: 0;
 }
 
 a,

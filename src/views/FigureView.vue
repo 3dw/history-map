@@ -129,34 +129,67 @@ const loading = ref(true)
 const figure = ref<HistoricalFigure | null>(null)
 
 // 計算同時代的人物、事件和作品
+// 計算兩點經緯度距離（Haversine公式，單位：公里）
+function getDistance(coord1: [number, number], coord2: [number, number]): number {
+  if (!coord1 || !coord2) return Number.POSITIVE_INFINITY
+  const toRad = (deg: number) => deg * Math.PI / 180
+  const [lat1, lon1] = coord1
+  const [lat2, lon2] = coord2
+  const R = 6371 // 地球半徑 (km)
+  const dLat = toRad(lat2 - lat1)
+  const dLon = toRad(lon2 - lon1)
+  const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+            Math.sin(dLon/2) * Math.sin(dLon/2)
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+  return R * c
+}
+
 const contemporaries = computed(() => {
   if (!figure.value) return { figures: [], events: [], masterWorks: [] }
 
   const figureStartYear = figure.value.startYear
-  const figureEndYear = figure.value.endYear || figureStartYear + 100
+  const nowYear = new Date().getFullYear()
+  const figureEndYear = figure.value.endYear || nowYear
+  const figureCoord = figure.value.coordinates as [number, number] | undefined
 
-  // 定義同時代的時間範圍（前後50年）
-  const timeRange = 50
-  const startRange = Math.min(figureStartYear, figureEndYear) - timeRange
-  const endRange = Math.max(figureStartYear, figureEndYear) + timeRange
+  // 嚴格重疊：A_start <= B_end && B_start <= A_end
+  // 人物（排除自己）
+  let contemporaryFigures = historicalFigures.filter(f => {
+    if (f.id === figure.value!.id) return false
+    const fStart = f.startYear
+    const fEnd = f.endYear || nowYear
+    return figureStartYear <= fEnd && fStart <= figureEndYear
+  })
+  // 依距離排序
+  if (figureCoord) {
+    contemporaryFigures = contemporaryFigures.slice().sort((a, b) => {
+      return getDistance(a.coordinates, figureCoord) - getDistance(b.coordinates, figureCoord)
+    })
+  }
 
-  // 篩選同時代的人物（排除自己）
-  const contemporaryFigures = historicalFigures.filter(f =>
-    f.id !== figure.value!.id &&
-    f.startYear >= startRange &&
-    f.startYear <= endRange
-  )
+  // 事件
+  let contemporaryEvents = historicalEvents.filter(e => {
+    const eStart = e.startYear
+    const eEnd = e.endYear || nowYear
+    return figureStartYear <= eEnd && eStart <= figureEndYear
+  })
+  if (figureCoord) {
+    contemporaryEvents = contemporaryEvents.slice().sort((a, b) => {
+      return getDistance(a.coordinates, figureCoord) - getDistance(b.coordinates, figureCoord)
+    })
+  }
 
-  // 篩選同時代的事件
-  const contemporaryEvents = historicalEvents.filter(e =>
-    e.startYear >= startRange &&
-    e.startYear <= endRange
-  )
-
-  // 篩選同時代的作品
-  const contemporaryMasterWorks = masterWorks.filter(w =>
-    w.year && w.year >= startRange && w.year <= endRange
-  )
+  // 作品（視為單點 year）
+  let contemporaryMasterWorks = masterWorks.filter(w => {
+    if (!w.year) return false
+    return w.year >= figureStartYear && w.year <= figureEndYear
+  })
+  if (figureCoord) {
+    contemporaryMasterWorks = contemporaryMasterWorks.slice().sort((a, b) => {
+      return getDistance(a.coordinates, figureCoord) - getDistance(b.coordinates, figureCoord)
+    })
+  }
 
   return {
     figures: contemporaryFigures,
@@ -548,9 +581,10 @@ onMounted(() => {
   }
 
   .contemporaries-section {
-    max-height: 50vh;
+    max-height: none;
     margin-top: 0;
     max-width: 100%;
+    padding-right: 0;
   }
 
   .contemporaries-section h3 {
