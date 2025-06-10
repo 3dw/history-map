@@ -678,21 +678,7 @@ const updateSearchResults = () => {
   const keyword = searchKeyword.value.toLowerCase()
   const results: Array<{ type: MarkerType; data: HistoricalFigure | HistoricalEvent | MasterWork }> = []
 
-  // 搜尋歷史人物
-  if (showFigures.value) {
-    filteredFigures.value.forEach(figure => {
-      if (
-        figure.chineseName.toLowerCase().includes(keyword) ||
-        figure.englishName.toLowerCase().includes(keyword) ||
-        figure.tags.some(tag => tag.toLowerCase().includes(keyword)) ||
-        (figure.description && figure.description.toLowerCase().includes(keyword))
-      ) {
-        results.push({ type: 'figure', data: figure })
-      }
-    })
-  }
-
-  // 搜尋重大事件
+  // 搜尋重大事件（優先）
   if (showEvents.value) {
     filteredEvents.value.forEach(event => {
       if (
@@ -706,7 +692,21 @@ const updateSearchResults = () => {
     })
   }
 
-  // 搜尋傳世之作
+  // 搜尋歷史人物（第二優先）
+  if (showFigures.value) {
+    filteredFigures.value.forEach(figure => {
+      if (
+        figure.chineseName.toLowerCase().includes(keyword) ||
+        figure.englishName.toLowerCase().includes(keyword) ||
+        figure.tags.some(tag => tag.toLowerCase().includes(keyword)) ||
+        (figure.description && figure.description.toLowerCase().includes(keyword))
+      ) {
+        results.push({ type: 'figure', data: figure })
+      }
+    })
+  }
+
+  // 搜尋傳世之作（最後）
   if (showMasterWorks.value) {
     filteredMasterWorks.value.forEach(work => {
       if (

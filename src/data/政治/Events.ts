@@ -581,5 +581,343 @@ export const politicalEvents: HistoricalEvent[] = [
     category: '政治',
     tags: ['治水', '工程', '上古', '中國', '大禹'],
     description: '大禹領導人民治理洪水，採用疏導的方法，歷時十三年，最終成功治理水患，為中國古代水利工程奠定基礎。'
+  },
+  // 重要政治變革事件
+  {
+    id: 'magna-carta',
+    chineseName: '大憲章',
+    englishName: 'Magna Carta',
+    startYear: 1215,
+    endYear: 1215,
+    coordinates: [51.5074, -0.1278], // 英國倫敦
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/大憲章',
+    category: '政治',
+    tags: ['憲法', '權利法案', '英國', '約翰王', '封建制度'],
+    description: '英國國王約翰被迫簽署的憲章，限制王權，確立法律至上原則，是現代憲政制度的基礎。'
+  },
+  {
+    id: 'english-civil-war',
+    chineseName: '英國內戰',
+    englishName: 'English Civil War',
+    startYear: 1642,
+    endYear: 1651,
+    coordinates: [51.5074, -0.1278], // 英國倫敦
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/英國內戰',
+    category: '政治',
+    tags: ['內戰', '議會', '君主制', '英國', '克倫威爾'],
+    description: '英國議會與國王查理一世之間的內戰，最終議會勝利，建立共和國，影響英國政治制度發展。'
+  },
+  {
+    id: 'glorious-revolution',
+    chineseName: '光榮革命',
+    englishName: 'Glorious Revolution',
+    startYear: 1688,
+    endYear: 1689,
+    coordinates: [51.5074, -0.1278], // 英國倫敦
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/光榮革命',
+    category: '政治',
+    tags: ['革命', '君主立憲', '英國', '威廉三世', '權利法案'],
+    description: '英國議會邀請威廉三世和瑪麗二世繼承王位，確立君主立憲制度，通過權利法案限制王權。'
+  },
+  {
+    id: 'bill-of-rights-1689',
+    chineseName: '權利法案',
+    englishName: 'Bill of Rights 1689',
+    startYear: 1689,
+    endYear: 1689,
+    coordinates: [51.5074, -0.1278], // 英國倫敦
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/權利法案_(英國)',
+    category: '政治',
+    tags: ['憲法', '權利法案', '英國', '君主立憲', '議會主權'],
+    description: '英國議會通過的權利法案，確立議會主權，限制王權，為現代民主制度奠定基礎。'
+  },
+  {
+    id: 'act-of-union-1707',
+    chineseName: '1707年聯合法案',
+    englishName: 'Act of Union 1707',
+    startYear: 1707,
+    endYear: 1707,
+    coordinates: [55.9533, -3.1883], // 蘇格蘭愛丁堡
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/1707年聯合法案',
+    category: '政治',
+    tags: ['聯合', '英國', '蘇格蘭', '大不列顛', '政治統一'],
+    description: '英格蘭和蘇格蘭議會通過聯合法案，建立大不列顛王國，實現政治統一。'
+  },
+  {
+    id: 'declaration-of-independence',
+    chineseName: '美國獨立宣言',
+    englishName: 'Declaration of Independence',
+    startYear: 1776,
+    endYear: 1776,
+    coordinates: [39.9526, -75.1652], // 美國費城
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/美國獨立宣言',
+    category: '政治',
+    tags: ['獨立', '宣言', '美國', '傑佛遜', '民主'],
+    description: '美國十三個殖民地宣布脫離英國統治的宣言，由傑佛遜起草，確立人人生而平等的原則。'
+  },
+  {
+    id: 'constitutional-convention',
+    chineseName: '美國制憲會議',
+    englishName: 'Constitutional Convention',
+    startYear: 1787,
+    endYear: 1787,
+    coordinates: [39.9526, -75.1652], // 美國費城
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/美國制憲會議',
+    category: '政治',
+    tags: ['憲法', '制憲', '美國', '華盛頓', '聯邦制度'],
+    description: '美國制憲會議制定美國憲法，建立聯邦制度，確立三權分立的政治體制。'
+  },
+  {
+    id: 'french-revolution-political',
+    chineseName: '法國大革命政治變革',
+    englishName: 'French Revolution Political Changes',
+    startYear: 1789,
+    endYear: 1799,
+    coordinates: [48.8566, 2.3522], // 法國巴黎
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/法國大革命',
+    category: '政治',
+    tags: ['革命', '共和制', '法國', '拿破崙', '政治變革'],
+    description: '法國大革命推翻君主專制，建立共和制度，拿破崙隨後建立帝國，影響歐洲政治格局。'
+  },
+  {
+    id: 'vienna-congress',
+    chineseName: '維也納會議',
+    englishName: 'Congress of Vienna',
+    startYear: 1814,
+    endYear: 1815,
+    coordinates: [48.2082, 16.3738], // 奧地利維也納
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/維也納會議',
+    category: '政治',
+    tags: ['會議', '歐洲', '梅特涅', '保守主義', '國際秩序'],
+    description: '拿破崙戰爭後的歐洲國際會議，重新劃分歐洲政治版圖，建立保守主義國際秩序。'
+  },
+  {
+    id: 'german-unification',
+    chineseName: '德國統一',
+    englishName: 'German Unification',
+    startYear: 1871,
+    endYear: 1871,
+    coordinates: [52.5200, 13.4050], // 德國柏林
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/德意志帝國',
+    category: '政治',
+    tags: ['統一', '德國', '俾斯麥', '普魯士', '帝國'],
+    description: '俾斯麥領導普魯士統一德國各邦，建立德意志帝國，改變歐洲政治格局。'
+  },
+  {
+    id: 'italian-unification',
+    chineseName: '義大利統一',
+    englishName: 'Italian Unification',
+    startYear: 1861,
+    endYear: 1871,
+    coordinates: [41.9028, 12.4964], // 義大利羅馬
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/義大利統一',
+    category: '政治',
+    tags: ['統一', '義大利', '加富爾', '加里波第', '王國'],
+    description: '加富爾和加里波第領導義大利統一運動，建立義大利王國，完成民族統一。'
+  },
+  {
+    id: 'russian-revolution',
+    chineseName: '俄國革命',
+    englishName: 'Russian Revolution',
+    startYear: 1917,
+    endYear: 1917,
+    coordinates: [59.9311, 30.3609], // 俄羅斯聖彼得堡
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/俄國革命',
+    category: '政治',
+    tags: ['革命', '蘇聯', '列寧', '布爾什維克', '社會主義'],
+    description: '俄國發生二月革命和十月革命，推翻沙皇制度，建立世界上第一個社會主義國家。'
+  },
+  {
+    id: 'chinese-revolution-1911',
+    chineseName: '辛亥革命',
+    englishName: 'Xinhai Revolution',
+    startYear: 1911,
+    endYear: 1912,
+    coordinates: [30.5928, 114.3055], // 中國武漢
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/辛亥革命',
+    category: '政治',
+    tags: ['革命', '中國', '孫中山', '共和制', '清朝'],
+    description: '孫中山領導的革命推翻清朝統治，建立中華民國，結束中國兩千多年的君主制度。'
+  },
+  {
+    id: 'indian-independence',
+    chineseName: '印度獨立',
+    englishName: 'Indian Independence',
+    startYear: 1947,
+    endYear: 1947,
+    coordinates: [28.6139, 77.2090], // 印度新德里
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/印度獨立運動',
+    category: '政治',
+    tags: ['獨立', '印度', '甘地', '英國', '非暴力'],
+    description: '甘地領導非暴力不合作運動，印度脫離英國統治獲得獨立，建立民主制度。'
+  },
+  {
+    id: 'chinese-revolution-1949',
+    chineseName: '中華人民共和國成立',
+    englishName: 'Founding of People\'s Republic of China',
+    startYear: 1949,
+    endYear: 1949,
+    coordinates: [39.9042, 116.4074], // 中國北京
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/中華人民共和國',
+    category: '政治',
+    tags: ['革命', '中國', '毛澤東', '社會主義', '共和國'],
+    description: '毛澤東領導中國共產黨建立中華人民共和國，確立社會主義制度。'
+  },
+  {
+    id: 'berlin-wall-fall',
+    chineseName: '柏林圍牆倒塌',
+    englishName: 'Fall of the Berlin Wall',
+    startYear: 1989,
+    endYear: 1989,
+    coordinates: [52.5200, 13.4050], // 德國柏林
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/柏林圍牆',
+    category: '政治',
+    tags: ['統一', '德國', '冷戰', '蘇聯', '民主化'],
+    description: '柏林圍牆倒塌，象徵冷戰結束，德國重新統一，推動東歐民主化進程。'
+  },
+  {
+    id: 'soviet-union-collapse',
+    chineseName: '蘇聯解體',
+    englishName: 'Dissolution of the Soviet Union',
+    startYear: 1991,
+    endYear: 1991,
+    coordinates: [55.7558, 37.6176], // 俄羅斯莫斯科
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/蘇聯解體',
+    category: '政治',
+    tags: ['解體', '蘇聯', '冷戰', '俄羅斯', '獨立國家'],
+    description: '蘇聯解體，冷戰結束，15個加盟共和國獨立，俄羅斯聯邦成立。'
+  },
+  {
+    id: 'european-union-formation',
+    chineseName: '歐洲聯盟成立',
+    englishName: 'Formation of European Union',
+    startYear: 1993,
+    endYear: 1993,
+    coordinates: [50.8503, 4.3517], // 比利時布魯塞爾
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/歐洲聯盟',
+    category: '政治',
+    tags: ['統一', '歐洲', '歐盟', '經濟合作', '政治聯盟'],
+    description: '歐洲共同體改組為歐洲聯盟，推動歐洲政治和經濟一體化，建立超國家組織。'
+  },
+  // 十字軍東征重要事件
+  {
+    id: 'first-crusade',
+    chineseName: '第一次十字軍東征',
+    englishName: 'First Crusade',
+    startYear: 1096,
+    endYear: 1099,
+    coordinates: [31.7683, 35.2137], // 耶路撒冷
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/第一次十字軍東征',
+    category: '政治',
+    tags: ['十字軍', '宗教戰爭', '耶路撒冷', '基督教', '伊斯蘭'],
+    description: '教皇烏爾班二世號召的第一次十字軍東征，成功攻佔耶路撒冷，建立耶路撒冷王國等十字軍國家。'
+  },
+  {
+    id: 'second-crusade',
+    chineseName: '第二次十字軍東征',
+    englishName: 'Second Crusade',
+    startYear: 1147,
+    endYear: 1149,
+    coordinates: [31.7683, 35.2137], // 耶路撒冷
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/第二次十字軍東征',
+    category: '政治',
+    tags: ['十字軍', '宗教戰爭', '耶路撒冷', '基督教', '伊斯蘭'],
+    description: '教皇尤金三世號召的第二次十字軍東征，由法國國王路易七世和神聖羅馬帝國皇帝康拉德三世領導，但最終失敗。'
+  },
+  {
+    id: 'third-crusade',
+    chineseName: '第三次十字軍東征',
+    englishName: 'Third Crusade',
+    startYear: 1189,
+    endYear: 1192,
+    coordinates: [31.7683, 35.2137], // 耶路撒冷
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/第三次十字軍東征',
+    category: '政治',
+    tags: ['十字軍', '宗教戰爭', '耶路撒冷', '獅心王理查', '薩拉丁'],
+    description: '由英格蘭國王獅心王理查、法國國王腓力二世和神聖羅馬帝國皇帝腓特烈一世領導，與薩拉丁對抗，最終簽訂和約。'
+  },
+  {
+    id: 'fourth-crusade',
+    chineseName: '第四次十字軍東征',
+    englishName: 'Fourth Crusade',
+    startYear: 1202,
+    endYear: 1204,
+    coordinates: [41.0082, 28.9784], // 君士坦丁堡
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/第四次十字軍東征',
+    category: '政治',
+    tags: ['十字軍', '宗教戰爭', '君士坦丁堡', '拜占庭', '拉丁帝國'],
+    description: '十字軍原本目標是收復耶路撒冷，但最終攻佔並洗劫君士坦丁堡，建立拉丁帝國，嚴重削弱拜占庭帝國。'
+  },
+  {
+    id: 'childrens-crusade',
+    chineseName: '兒童十字軍',
+    englishName: 'Children\'s Crusade',
+    startYear: 1212,
+    endYear: 1212,
+    coordinates: [48.8566, 2.3522], // 法國巴黎
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/兒童十字軍',
+    category: '政治',
+    tags: ['十字軍', '宗教戰爭', '兒童', '法國', '德國'],
+    description: '由法國和德國兒童組成的十字軍，試圖通過純潔和信仰收復耶路撒冷，但最終以悲劇收場。'
+  },
+  {
+    id: 'fifth-crusade',
+    chineseName: '第五次十字軍東征',
+    englishName: 'Fifth Crusade',
+    startYear: 1217,
+    endYear: 1221,
+    coordinates: [30.0444, 31.2357], // 埃及開羅
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/第五次十字軍東征',
+    category: '政治',
+    tags: ['十字軍', '宗教戰爭', '埃及', '達米埃塔', '基督教'],
+    description: '十字軍進攻埃及，攻佔達米埃塔，但最終在尼羅河洪水後被迫撤退，以失敗告終。'
+  },
+  {
+    id: 'sixth-crusade',
+    chineseName: '第六次十字軍東征',
+    englishName: 'Sixth Crusade',
+    startYear: 1228,
+    endYear: 1229,
+    coordinates: [31.7683, 35.2137], // 耶路撒冷
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/第六次十字軍東征',
+    category: '政治',
+    tags: ['十字軍', '宗教戰爭', '耶路撒冷', '腓特烈二世', '外交'],
+    description: '神聖羅馬帝國皇帝腓特烈二世通過外交手段，與埃及蘇丹簽訂條約，成功收復耶路撒冷，是唯一不流血的十字軍。'
+  },
+  {
+    id: 'seventh-crusade',
+    chineseName: '第七次十字軍東征',
+    englishName: 'Seventh Crusade',
+    startYear: 1248,
+    endYear: 1254,
+    coordinates: [30.0444, 31.2357], // 埃及開羅
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/第七次十字軍東征',
+    category: '政治',
+    tags: ['十字軍', '宗教戰爭', '埃及', '路易九世', '法國'],
+    description: '法國國王路易九世領導的十字軍，進攻埃及但失敗，路易九世被俘，後以巨額贖金獲釋。'
+  },
+  {
+    id: 'eighth-crusade',
+    chineseName: '第八次十字軍東征',
+    englishName: 'Eighth Crusade',
+    startYear: 1270,
+    endYear: 1270,
+    coordinates: [36.8065, 10.1815], // 突尼西亞
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/第八次十字軍東征',
+    category: '政治',
+    tags: ['十字軍', '宗教戰爭', '突尼西亞', '路易九世', '法國'],
+    description: '法國國王路易九世最後一次十字軍東征，進攻突尼西亞，但路易九世在圍攻期間死於瘟疫。'
+  },
+  {
+    id: 'fall-of-acre',
+    chineseName: '阿卡淪陷',
+    englishName: 'Fall of Acre',
+    startYear: 1291,
+    endYear: 1291,
+    coordinates: [32.9281, 35.0820], // 阿卡
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/阿卡圍城戰_(1291年)',
+    category: '政治',
+    tags: ['十字軍', '宗教戰爭', '阿卡', '馬木留克', '耶路撒冷王國'],
+    description: '馬木留克蘇丹國攻佔阿卡，最後一個十字軍據點淪陷，標誌著十字軍東征時代的結束。'
   }
 ]

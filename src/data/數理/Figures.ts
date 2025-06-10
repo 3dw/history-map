@@ -365,5 +365,42 @@ export const scientificFigures: HistoricalFigure[] = [
     category: '數理',
     tags: ['物理學家', '熱學', '能量守恆', '焦耳定律', '英國'],
     description: '英國物理學家，發現了熱和機械功之間的關係，建立了能量守恆定律，熱量單位以他的名字命名。'
+  },
+  // 黑死病時期的醫學家和科學家
+  {
+    id: 'guy-de-chauliac',
+    chineseName: '居伊·德·肖利亞克',
+    englishName: 'Guy de Chauliac',
+    startYear: 1300,
+    endYear: 1368,
+    coordinates: [44.8378, -0.5792], // 法國波爾多
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/居伊·德·肖利亞克',
+    category: '數理',
+    tags: ['外科醫生', '醫學家', '黑死病', '中世紀醫學', '法國'],
+    description: '法國外科醫生，黑死病時期的著名醫學家，著有《大外科學》，對中世紀醫學有重要貢獻。'
+  },
+  {
+    id: 'gentile-da-foligno',
+    chineseName: '真蒂萊·達·福利尼奧',
+    englishName: 'Gentile da Foligno',
+    startYear: 1280,
+    endYear: 1348,
+    coordinates: [42.9547, 12.7026], // 義大利福利尼奧
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/真蒂萊·達·福利尼奧',
+    category: '數理',
+    tags: ['醫學家', '教授', '黑死病', '中世紀醫學', '義大利'],
+    description: '義大利醫學教授，黑死病時期的著名醫學家，在佩魯賈大學任教，對瘟疫治療有研究。'
+  },
+  {
+    id: 'jacobus-anglicus',
+    chineseName: '雅各布斯·安格利庫斯',
+    englishName: 'Jacobus Anglicus',
+    startYear: 1300,
+    endYear: 1380,
+    coordinates: [51.5074, -0.1278], // 英國倫敦
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/雅各布斯·安格利庫斯',
+    category: '數理',
+    tags: ['醫學家', '黑死病', '中世紀醫學', '英國'],
+    description: '英國醫學家，黑死病時期的著名醫生，對瘟疫的傳播和治療有重要研究。'
   }
 ]

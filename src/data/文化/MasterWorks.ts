@@ -197,5 +197,32 @@ export const culturalMasterWorks: MasterWork[] = [
     category: '文化',
     tags: ['哲學', '數學', '科學方法', '法國'],
     description: '笛卡爾的哲學著作，提出了理性主義的方法論。'
+  },
+  // 黑死病時期的著作
+  {
+    id: 'decameron',
+    chineseName: '十日談',
+    englishName: 'The Decameron',
+    author: '喬萬尼·薄伽丘',
+    authorEnglish: 'Giovanni Boccaccio',
+    year: 1353,
+    coordinates: [43.7696, 11.2558], // 義大利佛羅倫斯
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/十日談',
+    category: '文化',
+    tags: ['文學', '短篇小說', '黑死病', '文藝復興', '義大利'],
+    description: '薄伽丘的文學作品，以黑死病為背景，描述十個年輕人在瘟疫期間講述的故事，是文藝復興時期的重要文學作品。'
+  },
+  {
+    id: 'chirurgia-magna',
+    chineseName: '大外科學',
+    englishName: 'Chirurgia Magna',
+    author: '居伊·德·肖利亞克',
+    authorEnglish: 'Guy de Chauliac',
+    year: 1363,
+    coordinates: [44.8378, -0.5792], // 法國波爾多
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/居伊·德·肖利亞克',
+    category: '文化',
+    tags: ['醫學', '外科學', '黑死病', '中世紀醫學', '法國'],
+    description: '肖利亞克的醫學著作，是中世紀最重要的外科學著作之一，對黑死病等疾病的治療有詳細記載。'
   }
 ]

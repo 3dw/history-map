@@ -136,5 +136,18 @@ export const culturalFigures: HistoricalFigure[] = [
     category: '文化',
     tags: ['小說家', '浪漫主義', '英國文學', '《傲慢與偏見》'],
     description: '英國著名女小說家，著有《傲慢與偏見》《理性與感性》等經典作品，被譽為英國文學史上最偉大的女作家之一。'
+  },
+  // 黑死病時期的文學家
+  {
+    id: 'giovanni-boccaccio',
+    chineseName: '喬萬尼·薄伽丘',
+    englishName: 'Giovanni Boccaccio',
+    startYear: 1313,
+    endYear: 1375,
+    coordinates: [43.7696, 11.2558], // 義大利佛羅倫斯
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/喬萬尼·薄伽丘',
+    category: '文化',
+    tags: ['作家', '詩人', '黑死病', '文藝復興', '義大利', '《十日談》'],
+    description: '義大利作家和詩人，文藝復興時期的重要文學家，著有《十日談》，以黑死病為背景，對歐洲文學有重要影響。'
   }
 ]

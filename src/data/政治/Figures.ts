@@ -499,5 +499,54 @@ export const politicalFigures: HistoricalFigure[] = [
     category: '政治',
     tags: ['總理', '德國', '基民盟', '歐盟', '物理學家'],
     description: '德國第一位女總理，歐洲最有影響力的政治領袖之一，領導德國度過金融危機和難民危機，被稱為「歐洲的總理」。'
+  },
+  // 黑死病時期的政治人物
+  {
+    id: 'edward-iii',
+    chineseName: '愛德華三世',
+    englishName: 'Edward III',
+    startYear: 1312,
+    endYear: 1377,
+    coordinates: [51.5074, -0.1278], // 英國倫敦
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/愛德華三世_(英格蘭)',
+    category: '政治',
+    tags: ['國王', '英格蘭', '百年戰爭', '黑死病', '中世紀'],
+    description: '英格蘭國王，統治期間正值黑死病大流行，也是百年戰爭的重要參與者，對英格蘭歷史有重要影響。'
+  },
+  {
+    id: 'philip-vi',
+    chineseName: '菲利普六世',
+    englishName: 'Philip VI',
+    startYear: 1293,
+    endYear: 1350,
+    coordinates: [48.8566, 2.3522], // 法國巴黎
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/菲利普六世_(法蘭西)',
+    category: '政治',
+    tags: ['國王', '法國', '百年戰爭', '黑死病', '中世紀'],
+    description: '法國國王，瓦盧瓦王朝的建立者，統治期間正值黑死病大流行和百年戰爭初期。'
+  },
+  {
+    id: 'clement-vi',
+    chineseName: '克萊門特六世',
+    englishName: 'Clement VI',
+    startYear: 1291,
+    endYear: 1352,
+    coordinates: [43.9493, 4.8055], // 法國阿維尼翁
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/克萊門特六世',
+    category: '政治',
+    tags: ['教皇', '天主教', '阿維尼翁教廷', '黑死病', '中世紀'],
+    description: '羅馬教皇，阿維尼翁教廷時期的重要教皇，統治期間正值黑死病大流行，對教會應對瘟疫有重要影響。'
+  },
+  {
+    id: 'coluccio-salutati',
+    chineseName: '科盧喬·薩盧塔蒂',
+    englishName: 'Coluccio Salutati',
+    startYear: 1331,
+    endYear: 1406,
+    coordinates: [43.7696, 11.2558], // 義大利佛羅倫斯
+    wikipediaUrl: 'https://zh.wikipedia.org/wiki/科盧喬·薩盧塔蒂',
+    category: '政治',
+    tags: ['政治家', '人文主義者', '佛羅倫斯', '文藝復興', '黑死病'],
+    description: '義大利政治家和人文主義者，佛羅倫斯共和國的執政官，黑死病後期的重要政治人物，對文藝復興有重要影響。'
   }
 ]
