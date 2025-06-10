@@ -125,7 +125,7 @@ export const socialEvents: HistoricalEvent[] = [
   },
   {
     id: 'sept-11-attacks',
-    chineseName: '九一一恐怖攻擊',
+    chineseName: '911恐怖攻擊',
     englishName: 'September 11 attacks',
     startYear: 2001,
     endYear: 2001,
